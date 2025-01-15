@@ -1,6 +1,13 @@
+# Mac
+.DS_Store
+
+# Node & Build
 .angular
 dist
 node_modules
+
+
+# Supabase
 .supabase-local.md
 supabase/.branches
 supabase/.temp
