@@ -1,0 +1,64 @@
+<div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-6 mb-8">
+  <h2 class="text-2xl font-bold mb-6 text-primary dark:text-white">{{ 'privacy.cookie_settings.title' | translate }}</h2>
+  
+  <div class="space-y-6">
+    <!-- Necessary Cookies -->
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="text-lg font-semibold text-primary dark:text-white">{{ 'privacy.cookie_settings.necessary.title' | translate }}</h3>
+        <p class="text-sm text-primary/70 dark:text-white/70">{{ 'privacy.cookie_settings.necessary.description' | translate }}</p>
+      </div>
+      <div class="relative">
+        <input
+          type="checkbox"
+          [checked]="consent.necessary"
+          disabled
+          class="sr-only peer"
+        >
+        <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent"></div>
+      </div>
+    </div>
+
+    <!-- Preference Cookies -->
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="text-lg font-semibold text-primary dark:text-white">{{ 'privacy.cookie_settings.preferences.title' | translate }}</h3>
+        <p class="text-sm text-primary/70 dark:text-white/70">{{ 'privacy.cookie_settings.preferences.description' | translate }}</p>
+      </div>
+      <div class="relative">
+        <input
+          type="checkbox"
+          [(ngModel)]="consent.preferences"
+          (ngModelChange)="updateSettings('preferences')"
+          class="sr-only peer"
+          #preferencesCheckbox
+        >
+        <div 
+          (click)="preferencesCheckbox.click()"
+          class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent cursor-pointer"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Maps Cookies -->
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="text-lg font-semibold text-primary dark:text-white">{{ 'privacy.cookie_settings.maps.title' | translate }}</h3>
+        <p class="text-sm text-primary/70 dark:text-white/70">{{ 'privacy.cookie_settings.maps.description' | translate }}</p>
+      </div>
+      <div class="relative">
+        <input
+          type="checkbox"
+          [(ngModel)]="consent.maps"
+          (ngModelChange)="updateSettings('maps')"
+          class="sr-only peer"
+          #mapsCheckbox
+        >
+        <div 
+          (click)="mapsCheckbox.click()"
+          class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent cursor-pointer"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

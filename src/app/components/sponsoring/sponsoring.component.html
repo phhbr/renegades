@@ -1,0 +1,43 @@
+<main class="main-content bg-secondary dark:bg-dark-secondary text-primary dark:text-white">
+  <div class="container mx-auto px-4">
+    <h1 class="text-4xl font-bold mb-12 text-center text-primary dark:text-white">{{ 'sponsoring.title' | translate }}</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      @for (sponsor of sponsors(); track sponsor.id) {
+        <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg overflow-hidden shadow-lg">
+          <div class="h-48 flex items-center justify-center bg-transparent p-4">
+            <img 
+              [src]="sponsor.logo_url" 
+              [alt]="sponsor.name"
+              class="w-full h-full object-contain"
+            >
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-4 text-primary dark:text-white">{{ sponsor.name }}</h3>
+            <p class="mb-4 text-primary/80 dark:text-white/80">{{ sponsor.description }}</p>
+            <a 
+              [href]="sponsor.website" 
+              target="_blank" 
+              class="text-accent hover:text-accent-dark transition-colors duration-300"
+            >
+              {{ 'sponsoring.visit_website' | translate }} →
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="mt-16 text-center">
+      <h2 class="text-3xl font-bold mb-6 text-primary dark:text-white">{{ 'sponsoring.become.title' | translate }}</h2>
+      <p class="mb-8 max-w-2xl mx-auto text-primary/80 dark:text-white/80">
+        {{ 'sponsoring.become.description' | translate }}
+      </p>
+      <a 
+        routerLink="/contact" 
+        class="bg-accent text-white px-8 py-3 rounded-lg font-bold hover:bg-accent-dark transition-colors duration-300"
+      >
+        {{ 'sponsoring.cta' | translate }}
+      </a>
+    </div>
+  </div>
+</main>

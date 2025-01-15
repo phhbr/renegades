@@ -1,0 +1,37 @@
+<main class="main-content bg-secondary dark:bg-dark-secondary text-primary dark:text-white min-h-screen py-12">
+  <div class="container mx-auto px-4">
+    <h1 class="text-4xl font-bold mb-12 text-center text-primary dark:text-white">{{ 'team.title' | translate }}</h1>
+
+    <!-- Staff Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-primary dark:text-white">{{ 'team.staff.title' | translate }}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        @for (member of staff(); track member.name) {
+          <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
+            <img [src]="member.image_url || '/assets/images/player-404.jpg'" [alt]="member.name" class="w-full h-64 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-primary dark:text-white">{{ member.name }}</h3>
+              <p class="text-primary/70 dark:text-white/70">{{ 'team.role.' + member.role | translate }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- Players Section -->
+    <section>
+      <h2 class="text-3xl font-bold mb-8 text-primary dark:text-white">{{ 'team.players.title' | translate }}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        @for (player of players(); track player.name) {
+          <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
+            <img [src]="player.image_url || '/assets/images/player-404.jpg'" [alt]="player.name" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="text-lg font-bold mb-1 text-primary dark:text-white">{{ player.name }}</h3>
+              <p class="text-primary/70 dark:text-white/70">#{{ player.number }} - {{ 'team.position.' + player.position | translate }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+  </div>
+</main>

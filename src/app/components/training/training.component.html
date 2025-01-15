@@ -1,0 +1,108 @@
+<main class="main-content bg-secondary dark:bg-dark-secondary text-primary dark:text-white">
+  <div class="container mx-auto px-4">
+    <h1 class="text-4xl font-bold mb-12 text-center text-primary dark:text-white">{{ 'training.title' | translate }}</h1>
+
+    <!-- Training Schedule -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-primary dark:text-white">{{ 'training.schedule.title' | translate }}</h2>
+      <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4 text-primary dark:text-white">{{ 'training.schedule.regular' | translate }}</h3>
+            <ul class="space-y-2 text-primary/80 dark:text-white/80">
+              <li>{{ 'training.schedule.regular.tuesday' | translate }}</li>
+              <li>{{ 'training.schedule.regular.thursday' | translate }}</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4 text-primary dark:text-white">{{ 'training.schedule.offseason' | translate }}</h3>
+            <ul class="space-y-2 text-primary/80 dark:text-white/80">
+              <li>{{ 'training.schedule.offseason.tuesday' | translate }}</li>
+              <li>{{ 'training.schedule.offseason.thursday' | translate }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-primary dark:text-white">{{ 'training.location.title' | translate }}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Regular Season Location -->
+        <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-4 text-primary dark:text-white">{{ 'training.location.regular.title' | translate }}</h3>
+          <div class="mb-6">
+            <p class="text-primary/80 dark:text-white/80 font-bold">Sportanlage DJK BFC</p>
+            <p class="text-primary/80 dark:text-white/80">Hofer Str. 30</p>
+            <p class="text-primary/80 dark:text-white/80">90411 Nürnberg</p>
+          </div>
+          <div class="h-64 w-full rounded-lg overflow-hidden">
+            @if (showMap()) {
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2593.897083371727!2d11.1279893!3d49.4772222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a1fa5c5e3c9c6d%3A0x6c2c42b0f0a2b0a0!2sHofer%20Str.%2030%2C%2090411%20N%C3%BCrnberg!5e0!3m2!1sen!2sde!4v1629789456789!5m2!1sen!2sde"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy">
+              </iframe>
+            } @else {
+              <div class="h-full w-full flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-800 space-y-4">
+                <p class="text-primary/80 dark:text-white/80 text-center px-4">
+                  {{ 'training.location.maps_consent' | translate }}
+                </p>
+                <button
+                  (click)="acceptCookies()"
+                  class="px-4 py-2 text-sm font-medium text-white bg-accent rounded-lg hover:bg-accent-dark transition-colors duration-300"
+                >
+                  {{ 'cookies.accept_all' | translate }}
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Off-Season Tuesday Location -->
+        <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-4 text-primary dark:text-white">{{ 'training.location.offseason.title' | translate }}</h3>
+          <div class="mb-6">
+            <p class="text-primary/80 dark:text-white/80 font-bold">Adalbert-Stifter-Schule</p>
+            <p class="text-primary/80 dark:text-white/80">Julius-Leber-Straße 108</p>
+            <p class="text-primary/80 dark:text-white/80">90473 Nürnberg</p>
+          </div>
+          <div class="h-64 w-full rounded-lg overflow-hidden">
+            @if (showMap()) {
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.8123456789!2d11.123456!3d49.432109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a1fa5c5e3c9c6d%3A0x6c2c42b0f0a2b0a0!2sJulius-Leber-Stra%C3%9Fe%20108%2C%2090473%20N%C3%BCrnberg!5e0!3m2!1sen!2sde!4v1629789456789!5m2!1sen!2sde"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy">
+              </iframe>
+            } @else {
+              <div class="h-full w-full flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-800 space-y-4">
+                <p class="text-primary/80 dark:text-white/80 text-center px-4">
+                  {{ 'training.location.maps_consent' | translate }}
+                </p>
+                <button
+                  (click)="acceptCookies()"
+                  class="px-4 py-2 text-sm font-medium text-white bg-accent rounded-lg hover:bg-accent-dark transition-colors duration-300"
+                >
+                  {{ 'cookies.accept_all' | translate }}
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Try-out Form -->
+    <section>
+      <h2 class="text-3xl font-bold mb-8 text-primary dark:text-white">{{ 'training.tryout.title' | translate }}</h2>
+      <app-tryout-form />
+    </section>
+  </div>
+</main>

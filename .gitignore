@@ -1,0 +1,7 @@
+.angular
+dist
+node_modules
+.supabase-local.md
+supabase/.branches
+supabase/.temp
+supabase/config.toml

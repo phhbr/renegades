@@ -1,0 +1,8 @@
+<div [class.dark]="isDarkMode()">
+  <app-navbar [isDarkMode]="isDarkMode()" (toggleTheme)="toggleTheme()" />
+  <div class="min-h-screen bg-secondary dark:bg-dark-secondary text-primary dark:text-dark-primary flex flex-col">
+    <router-outlet />
+    <app-footer />
+  </div>
+  <app-cookie-consent />
+</div>

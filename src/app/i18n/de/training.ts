@@ -1,0 +1,21 @@
+export const training = {
+  'training.location.maps_consent': 'Bitte akzeptieren Sie Cookies, um Google Maps anzuzeigen. Dies hilft uns, Ihnen unsere Trainingsorte zu zeigen.',
+  'training.title': 'Trainingsinfos',
+  'training.schedule.title': 'Trainingszeiten',
+  'training.schedule.regular': 'Reguläre Saison',
+  'training.schedule.regular.tuesday': 'Dienstag: 19:00 - 21:00 Uhr',
+  'training.schedule.regular.thursday': 'Donnerstag: 19:00 - 21:00 Uhr',
+  'training.schedule.offseason': 'Off-Season',
+  'training.schedule.offseason.tuesday': 'Dienstag: 20:00 - 22:00 Uhr',
+  'training.schedule.offseason.thursday': 'Donnerstag: 19:00 - 21:00 Uhr',
+  'training.location.title': 'Trainingsorte',
+  'training.location.regular.title': 'Trainingsort Reguläre Saison',
+  'training.location.offseason.title': 'Trainingsort Off-Season Dienstag',
+  'training.tryout.title': 'Probetraining Anfragen',
+  'training.tryout.form.name': 'Vollständiger Name',
+  'training.tryout.form.email': 'E-Mail',
+  'training.tryout.form.phone': 'Telefon',
+  'training.tryout.form.age': 'Alter',
+  'training.tryout.form.experience': 'Bisherige Erfahrung',
+  'training.tryout.form.submit': 'Anfrage Absenden'
+};

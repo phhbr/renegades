@@ -1,0 +1,6 @@
+<button 
+  (click)="toggleLanguage()"
+  class="flex items-center space-x-2 p-2 rounded-lg hover:bg-secondary-dark dark:hover:bg-dark-primary/10 transition-colors duration-300 text-primary dark:text-white"
+>
+  <span class="text-sm">{{ getCurrentLang() === 'en' ? 'DE' : 'EN' }}</span>
+</button>

@@ -1,0 +1,87 @@
+<main>
+  <!-- Hero Section -->
+  <section 
+    class="min-h-[100vh] flex items-center justify-center bg-gradient-to-br from-primary/90 to-primary relative"
+    style="background-image: url('/assets/images/hero-flag-football.avif'); background-size: cover; background-position: center;"
+  >
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 max-w-3xl mx-auto leading-tight text-white">
+        {{ 'home.hero.title' | translate }}
+      </h1>
+      <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto text-white/90">
+        {{ 'home.hero.subtitle' | translate }}
+      </p>
+      <a 
+        routerLink="/training" 
+        class="inline-block bg-accent text-white px-8 py-4 rounded-lg font-medium hover:bg-accent-dark transition-colors duration-300"
+        aria-label="Join our flag football team"
+      >
+        {{ 'home.hero.cta' | translate }}
+      </a>
+    </div>
+  </section>
+
+  <!-- DFFL Section -->
+  <section class="py-16 bg-secondary-dark dark:bg-dark-surface">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6 text-primary dark:text-white">{{ 'home.dffl.title' | translate }}</h2>
+        <p class="text-lg mb-8 text-primary/80 dark:text-white/80">{{ 'home.dffl.description' | translate }}</p>
+        <a 
+          href="https://www.5erdffl.de/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-block bg-accent text-white px-6 py-3 rounded-lg font-medium hover:bg-accent-dark transition-colors duration-300"
+          aria-label="Visit DFFL website"
+        >
+          {{ 'home.dffl.cta' | translate }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-24 bg-secondary dark:bg-dark-secondary">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        @for (feature of features(); track feature.titleKey) {
+          <article class="text-center">
+            <h3 class="text-xl font-medium mb-4 text-primary dark:text-white">{{ feature.titleKey | translate }}</h3>
+            <p class="text-primary/70 dark:text-white/70">{{ feature.descriptionKey | translate }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section 
+    class="py-24 bg-gradient-to-br from-primary/80 to-primary relative"
+    style="background-image: url('/assets/images/team-huddle.jpg'); background-size: cover; background-position: center;"
+  >
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-8 text-white">{{ 'home.about.title' | translate }}</h2>
+        <p class="text-lg text-white/90 leading-relaxed">{{ aboutUsKey() | translate }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 bg-secondary dark:bg-dark-secondary">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <h2 class="text-4xl font-bold mb-8  text-primary dark:text-white">{{ 'home.ready.title' | translate }}</h2>
+      <p class="text-xl mb-12 max-w-2xl mx-auto text-primary/70 dark:text-white/70">{{ 'home.ready.subtitle' | translate }}</p>
+      <a 
+        routerLink="/contact" 
+        class="inline-block bg-accent text-white px-8 py-4 rounded-lg font-medium hover:bg-accent-dark transition-colors duration-300"
+        aria-label="Contact us to join the team"
+      >
+        {{ 'home.ready.cta' | translate }}
+      </a>
+    </div>
+  </section>
+</main>
