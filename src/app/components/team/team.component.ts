@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { TeamService } from '../../services/team.service';
@@ -7,7 +7,8 @@ import { TeamService } from '../../services/team.service';
   selector: 'app-team',
   standalone: true,
   imports: [CommonModule, TranslatePipe],
-  templateUrl: './team.component.html'
+  templateUrl: './team.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TeamComponent implements OnInit {
   #teamService = inject(TeamService);

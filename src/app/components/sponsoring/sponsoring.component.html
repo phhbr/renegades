@@ -33,7 +33,7 @@
         {{ 'sponsoring.become.description' | translate }}
       </p>
       <a 
-        routerLink="/contact" 
+        [routerLink]="'./contact'" 
         class="bg-accent text-white px-8 py-3 rounded-lg font-bold hover:bg-accent-dark transition-colors duration-300"
       >
         {{ 'sponsoring.cta' | translate }}

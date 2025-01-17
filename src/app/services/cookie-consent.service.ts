@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 
 export interface CookieConsent {
   necessary: boolean; // Always true, required cookies
@@ -11,32 +10,31 @@ export interface CookieConsent {
   providedIn: 'root'
 })
 export class CookieConsentService {
-  private readonly COOKIE_CONSENT_KEY = 'cookie-consent';
-  private consentSubject = new BehaviorSubject<CookieConsent | null>(null);
-  consent$ = this.consentSubject.asObservable();
+  readonly #COOKIE_CONSENT_KEY = 'cookie-consent';
+  readonly #consent = signal<CookieConsent | null>(null);
 
   constructor() {
     this.loadConsent();
   }
 
   private loadConsent() {
-    const savedConsent = localStorage.getItem(this.COOKIE_CONSENT_KEY);
+    const savedConsent = localStorage.getItem(this.#COOKIE_CONSENT_KEY);
     if (savedConsent) {
-      this.consentSubject.next(JSON.parse(savedConsent));
+      this.#consent.set(JSON.parse(savedConsent));
     }
   }
 
   updateConsent(consent: CookieConsent) {
-    localStorage.setItem(this.COOKIE_CONSENT_KEY, JSON.stringify(consent));
-    this.consentSubject.next(consent);
+    localStorage.setItem(this.#COOKIE_CONSENT_KEY, JSON.stringify(consent));
+    this.#consent.set(consent);
   }
 
   hasConsent(): boolean {
-    return this.consentSubject.value !== null;
+    return this.#consent() !== null;
   }
 
   getConsent(): CookieConsent | null {
-    return this.consentSubject.value;
+    return this.#consent();
   }
 
   acceptAll() {

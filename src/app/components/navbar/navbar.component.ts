@@ -1,26 +1,26 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, CommonModule, TranslatePipe, LanguageSwitcherComponent],
-  templateUrl: './navbar.component.html'
+  imports: [RouterLink, RouterLinkActive, TranslatePipe, LanguageSwitcherComponent],
+  templateUrl: './navbar.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent {
-  @Input() isDarkMode = false;
-  @Output() toggleTheme = new EventEmitter<void>();
+  isDarkMode = input(false);
+  toggleTheme = output<void>();
   
-  isMenuOpen = false;
+  readonly isMenuOpen = signal(false);
 
   toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
+    this.isMenuOpen.update(state => !state);
   }
 
   closeMenu() {
-    this.isMenuOpen = false;
+    this.isMenuOpen.set(false);
   }
 }

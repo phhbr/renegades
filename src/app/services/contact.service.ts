@@ -17,20 +17,10 @@ export class ContactService {
   #supabaseClient = inject(SupabaseService).client;
 
   async submitContactForm(message: Omit<ContactMessage, 'id' | 'created_at'>) {
-    const { data, error } = await this.#supabaseClient
-      .from('contact_messages')
-      .insert([message])
-      .select()
-      .single();
-
-    if (error) {
-      console.error('Error submitting contact form:', error);
-      throw error;
-    }
 
     // Trigger Edge Function to send email
     const { error: functionError } = await this.#supabaseClient.functions.invoke('send-contact-email', {
-      body: { message: data }
+      body: { message }
     });
 
     if (functionError) {
@@ -38,6 +28,6 @@ export class ContactService {
       throw functionError;
     }
 
-    return data;
+    return message;
   }
 }

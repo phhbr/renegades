@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CookieConsentService } from '../../services/cookie-consent.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
@@ -8,7 +8,8 @@ import { RouterModule } from '@angular/router';
   selector: 'app-cookie-consent',
   standalone: true,
   imports: [CommonModule, TranslatePipe, RouterModule],
-  templateUrl: './cookie-consent.component.html'
+  templateUrl: './cookie-consent.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CookieConsentComponent {
   showBanner = signal(true);
@@ -19,7 +20,7 @@ export class CookieConsentComponent {
 
   acceptAll() {
     this.cookieConsentService.acceptAll();
-    this.showBanner.set(true);
+    this.showBanner.set(false);
   }
 
   acceptNecessaryOnly() {

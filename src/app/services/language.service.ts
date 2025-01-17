@@ -1,12 +1,10 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
-  private currentLang = new BehaviorSubject<string>('en');
-  currentLang$ = this.currentLang.asObservable();
+  private currentLang = signal<string>('en');
 
   constructor() {
     // Check browser language
@@ -17,11 +15,11 @@ export class LanguageService {
   }
 
   setLanguage(lang: string) {
-    this.currentLang.next(lang);
+    this.currentLang.set(lang);
     localStorage.setItem('preferredLanguage', lang);
   }
 
   getCurrentLang(): string {
-    return this.currentLang.value;
+    return this.currentLang();
   }
 }
