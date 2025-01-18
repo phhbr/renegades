@@ -8,7 +8,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         @for (member of staff(); track member.name) {
           <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
-            <img [src]="member.image_url || '/assets/images/player-404.jpg'" [alt]="member.name" class="w-full h-64 object-cover">
+            <img [src]="member.image_url || '/assets/images/player-404.jpg'" [alt]="member.name" class="w-full h-84 object-cover">
             <div class="p-6">
               <h3 class="text-xl font-bold mb-2 text-primary dark:text-white">{{ member.name }}</h3>
               <p class="text-primary/70 dark:text-white/70">{{ 'team.role.' + member.role | translate }}</p>
@@ -24,7 +24,7 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         @for (player of players(); track player.name) {
           <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
-            <img [src]="player.image_url || '/assets/images/player-404.jpg'" [alt]="player.name" class="w-full h-48 object-cover">
+            <img [src]="player.image_url || '/assets/images/player-404.jpg'" [alt]="player.name" class="w-full h-72 object-cover">
             <div class="p-4">
               <h3 class="text-lg font-bold mb-1 text-primary dark:text-white">{{ player.name }}</h3>
               <p class="text-primary/70 dark:text-white/70">#{{ player.number }} - {{ 'team.position.' + player.position | translate }}</p>

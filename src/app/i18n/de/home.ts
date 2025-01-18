@@ -12,7 +12,7 @@ export const home = {
   'home.features.competition.title': 'Wettkampf',
   'home.features.competition.description': 'Nimm an regionalen, nationalen & internationalen Turnieren teil',
   'home.about.title': 'Über Uns',
-  'home.about.description': 'Die Nürnberg Renegades e.V. widmet sich der Förderung von Flag Football und der Entwicklung von Spielern aller Leistungsstufen. Wir legen Wert auf den Aufbau einer starken Gemeinschaft durch Teamwork, Sportsgeist und sportlichen Wettkampf.',
+  'home.about.description': 'Die Nürnberg Renegades e.V. widmen sich der Förderung von Flag Football und der Entwicklung von Spielern aller Leistungsstufen. Wir legen Wert auf den Aufbau einer starken Gemeinschaft durch Teamwork, Sportsgeist und sportlichen Wettkampf.',
   'home.ready.title': 'Bereit mitzumachen?',
   'home.ready.subtitle': 'Erlebe den Nervenkitzel des Flag Footballs mit uns',
   'home.ready.cta': 'Kontaktiere Uns'

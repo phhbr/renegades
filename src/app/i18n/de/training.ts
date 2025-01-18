@@ -9,13 +9,17 @@ export const training = {
   'training.schedule.offseason.tuesday': 'Dienstag: 20:00 - 22:00 Uhr',
   'training.schedule.offseason.thursday': 'Donnerstag: 19:00 - 21:00 Uhr',
   'training.location.title': 'Trainingsorte',
-  'training.location.regular.title': 'Trainingsort Reguläre Saison',
+  'training.location.regular.title': 'Trainingsort Regulär',
   'training.location.offseason.title': 'Trainingsort Off-Season Dienstag',
   'training.tryout.title': 'Probetraining Anfragen',
-  'training.tryout.form.name': 'Vollständiger Name',
+  'training.tryout.form.name': 'Name',
   'training.tryout.form.email': 'E-Mail',
   'training.tryout.form.phone': 'Telefon',
   'training.tryout.form.age': 'Alter',
   'training.tryout.form.experience': 'Bisherige Erfahrung',
-  'training.tryout.form.submit': 'Anfrage Absenden'
+  'training.tryout.form.message': 'Nachricht',
+  'training.tryout.form.submit': 'Anfrage Absenden',
+  'training.tryout.form.submitting': 'Senden...',
+  'training.tryout.form.success_message': 'Ihre Anfrage für ein Probetraining wurde erfolgreich übermittelt!',
+  'training.tryout.form.error_message': 'Es gab einen Fehler beim Senden Ihrer Anfrage. Bitte versuchen Sie es erneut. Wenn das Problem weiterhin besteht, kontaktieren Sie uns bitte unter info@nuernberg-renegades.de'
 };

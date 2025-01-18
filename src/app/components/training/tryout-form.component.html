@@ -1,7 +1,7 @@
 <form [formGroup]="tryoutForm" (ngSubmit)="onSubmit()" class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-8">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div>
-      <label class="block mb-2 font-medium text-primary dark:text-white">Name *</label>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'training.tryout.form.name' | translate }} *</label>
       <input
         type="text"
         formControlName="name"
@@ -9,7 +9,7 @@
       >
     </div>
     <div>
-      <label class="block mb-2 font-medium text-primary dark:text-white">Email *</label>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'training.tryout.form.email' | translate }} *</label>
       <input
         type="email"
         formControlName="email"
@@ -18,7 +18,7 @@
       >
     </div>
     <div>
-      <label class="block mb-2 font-medium text-primary dark:text-white">Phone</label>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'training.tryout.form.phone' | translate }}</label>
       <input
         type="tel"
         formControlName="phone"
@@ -26,7 +26,7 @@
       >
     </div>
     <div>
-      <label class="block mb-2 font-medium text-primary dark:text-white">Age</label>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'training.tryout.form.age' | translate }}</label>
       <input
         type="number"
         formControlName="age"
@@ -34,7 +34,7 @@
       >
     </div>
     <div class="md:col-span-2">
-      <label class="block mb-2 font-medium text-primary dark:text-white">Previous Experience</label>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'training.tryout.form.experience' | translate }}</label>
       <textarea
         formControlName="experience"
         rows="4"
@@ -53,15 +53,14 @@
   <!-- Success Message -->
   @if (submitSuccess()) {
     <div class="p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100 rounded-lg mt-4">
-      Your tryout request has been submitted successfully!
+      {{ 'training.tryout.form.success_message' | translate }}
     </div>
   }
 
   <!-- Error Message -->
   @if (submitError()) {
     <div class="p-4 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-100 rounded-lg mt-4">
-      There was an error submitting your request. Please try again.
-      If the problem persists, please contact us at info&#64;nuernberg-renegades.de
+      {{ 'training.tryout.form.error_message' | translate }}
     </div>
   }
 
@@ -71,9 +70,9 @@
     class="mt-6 w-full bg-accent text-white py-3 rounded-lg font-medium hover:bg-accent-dark transition-colors duration-300 disabled:opacity-50"
   >
     @if (isSubmitting()) {
-      Submitting...
+      {{ 'training.tryout.form.submitting' | translate }}
     } @else {
-      Submit Request
+      {{ 'training.tryout.form.submit' | translate }}
     }
   </button>
 </form>

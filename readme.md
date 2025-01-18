@@ -17,6 +17,7 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
 │   │   │   ├── sponsoring/   # Sponsors page
 │   │   │   ├── team/         # Team roster
 │   │   │   └── training/     # Training information
+│   │   │   │   └── tryout-form/  # Tryout request form
 │   │   ├── i18n/             # Translations (DE/EN)
 │   │   ├── pipes/            # Angular pipes
 │   │   ├── services/         # Business logic & API calls
@@ -29,6 +30,7 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
 ├── supabase/
 │   ├── functions/           # Edge Functions
 │   │   └── send-contact-email/
+│   │   └── send-tryout-email/
 │   └── migrations/         # Database migrations
 └── tailwind.config.js      # Tailwind CSS configuration
 ```
@@ -42,10 +44,12 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
   - Dark mode support
   - Cookie consent management
   - Responsive design
+  - Tryout Request Form
 
 - **Backend:**
   - Supabase (Database & Authentication)
   - Edge Functions (Contact form)
+  - Edge Functions (Tryout request emails)
   - Row Level Security (RLS)
 
 ## Deployment
@@ -78,10 +82,10 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
    ```
 
 3. Set up Edge Functions:
-   ```bash
    # Deploy contact form function
    supabase functions deploy send-contact-email
-   ```
+   # Deploy tryout request function
+   supabase functions deploy send-tryout-email
 
 4. Configure Edge Function environment variables:
    ```bash
@@ -96,11 +100,9 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
    - Admin-only access to contact messages
 
 ### Database Schema
-
 #### Tables:
 - `team_members`: Staff and player information
-- `sponsors`: Club sponsors and partners
-- `contact_messages`: Contact form submissions
+- `sponsors`: Club sponsors and partners (includes priority field for controlling display order)
 
 ### Development
 
@@ -135,7 +137,7 @@ VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
 - 🍪 GDPR-compliant cookie consent
 - 📱 Fully responsive design
 - 🗺️ Google Maps integration
-- 📧 Contact form with email notifications
+- 🏈 Tryout Request Form with email notifications
 - 🔒 Row Level Security
 - 🏃 Performance optimized
 - 📦 Lazy-loaded routes
@@ -143,8 +145,7 @@ VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
 ## License
 
 MIT License
-
-Copyright (c) 2024 Nürnberg Renegades e.V.
+Copyright (c) 2025 Nürnberg Renegades e.V.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -9,13 +9,17 @@ export const training = {
   'training.schedule.offseason.tuesday': 'Tuesday: 8:00 PM - 10:00 PM',
   'training.schedule.offseason.thursday': 'Thursday: 7:00 PM - 9:00 PM',
   'training.location.title': 'Training Locations',
-  'training.location.regular.title': 'Regular Season Location',
+  'training.location.regular.title': 'Main Location',
   'training.location.offseason.title': 'Off-Season Tuesday Location',
   'training.tryout.title': 'Request a Try-out',
-  'training.tryout.form.name': 'Full Name',
+  'training.tryout.form.name': 'Name',
   'training.tryout.form.email': 'Email',
   'training.tryout.form.phone': 'Phone',
   'training.tryout.form.age': 'Age',
   'training.tryout.form.experience': 'Previous Experience',
-  'training.tryout.form.submit': 'Submit Request'
+  'training.tryout.form.message': 'Message',
+  'training.tryout.form.submit': 'Submit Request',
+  'training.tryout.form.submitting': 'Submitting...',
+  'training.tryout.form.success_message': 'Your tryout request has been submitted successfully!',
+  'training.tryout.form.error_message': 'There was an error submitting your request. Please try again. If the problem persists, please contact us at info@nuernberg-renegades.de'
 };
