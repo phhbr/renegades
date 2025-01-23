@@ -2,6 +2,10 @@
 
 Official website for the Nürnberg Renegades Flag Football Club, built with Angular and Supabase.
 
+## Current deployment
+[![Deployment Status](https://api.netlify.com/api/v1/badges/7159a5d4-71cc-4595-b0e3-c312174ba716/deploy-status)](https://app.netlify.com/sites/renegades-relaunch/deploys)
+
+
 ## Project Structure
 
 ```
