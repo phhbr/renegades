@@ -7,6 +7,7 @@ import {
 } from "@angular/forms";
 import { TranslatePipe } from "../../pipes/translate.pipe";
 import { TryoutService } from "../../services/tryout.service";
+import { RecaptchaService } from "../../services/recaptcha.service";
 
 @Component({
   selector: "app-tryout-form",
@@ -21,7 +22,11 @@ export class TryoutFormComponent {
   submitSuccess = signal(false);
   submitError = signal(false);
 
-  constructor(private fb: FormBuilder, private tryoutService: TryoutService) {
+  constructor(
+    private fb: FormBuilder, 
+    private tryoutService: TryoutService,
+    private recaptchaService: RecaptchaService
+  ) {
     this.tryoutForm = this.fb.group({
       name: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
@@ -32,21 +37,17 @@ export class TryoutFormComponent {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.tryoutForm.valid) {
       this.isSubmitting.set(true);
       this.submitSuccess.set(false);
       this.submitError.set(false);
 
       try {
-        const formData = this.tryoutForm.value;
-        this.tryoutService.submitTryoutForm({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          age: formData.age,
-          experience: formData.experience,
-          message: formData.message,
+        const recaptchaToken = await this.recaptchaService.executeRecaptcha('tryout_form');
+        await this.tryoutService.submitTryoutForm({
+          ...this.tryoutForm.value,
+          recaptchaToken
         });
         this.submitSuccess.set(true);
         this.tryoutForm.reset();

@@ -6,5 +6,10 @@ export const team = {
   'team.role.offensive_coordinator': 'Offensive Coordinator',
   'team.role.defensive_coordinator': 'Defensive Coordinator',
   'team.position.quarterback': 'Quarterback',
-  'team.position.receiver': 'Wide Receiver'
+  'team.position.receiver': 'Wide Receiver',
+  'team.position.db': 'Defensive Back',
+  'team.position.blitz': 'Blitzer',
+  'team.role.assistant_coach': 'Assistant Coach',
+  'team.role.strength_coach': 'Strength & Conditioning Coach',
+  'team.role.team_manager': 'Team Manager'
 };

@@ -8,5 +8,8 @@ export const team = {
   'team.position.quarterback': 'Quarterback',
   'team.position.receiver': 'Wide Receiver',
   'team.position.db': 'Defensive Back',
-  'team.position.blitz': 'Blitz'
+  'team.position.blitz': 'Blitz',
+  'team.role.assistant_coach': 'Assistant Coach',
+  'team.role.strength_coach': 'Strength & Conditioning Coach',
+  'team.role.team_manager': 'Team Manager'
 };

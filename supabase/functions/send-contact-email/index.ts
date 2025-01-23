@@ -1,13 +1,13 @@
 import { corsHeaders } from '../_shared/cors.ts'
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { verifyRecaptcha } from "../_shared/recaptcha.ts";
 
 interface ContactMessage {
-  id: string;
   name: string;
   email: string;
   subject: string;
   message: string;
-  created_at: string;
+  recaptchaToken: string;
 }
 
 interface EmailData {
@@ -23,6 +23,28 @@ serve(async (req) => {
       })
     }
     const { message } = await req.json() as EmailData;
+
+    if (!message.recaptchaToken) {
+      return new Response(
+        JSON.stringify({ error: "Missing reCAPTCHA token" }),
+        {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    }
+
+    // Verify reCAPTCHA token
+    const isValid = await verifyRecaptcha(message.recaptchaToken);
+    if (!isValid) {
+      return new Response(
+        JSON.stringify({ error: "Invalid reCAPTCHA token" }),
+        {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    }
 
     // Get environment variables
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");

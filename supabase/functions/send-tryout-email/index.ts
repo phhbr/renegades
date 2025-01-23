@@ -1,5 +1,6 @@
 import { corsHeaders } from '../_shared/cors.ts'
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { verifyRecaptcha } from "../_shared/recaptcha.ts";
 
 export interface TryoutRequest {
   name: string;
@@ -8,10 +9,11 @@ export interface TryoutRequest {
   age: string;
   experience: string;
   message: string;
+  recaptchaToken: string;
 }
 
 interface EmailData {
-  message: TryoutRequest;
+  request: TryoutRequest;
 }
 
 serve(async (req) => {
@@ -22,7 +24,29 @@ serve(async (req) => {
         headers: corsHeaders,
       })
     }
-    const { message } = await req.json() as EmailData;
+    const { request } = await req.json() as EmailData;
+
+    if (!request.recaptchaToken) {
+      return new Response(
+        JSON.stringify({ error: "Missing reCAPTCHA token" }),
+        {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    }
+
+    // Verify reCAPTCHA token
+    const isValid = await verifyRecaptcha(request.recaptchaToken);
+    if (!isValid) {
+      return new Response(
+        JSON.stringify({ error: "Invalid reCAPTCHA token" }),
+        {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    }
 
     // Get environment variables
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
@@ -51,12 +75,12 @@ serve(async (req) => {
           subject: `New Tryout Request`,
           html: `
             <h2>New Tryout Request</h2>
-            <p><strong>From:</strong> ${message.name} (${message.email})</p>
-            <p><strong>Phone:</strong> ${message.phone}</p>
-            <p><strong>Age:</strong> ${message.age}</p>
-            <p><strong>Experience:</strong> ${message.experience}</p>
+            <p><strong>From:</strong> ${request.name} (${request.email})</p>
+            <p><strong>Phone:</strong> ${request.phone}</p>
+            <p><strong>Age:</strong> ${request.age}</p>
+            <p><strong>Experience:</strong> ${request.experience}</p>
             <p><strong>Message:</strong></p>
-            <p>${message.message.replace(/\n/g, "<br>")}</p>
+            <p>${request.message.replace(/\n/g, "<br>")}</p>
           `,
         }),
       });

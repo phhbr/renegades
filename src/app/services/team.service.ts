@@ -31,15 +31,18 @@ export class TeamService {
   );
 
   async loadTeamMembers() {
-    const { data, error } = await this.#supabaseClient
-      .from('team_members')
-      .select('*');
-    
-    if (error) {
-      console.error('Error loading team members:', error);
-      return;
-    }
+    try {
+      const { data, error } = await this.#supabaseClient
+        .from('team_members')
+        .select('*');
+      
+      if (error) throw error;
+      if (!data) throw new Error('No data received');
 
-    this.#teamMembers.set(data);
+      this.#teamMembers.set(data);
+    } catch (error) {
+      console.error('Error in loadTeamMembers:', error);
+      throw error;
+    }
   }
 }

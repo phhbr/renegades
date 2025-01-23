@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { ContactService } from '../../services/contact.service';
+import { RecaptchaService } from '../../services/recaptcha.service';
 
 @Component({
   selector: 'app-contact',
@@ -19,7 +20,8 @@ export class ContactComponent {
 
   constructor(
     private fb: FormBuilder,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private recaptchaService: RecaptchaService
   ) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
@@ -36,7 +38,11 @@ export class ContactComponent {
       this.submitError.set(false);
 
       try {
-        await this.contactService.submitContactForm(this.contactForm.value);
+        const recaptchaToken = await this.recaptchaService.executeRecaptcha('contact_form');
+        await this.contactService.submitContactForm({
+          ...this.contactForm.value,
+          recaptchaToken
+        });
         this.contactForm.reset();
         this.submitSuccess.set(true);
       } catch (error) {

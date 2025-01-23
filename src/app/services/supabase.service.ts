@@ -9,9 +9,13 @@ export class SupabaseService {
   private supabase: SupabaseClient;
 
   constructor() {
+    if (!environment.supabase.url || !environment.supabase.key) {
+      throw new Error('Missing Supabase configuration. Please check your environment variables.');
+    }
+
     this.supabase = createClient(
-      environment.supabaseUrl,
-      environment.supabaseKey
+      environment.supabase.url,
+      environment.supabase.key
     );
   }
 

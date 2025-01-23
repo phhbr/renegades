@@ -2,12 +2,11 @@ import { Injectable, inject } from '@angular/core';
 import { SupabaseService } from './supabase.service';
 
 export interface ContactMessage {
-  id?: string;
   name: string;
   email: string;
   subject: string;
   message: string;
-  created_at?: string;
+  recaptchaToken: string;
 }
 
 @Injectable({
@@ -16,8 +15,7 @@ export interface ContactMessage {
 export class ContactService {
   #supabaseClient = inject(SupabaseService).client;
 
-  async submitContactForm(message: Omit<ContactMessage, 'id' | 'created_at'>) {
-
+  async submitContactForm(message: ContactMessage) {
     // Trigger Edge Function to send email
     const { error: functionError } = await this.#supabaseClient.functions.invoke('send-contact-email', {
       body: { message }

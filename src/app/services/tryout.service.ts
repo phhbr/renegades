@@ -8,6 +8,7 @@ export interface TryoutRequest {
   age: string;
   experience: string;
   message: string;
+  recaptchaToken: string;
 }
 
 @Injectable({
@@ -16,9 +17,9 @@ export interface TryoutRequest {
 export class TryoutService {
   #supabaseClient = inject(SupabaseService).client;
 
-  async submitTryoutForm(message: TryoutRequest) {
+  async submitTryoutForm(request: TryoutRequest) {
     const { error: functionError } = await this.#supabaseClient.functions.invoke('send-tryout-email', {
-      body: { request: message }
+      body: { request }
     });
 
     if (functionError) {
@@ -26,6 +27,6 @@ export class TryoutService {
       throw functionError;
     }
 
-    return message;
+    return request;
   }
 }

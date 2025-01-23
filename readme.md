@@ -29,7 +29,8 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
 │   └── global_styles.css    # Global styles
 ├── supabase/
 │   ├── functions/           # Edge Functions
-│   │   └── send-contact-email/
+│   │   ├── _shared/        # Shared utilities
+│   │   ├── send-contact-email/
 │   │   └── send-tryout-email/
 │   └── migrations/         # Database migrations
 └── tailwind.config.js      # Tailwind CSS configuration
@@ -44,6 +45,7 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
   - Dark mode support
   - Cookie consent management
   - Responsive design
+  - reCAPTCHA v3 protection
   - Tryout Request Form
 
 - **Backend:**
@@ -51,6 +53,7 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
   - Edge Functions (Contact form)
   - Edge Functions (Tryout request emails)
   - Row Level Security (RLS)
+  - reCAPTCHA verification
 
 ## Deployment
 
@@ -67,6 +70,7 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
    ```
    VITE_SUPABASE_URL=your-supabase-project-url
    VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+   VITE_RECAPTCHA_SITE_KEY=your-recaptcha-site-key
    ```
 
 4. Deploy! Netlify will automatically build and deploy your site.
@@ -82,15 +86,18 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
    ```
 
 3. Set up Edge Functions:
+   ```bash
    # Deploy contact form function
    supabase functions deploy send-contact-email
    # Deploy tryout request function
    supabase functions deploy send-tryout-email
+   ```
 
 4. Configure Edge Function environment variables:
    ```bash
    supabase secrets set RESEND_API_KEY=your-resend-api-key
    supabase secrets set NOTIFICATION_EMAILS=email1@example.com,email2@example.com
+   supabase secrets set RECAPTCHA_SECRET_KEY=your-recaptcha-secret-key
    ```
 
 5. Enable Row Level Security (RLS) policies:
@@ -99,10 +106,19 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
    - Public contact form submissions
    - Admin-only access to contact messages
 
+### reCAPTCHA Setup
+
+1. Create a new reCAPTCHA v3 site at [Google reCAPTCHA Admin](https://www.google.com/recaptcha/admin)
+2. Add your domain(s) to the allowed domains list
+3. Configure environment variables:
+   - Frontend: `VITE_RECAPTCHA_SITE_KEY`
+   - Backend: `RECAPTCHA_SECRET_KEY` (Supabase Edge Functions)
+
 ### Database Schema
 #### Tables:
 - `team_members`: Staff and player information
 - `sponsors`: Club sponsors and partners (includes priority field for controlling display order)
+- `press_coverage`: News and media coverage
 
 ### Development
 
@@ -111,24 +127,22 @@ Official website for the Nürnberg Renegades Flag Football Club, built with Angu
    npm install
    ```
 
-2. Start development server:
+2. Create `.env` file:
+   ```env
+   VITE_SUPABASE_URL=your-supabase-project-url
+   VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+   VITE_RECAPTCHA_SITE_KEY=your-recaptcha-site-key
+   ```
+
+3. Start development server:
    ```bash
    npm run dev
    ```
 
-3. Build for production:
+4. Build for production:
    ```bash
    npm run build
    ```
-
-### Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-VITE_SUPABASE_URL=your-supabase-project-url
-VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
-```
 
 ## Features
 
@@ -139,6 +153,7 @@ VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
 - 🗺️ Google Maps integration
 - 🏈 Tryout Request Form with email notifications
 - 🔒 Row Level Security
+- 🤖 reCAPTCHA v3 protection
 - 🏃 Performance optimized
 - 📦 Lazy-loaded routes
 
