@@ -2,7 +2,7 @@ export const team = {
   'team.title': 'Our Team',
   'team.staff.title': 'Coaching Staff',
   'team.players.title': 'Players',
-  'team.role.ceo': 'Club President˝',
+  'team.role.ceo': 'Club President',
   'team.role.head_coach': 'Head Coach',
   'team.role.offensive_coordinator': 'Offensive Coordinator',
   'team.role.defensive_coordinator': 'Defensive Coordinator',
