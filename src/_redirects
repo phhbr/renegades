@@ -3,3 +3,6 @@ https://renegades-relaunch.netlify.app/* https://www.nuernberg-renegades.de/:spl
 
 # Handle client-side routing
 /* /index.html 200
+
+# Prevent redirect loops by excluding the primary domain from the redirect rule
+!https://www.nuernberg-renegades.de/*
