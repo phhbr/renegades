@@ -70,7 +70,7 @@ serve(async (req) => {
           "Authorization": `Bearer ${RESEND_API_KEY}`,
         },
         body: JSON.stringify({
-          from: "delivered@resend.dev",
+          from: "info@nuernberg-renegades.de",
           to,
           subject: `New Tryout Request`,
           html: `
