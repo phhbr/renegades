@@ -13,15 +13,23 @@ type LanguageCode = keyof TranslationsType;
 export class TranslatePipe implements PipeTransform {
   #languageService = inject(LanguageService);
 
-  transform(key: string): string {
+  transform(key: string, replacements?: Record<string, string>): string {
     const currentLang = this.#languageService.getCurrentLang() as LanguageCode;
     
     try {
-      const translatedText = (translations[currentLang] as any)?.[key];
+      let translatedText = (translations[currentLang] as any)?.[key];
       if (!translatedText) {
         console.warn(`Translation key not found: ${key}`);
         return key;
       }
+
+      // Replace placeholders if replacements are provided
+      if (replacements) {
+        Object.entries(replacements).forEach(([key, value]) => {
+          translatedText = translatedText.replace(`{{ ${key} }}`, value);
+        });
+      }
+
       return translatedText;
     } catch (error) {
       console.warn(`Error accessing translation for key: ${key}`, error);

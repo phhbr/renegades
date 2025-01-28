@@ -8,5 +8,7 @@ export const legal = {
   'legal.impressum.responsible': 'Verantwortlich für den Inhalt',
   'legal.impressum.responsible_content': 'Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV',
   'legal.impressum.responsible_privacy': 'Verantwortlich für den Datenschutz',
-  'legal.impressum.responsible_webpage': 'Verantwortlich für Webseite'
+  'legal.impressum.responsible_webpage': 'Technische Umsetzung & Webentwicklung',
+  'legal.impressum.technical_contact': 'Philipp Bruchner',
+  'legal.impressum.technical_email': 'renegades@phhbr.de'
 };

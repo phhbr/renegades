@@ -42,7 +42,7 @@
               <img [src]="player.image_url || '/assets/images/player-404.jpg'" [alt]="player.name" class="w-full h-72 object-cover">
               <div class="p-4">
                 <h3 class="text-lg font-bold mb-1 text-primary dark:text-white">{{ player.name }}</h3>
-                <p class="text-primary/70 dark:text-white/70">#{{ player.number }} - {{ 'team.position.' + player.position | translate }}</p>
+                <p class="text-primary/70 dark:text-white/70">#{{ player.number }} @if(player.position) { - {{ 'team.position.' + player.position | translate }} }</p>
               </div>
             </div>
           }

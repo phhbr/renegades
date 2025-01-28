@@ -8,5 +8,7 @@ export const legal = {
   'legal.impressum.responsible': 'Responsible for Content',
   'legal.impressum.responsible_content': 'According to § 55 Abs. 2 RStV',
   'legal.impressum.responsible_privacy': 'Responsible for Data Privacy',
-  'legal.impressum.responsible_webpage': 'Responsible for Web Page'
+  'legal.impressum.responsible_webpage': 'Technical Implementation & Web Development',
+  'legal.impressum.technical_contact': 'Philipp Bruchner',
+  'legal.impressum.technical_email': 'renegades@phhbr.de'
 };
