@@ -27,7 +27,7 @@ export class TeamService {
 
   players = computed(() => 
     this.#teamMembers().filter(member => member.member_type === 'player')
-      .sort((a, b) => (a.number || '').localeCompare(b.number || ''))
+      .sort((a, b) => +(a?.number || 0) - +(b?.number || 0))
   );
 
   async loadTeamMembers() {
