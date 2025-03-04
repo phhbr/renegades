@@ -2,7 +2,16 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
-import { setupUmamiScript } from './app/utils/umami';
+import { environment } from './environments/environment';
+
+// Set up Umami script with correct URL and website ID
+const setupUmamiScript = () => {
+  const umamiScript = document.getElementById('umami-script');
+  if (umamiScript) {
+    umamiScript.setAttribute('src', environment.analytics.umamiUrl);
+    umamiScript.setAttribute('data-website-id', environment.analytics.websiteId);
+  }
+};
 
 // Initialize analytics
 setupUmamiScript();
