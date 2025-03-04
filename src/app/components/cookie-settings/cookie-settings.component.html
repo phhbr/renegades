@@ -60,5 +60,26 @@
         ></div>
       </div>
     </div>
+
+    <!-- Analytics Cookies -->
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="text-lg font-semibold text-primary dark:text-white">{{ 'privacy.cookie_settings.analytics.title' | translate }}</h3>
+        <p class="text-sm text-primary/70 dark:text-white/70">{{ 'privacy.cookie_settings.analytics.description' | translate }}</p>
+      </div>
+      <div class="relative">
+        <input
+          type="checkbox"
+          [(ngModel)]="consent.analytics"
+          (ngModelChange)="updateSettings('analytics')"
+          class="sr-only peer"
+          #analyticsCheckbox
+        >
+        <div 
+          (click)="analyticsCheckbox.click()"
+          class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent cursor-pointer"
+        ></div>
+      </div>
+    </div>
   </div>
 </div>
