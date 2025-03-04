@@ -6,5 +6,9 @@ export const environment = {
   },
   recaptcha: {
     siteKey: import.meta.env.VITE_RECAPTCHA_SITE_KEY ?? ''
+  },
+  analytics: {
+    umamiUrl: import.meta.env.VITE_UMAMI_URL ?? '',
+    websiteId: import.meta.env.VITE_UMAMI_WEBSITE_ID ?? ''
   }
 };
