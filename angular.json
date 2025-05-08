@@ -45,7 +45,7 @@
               {
                 "glob": "**/*",
                 "input": "src/.well-known/acme-challenge/",
-                "output": "/well-known/acme-challenge"
+                "output": "/.well-known/acme-challenge"
               }
             ],
             "index": "src/index.html",
