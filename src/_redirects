@@ -1,3 +1,1 @@
-.well-known/acme-challenge/dyGOcNdg4w9o102SsdO_aaujQOojLMDxJh8ueDnkDDM .well-known/acme-challenge/dyGOcNdg4w9o102SsdO_aaujQOojLMDxJh8ueDnkDDM
-.well-known/acme-challenge/NXwy1VwWGHm1A_m1i7C4YUfPKOy7qHf4DseeKk9JUSo .well-known/acme-challenge/NXwy1VwWGHm1A_m1i7C4YUfPKOy7qHf4DseeKk9JUSo
 /.well-known/acme-challenge/*  /.well-known/acme-challenge/:splat  200
