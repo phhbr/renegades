@@ -41,7 +41,12 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
-              }
+              },
+              {
+    "glob": "**/*",
+    "input": "src/well-known",
+    "output": ".well-known"
+  }
             ],
             "index": "src/index.html",
             "browser": "src/main.ts",
