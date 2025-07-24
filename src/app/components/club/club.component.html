@@ -1,0 +1,74 @@
+<main class="main-content bg-secondary dark:bg-dark-secondary text-primary dark:text-white">
+  <div class="container mx-auto px-4">
+    <h1 class="text-4xl font-bold mb-12 text-center text-primary dark:text-white">{{ 'club.title' | translate }}</h1>
+
+    <!-- About the Club Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-primary dark:text-white">{{ 'club.about.title' | translate }}</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <!-- Foundation -->
+        <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-4 text-primary dark:text-white">{{ 'club.about.foundation.title' | translate }}</h3>
+          <p class="text-primary/80 dark:text-white/80">{{ 'club.about.foundation.description' | translate }}</p>
+        </div>
+
+        <!-- Leadership -->
+        <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-4 text-primary dark:text-white">{{ 'club.about.leadership.title' | translate }}</h3>
+          <p class="text-primary/80 dark:text-white/80">{{ 'club.about.leadership.description' | translate }}</p>
+        </div>
+
+        <!-- Successes -->
+        <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-4 text-primary dark:text-white">{{ 'club.about.successes.title' | translate }}</h3>
+          <p class="text-primary/80 dark:text-white/80">{{ 'club.about.successes.description' | translate }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-primary dark:text-white">{{ 'club.membership.title' | translate }}</h2>
+      
+      <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-8 mb-8">
+        <p class="text-lg mb-6 text-primary/80 dark:text-white/80">{{ 'club.membership.description' | translate }}</p>
+        
+        <h3 class="text-xl font-bold mb-4 text-primary dark:text-white">{{ 'club.membership.benefits.title' | translate }}</h3>
+        <ul class="space-y-2 text-primary/80 dark:text-white/80">
+          <li class="flex items-center">
+            <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {{ 'club.membership.benefits.training' | translate }}
+          </li>
+          <li class="flex items-center">
+            <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {{ 'club.membership.benefits.tournaments' | translate }}
+          </li>
+          <li class="flex items-center">
+            <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {{ 'club.membership.benefits.community' | translate }}
+          </li>
+          <li class="flex items-center">
+            <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            {{ 'club.membership.benefits.equipment' | translate }}
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Membership Application Form -->
+    <section>
+      <h2 class="text-3xl font-bold mb-8 text-primary dark:text-white">{{ 'club.join.title' | translate }}</h2>
+      <p class="mb-8 text-primary/80 dark:text-white/80">{{ 'club.join.description' | translate }}</p>
+      <app-membership-form />
+    </section>
+  </div>
+</main>

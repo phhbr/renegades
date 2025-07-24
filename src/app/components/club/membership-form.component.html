@@ -1,0 +1,91 @@
+<form [formGroup]="membershipForm" (ngSubmit)="onSubmit()" class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.name' | translate }} *</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+      >
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.lastname' | translate }} *</label>
+      <input
+        type="text"
+        formControlName="lastname"
+        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+      >
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.birthdate' | translate }} *</label>
+      <input
+        type="date"
+        formControlName="birthdate"
+        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+      >
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.birthplace' | translate }} *</label>
+      <input
+        type="text"
+        formControlName="birthplace"
+        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+      >
+    </div>
+    <div class="md:col-span-2">
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.address' | translate }} *</label>
+      <textarea
+        formControlName="address"
+        rows="3"
+        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+        placeholder="Straße, Hausnummer, PLZ, Ort"
+      ></textarea>
+    </div>
+    <div class="md:col-span-2">
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.email' | translate }} *</label>
+      <input
+        type="email"
+        formControlName="email"
+        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+      >
+    </div>
+    <div class="md:col-span-2">
+      <label class="flex items-start space-x-3 cursor-pointer">
+        <input
+          type="checkbox"
+          formControlName="statuteAcceptance"
+          class="mt-1 w-4 h-4 text-accent bg-secondary dark:bg-dark-secondary border-gray-300 rounded focus:ring-accent focus:ring-2"
+        >
+        <span class="text-sm text-primary dark:text-white">
+          {{ 'club.join.form.statute_acceptance' | translate }} *
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Success Message -->
+  @if (submitSuccess()) {
+    <div class="p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100 rounded-lg mt-6">
+      {{ 'club.join.form.success_message' | translate }}
+    </div>
+  }
+
+  <!-- Error Message -->
+  @if (submitError()) {
+    <div class="p-4 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-100 rounded-lg mt-6">
+      {{ 'club.join.form.error_message' | translate }}
+    </div>
+  }
+
+  <button
+    type="submit"
+    [disabled]="!membershipForm.valid || isSubmitting()"
+    class="mt-6 w-full bg-accent text-white py-3 rounded-lg font-medium hover:bg-accent-dark transition-colors duration-300 disabled:opacity-50"
+  >
+    @if (isSubmitting()) {
+      {{ 'club.join.form.submitting' | translate }}
+    } @else {
+      {{ 'club.join.form.submit' | translate }}
+    }
+  </button>
+</form>
