@@ -2,7 +2,7 @@ export const club = {
   'club.title': 'Our Club',
   'club.about.title': 'About Nürnberg Renegades e.V.',
   'club.about.foundation.title': 'Club Foundation',
-  'club.about.foundation.description': 'Nürnberg Renegades e.V. was founded in 2021 with the goal of establishing and promoting flag football in the Nürnberg region. What started as a small group of football enthusiasts has developed into one of the leading flag football clubs in Bavaria.',
+  'club.about.foundation.description': 'Nürnberg Renegades e.V. was founded in 2022 with the goal of establishing and promoting flag football in the Nürnberg region. What started as a small group of football enthusiasts has developed into one of the leading flag football clubs in Bavaria.',
   'club.about.leadership.title': 'Club Leadership',
   'club.about.leadership.description': 'Our club is led by a dedicated board consisting of experienced players and sports managers. The board works on a voluntary basis and is committed to the continuous development of the club and its members.',
   'club.about.successes.title': 'Achievements',

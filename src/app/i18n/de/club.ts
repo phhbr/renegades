@@ -2,7 +2,7 @@ export const club = {
   'club.title': 'Unser Verein',
   'club.about.title': 'Über den Nürnberg Renegades e.V.',
   'club.about.foundation.title': 'Vereinsgründung',
-  'club.about.foundation.description': 'Der Nürnberg Renegades e.V. wurde 2021 mit dem Ziel gegründet, Flag Football in der Region Nürnberg zu etablieren und zu fördern. Was als kleine Gruppe von Football-Enthusiasten begann, hat sich zu einem der führenden Flag Football Vereine in Bayern entwickelt.',
+  'club.about.foundation.description': 'Der Nürnberg Renegades e.V. wurde 2022 mit dem Ziel gegründet, Flag Football in der Region Nürnberg zu etablieren und zu fördern. Was als kleine Gruppe von Football-Enthusiasten begann, hat sich zu einem der führenden Flag Football Vereine in Bayern entwickelt.',
   'club.about.leadership.title': 'Vereinsführung',
   'club.about.leadership.description': 'Unser Verein wird von einem engagierten Vorstand geleitet, der sich aus erfahrenen Spielern und Sportmanagern zusammensetzt. Der Vorstand arbeitet ehrenamtlich und setzt sich für die kontinuierliche Entwicklung des Vereins und seiner Mitglieder ein.',
   'club.about.successes.title': 'Erfolge',
