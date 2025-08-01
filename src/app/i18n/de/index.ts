@@ -5,6 +5,7 @@ import { training } from './training';
 import { home } from './home';
 import { team } from './team';
 import { club } from './club';
+import { membership } from './membership';
 import { sponsoring } from './sponsoring';
 import { contact } from './contact';
 import { footer } from './footer';
@@ -18,6 +19,7 @@ export const de = {
   ...home,
   ...team,
   ...club,
+  ...membership,
   ...sponsoring,
   ...contact,
   ...footer,

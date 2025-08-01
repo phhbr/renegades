@@ -1,66 +1,111 @@
 <form [formGroup]="membershipForm" (ngSubmit)="onSubmit()" class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-8">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.membership_active' | translate }} *</label>
+      <input type="checkbox" formControlName="membership_active" class="mr-2"> <span class="text-primary dark:text-white">Ja</span>
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.membership_support' | translate }}</label>
+      <input type="checkbox" formControlName="membership_support" class="mr-2"> <span class="text-primary dark:text-white">Ja</span>
+    </div>
+    <div>
       <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.name' | translate }} *</label>
-      <input
-        type="text"
-        formControlName="name"
-        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
-      >
+      <input type="text" formControlName="name" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
     </div>
     <div>
-      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.lastname' | translate }} *</label>
-      <input
-        type="text"
-        formControlName="lastname"
-        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
-      >
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.firstname' | translate }} *</label>
+      <input type="text" formControlName="firstname" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
     </div>
     <div>
-      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.birthdate' | translate }} *</label>
-      <input
-        type="date"
-        formControlName="birthdate"
-        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
-      >
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.birthday' | translate }} *</label>
+      <input type="date" formControlName="birthday" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
     </div>
     <div>
       <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.birthplace' | translate }} *</label>
-      <input
-        type="text"
-        formControlName="birthplace"
-        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
-      >
+      <input type="text" formControlName="birthplace" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
     </div>
-    <div class="md:col-span-2">
-      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.address' | translate }} *</label>
-      <textarea
-        formControlName="address"
-        rows="3"
-        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
-        placeholder="Straße, Hausnummer, PLZ, Ort"
-      ></textarea>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.profession' | translate }}</label>
+      <input type="text" formControlName="profession" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
     </div>
-    <div class="md:col-span-2">
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.nationality' | translate }}</label>
+      <input type="text" formControlName="nationality" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.street' | translate }} *</label>
+      <input type="text" formControlName="street" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.plz_town' | translate }} *</label>
+      <input type="text" formControlName="plz_town" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.tel' | translate }}</label>
+      <input type="text" formControlName="tel" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.fax' | translate }}</label>
+      <input type="text" formControlName="fax" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.mobile' | translate }}</label>
+      <input type="text" formControlName="mobile" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+    </div>
+    <div>
       <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.email' | translate }} *</label>
-      <input
-        type="email"
-        formControlName="email"
-        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
-      >
+      <input type="email" formControlName="email" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.joindate_month' | translate }} *</label>
+      <select formControlName="joindate_month" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+        <option value="">{{ 'club.join.form.month_select' | translate }}</option>
+        <option value="01">{{ 'club.join.form.month_january' | translate }}</option>
+        <option value="02">{{ 'club.join.form.month_february' | translate }}</option>
+        <option value="03">{{ 'club.join.form.month_march' | translate }}</option>
+        <option value="04">{{ 'club.join.form.month_april' | translate }}</option>
+        <option value="05">{{ 'club.join.form.month_may' | translate }}</option>
+        <option value="06">{{ 'club.join.form.month_june' | translate }}</option>
+        <option value="07">{{ 'club.join.form.month_july' | translate }}</option>
+        <option value="08">{{ 'club.join.form.month_august' | translate }}</option>
+        <option value="09">{{ 'club.join.form.month_september' | translate }}</option>
+        <option value="10">{{ 'club.join.form.month_october' | translate }}</option>
+        <option value="11">{{ 'club.join.form.month_november' | translate }}</option>
+        <option value="12">{{ 'club.join.form.month_december' | translate }}</option>
+      </select>
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.joindate_year' | translate }} *</label>
+      <select formControlName="joindate_year" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+        <option value="">{{ 'club.join.form.year_select' | translate }}</option>
+        <option [value]="currentYear">{{ currentYear }}</option>
+        <option [value]="nextYear">{{ nextYear }}</option>
+      </select>
     </div>
     <div class="md:col-span-2">
-      <label class="flex items-start space-x-3 cursor-pointer">
-        <input
-          type="checkbox"
-          formControlName="statuteAcceptance"
-          class="mt-1 w-4 h-4 text-accent bg-secondary dark:bg-dark-secondary border-gray-300 rounded focus:ring-accent focus:ring-2"
-        >
-        <span class="text-sm text-primary dark:text-white">
-          {{ 'club.join.form.statute_acceptance' | translate }} *
-        </span>
-      </label>
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.sepa_account_holder_name' | translate }}</label>
+      <input type="text" formControlName="sepa_account_holder_name" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
     </div>
+    <div class="md:col-span-2">
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.sepa_account_holder_firstname' | translate }}</label>
+      <input type="text" formControlName="sepa_account_holder_firstname" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+    </div>
+    <div class="md:col-span-2">
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.sepa_iban' | translate }}</label>
+      <input type="text" formControlName="sepa_iban" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+    </div>
+    <div class="md:col-span-2">
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.sepa_bic' | translate }}</label>
+      <input type="text" formControlName="sepa_bic" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+    </div>
+    <div class="md:col-span-2">
+      <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.sepa_bank' | translate }}</label>
+      <input type="text" formControlName="sepa_bank" class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent">
+    </div>
+  </div>
+
+  <div class="p-4 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-100 rounded-lg mt-6 mb-4">
+    <strong>{{ 'club.join.form.info_hint_title' | translate }}</strong> {{ 'club.join.form.info_hint_text' | translate }}
   </div>
 
   <!-- Success Message -->

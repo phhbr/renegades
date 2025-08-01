@@ -6,16 +6,30 @@ import { PDFDocument } from "https://cdn.skypack.dev/pdf-lib"; // Deno compatibl
 // If you need to support Unicode (non-latin, e.g., German umlauts), see notes further below for font embedding
 
 const PDF_FORM_URL =
-  "https://ftgcbmthbwwcumvqnuof.supabase.co/storage/v1/object/public/static//membership_form.pdf"; // publicly accessible PDF
+  "https://ftgcbmthbwwcumvqnuof.supabase.co/storage/v1/object/public/static//Mitgliedsantrag_25-08.pdf"; // publicly accessible PDF
 
 export interface MembershipApplication {
+  membership_active: boolean;
+  membership_support: boolean;
   name: string;
-  lastname: string;
-  birthdate: string;
+  firstname: string;
+  birthday: string;
   birthplace: string;
-  address: string;
+  profession: string;
+  nationality: string;
+  street: string;
+  plz_town: string;
+  tel: string;
+  fax: string;
+  mobile: string;
   email: string;
-  statuteAcceptance: boolean;
+  joindate_month: string;
+  joindate_year: string;
+  sepa_account_holder_name: string;
+  sepa_account_holder_firstname: string;
+  sepa_iban: string;
+  sepa_bic: string;
+  sepa_bank: string;
   recaptchaToken: string;
 }
 
@@ -75,7 +89,14 @@ serve(async (req) => {
       throw err; // re-throw to catch above
     });
 
-    const base64Pdf = btoa(String.fromCharCode(...filledPdfBytes));
+    // Convert Uint8Array to base64 in chunks to avoid call stack size exceeded
+    const chunks = [];
+    const chunkSize = 0x8000; // 32K chunks
+    for (let i = 0; i < filledPdfBytes.length; i += chunkSize) {
+      const chunk = filledPdfBytes.subarray(i, i + chunkSize);
+      chunks.push(String.fromCharCode(...Array.from(chunk)));
+    }
+    const base64Pdf = btoa(chunks.join(''));
 
     // === Send the email with the filled PDF as attachment ===
     const emailPromises = notificationEmails.map(async (to) => {
@@ -89,26 +110,34 @@ serve(async (req) => {
           from: "info@nuernberg-renegades.de",
           to,
           subject:
-            `New Membership Application - ${application.name} ${application.lastname}`,
+            `New Membership Application - ${application.name} ${application.firstname}`,
           html: `
             <h2>New Membership Application</h2>
-            <p><strong>Name:</strong> ${application.name} ${application.lastname}</p>
-            <p><strong>Email:</strong> ${application.email}</p>
-            <p><strong>Birth Date:</strong> ${application.birthdate}</p>
+            <p><strong>Membership Type:</strong> ${application.membership_active ? 'Active' : ''} ${application.membership_support ? 'Supporting' : ''}</p>
+            <p><strong>Name:</strong> ${application.name} ${application.firstname}</p>
+            <p><strong>Birth Date:</strong> ${application.birthday}</p>
             <p><strong>Birth Place:</strong> ${application.birthplace}</p>
-            <p><strong>Address:</strong> ${
-            application.address.replace(/\n/g, "<br>")
-          }</p>
-            <p><strong>Statute Acceptance:</strong> ${
-            application.statuteAcceptance ? "Yes" : "No"
-          }</p>
+            <p><strong>Profession:</strong> ${application.profession}</p>
+            <p><strong>Nationality:</strong> ${application.nationality}</p>
+            <p><strong>Address:</strong> ${application.street}, ${application.plz_town}</p>
+            <p><strong>Contact:</strong><br>
+               Tel: ${application.tel}<br>
+               Fax: ${application.fax}<br>
+               Mobile: ${application.mobile}<br>
+               Email: ${application.email}</p>
+            <p><strong>Join Date:</strong> ${application.joindate_month}/${application.joindate_year}</p>
+            <p><strong>SEPA Information:</strong><br>
+               Account Holder: ${application.sepa_account_holder_name} ${application.sepa_account_holder_firstname}<br>
+               IBAN: ${application.sepa_iban}<br>
+               BIC: ${application.sepa_bic}<br>
+               Bank: ${application.sepa_bank}</p>
             <hr>
             <p>PDF is attached.</p>
           `,
           attachments: [
             {
               filename:
-                `membership-application-${application.lastname}-${application.name}.pdf`,
+                `membership-application-${application.name}-${application.firstname}.pdf`,
               content: base64Pdf,
               content_type: "application/pdf",
             },
@@ -155,14 +184,52 @@ async function fillMembershipPdfForm(
   const form = pdfDoc.getForm();
 
   // Fill fields by their exact name as defined in the PDF editor!
+  if (application.membership_active) {
+    form.getTextField("membership_active").setText('X');
+  } 
+  if (application.membership_support) {
+    form.getTextField("membership_support").setText();
+  } 
   form.getTextField("name").setText(application.name);
-  form.getTextField("lastname").setText(application.lastname);
-  form.getTextField("birthdate").setText(application.birthdate);
+  form.getTextField("firstname").setText(application.firstname);
+  // Convert birthday from ISO (YYYY-MM-DD) to German format (DD.MM.YYYY)
+  const [year, month, day] = application.birthday.split('-');
+  form.getTextField("birthday").setText(`${day}.${month}.${year}`);
   form.getTextField("birthplace").setText(application.birthplace);
-  form.getTextField("address").setText(application.address);
+  form.getTextField("profession").setText(application.profession);
+  form.getTextField("nationality").setText(application.nationality);
+  form.getTextField("street").setText(application.street);
+  form.getTextField("plz_town").setText(application.plz_town);
+  form.getTextField("tel").setText(application.tel);
+  form.getTextField("fax").setText(application.fax);
+  form.getTextField("mobile").setText(application.mobile);
   form.getTextField("email").setText(application.email);
-  form.getCheckBox("statuteAcceptance")
-    [application.statuteAcceptance ? "check" : "uncheck"]();
+  // Convert month number to German month name
+  const germanMonths: { [key: string]: string } = {
+    "01": "Januar",
+    "02": "Februar",
+    "03": "März",
+    "04": "April",
+    "05": "Mai",
+    "06": "Juni",
+    "07": "Juli",
+    "08": "August",
+    "09": "September",
+    "10": "Oktober",
+    "11": "November",
+    "12": "Dezember"
+  };
+  form.getTextField("joindate_month").setText(germanMonths[application.joindate_month] || "");
+  
+  // Take only last 2 digits of the year
+  const yearLastTwo = application.joindate_year.toString().slice(-2);
+  form.getTextField("joindate_year").setText(yearLastTwo);
+  
+  form.getTextField("sepa_account_holder_name").setText(application.sepa_account_holder_name);
+  form.getTextField("sepa_account_holder_firstname").setText(application.sepa_account_holder_firstname);
+  form.getTextField("sepa_iban").setText(application.sepa_iban);
+  form.getTextField("sepa_bic").setText(application.sepa_bic);
+  form.getTextField("sepa_bank").setText(application.sepa_bank);
 
   // Optionally, flatten to make fields un-editable:
   form.flatten();

@@ -22,6 +22,8 @@ export class MembershipFormComponent {
   isSubmitting = signal(false);
   submitSuccess = signal(false);
   submitError = signal(false);
+  currentYear = new Date().getFullYear();
+  nextYear = this.currentYear + 1;
 
   constructor(
     private fb: FormBuilder, 
@@ -29,13 +31,27 @@ export class MembershipFormComponent {
     private recaptchaService: RecaptchaService
   ) {
     this.membershipForm = this.fb.group({
+      membership_active: [false],
+      membership_support: [false],
       name: ["", Validators.required],
-      lastname: ["", Validators.required],
-      birthdate: ["", Validators.required],
+      firstname: ["", Validators.required],
+      birthday: ["", Validators.required],
       birthplace: ["", Validators.required],
-      address: ["", Validators.required],
+      profession: [""],
+      nationality: [""],
+      street: ["", Validators.required],
+      plz_town: ["", Validators.required],
+      tel: [""],
+      fax: [""],
+      mobile: [""],
       email: ["", [Validators.required, Validators.email]],
-      statuteAcceptance: [false, Validators.requiredTrue],
+      joindate_month: ["", Validators.required],
+      joindate_year: ["", Validators.required],
+      sepa_account_holder_name: [""],
+      sepa_account_holder_firstname: [""],
+      sepa_iban: [""],
+      sepa_bic: [""],
+      sepa_bank: [""],
     });
   }
 
