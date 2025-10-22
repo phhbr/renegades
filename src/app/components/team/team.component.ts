@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { TeamService } from '../../services/team.service';
 
 @Component({
   selector: 'app-team',
   standalone: true,
-  imports: [CommonModule, TranslatePipe],
+  imports: [TranslatePipe],
   templateUrl: './team.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

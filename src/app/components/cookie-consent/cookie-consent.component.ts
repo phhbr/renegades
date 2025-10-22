@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { CookieConsentService } from '../../services/cookie-consent.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { RouterModule } from '@angular/router';
@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-cookie-consent',
   standalone: true,
-  imports: [CommonModule, TranslatePipe, RouterModule],
+  imports: [TranslatePipe, RouterModule],
   templateUrl: './cookie-consent.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

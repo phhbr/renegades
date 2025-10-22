@@ -5,7 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from "@angular/forms";
-import { CommonModule } from '@angular/common';
+
 import { TranslatePipe } from "../../pipes/translate.pipe";
 import { MembershipService } from "../../services/membership.service";
 import { RecaptchaService } from "../../services/recaptcha.service";
@@ -13,7 +13,7 @@ import { RecaptchaService } from "../../services/recaptcha.service";
 @Component({
   selector: "app-membership-form",
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, TranslatePipe],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: "./membership-form.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { CookieConsentService, CookieConsent } from '../../services/cookie-consent.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
@@ -7,7 +7,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 @Component({
   selector: 'app-cookie-settings',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslatePipe],
+  imports: [FormsModule, TranslatePipe],
   templateUrl: './cookie-settings.component.html'
 })
 export class CookieSettingsComponent implements OnInit {

@@ -9,13 +9,13 @@
     "extract-i18n": "ng extract-i18n --output-path src/locale"
   },
   "dependencies": {
-    "@angular/animations": "~19.0.0",
-    "@angular/common": "~19.0.0",
-    "@angular/compiler": "~19.0.0",
-    "@angular/core": "~19.0.0",
-    "@angular/forms": "~19.0.0",
-    "@angular/platform-browser": "~19.0.0",
-    "@angular/router": "~19.0.0",
+    "@angular/animations": "~20.3.6",
+    "@angular/common": "~20.3.6",
+    "@angular/compiler": "~20.3.6",
+    "@angular/core": "~20.3.6",
+    "@angular/forms": "~20.3.6",
+    "@angular/platform-browser": "~20.3.6",
+    "@angular/router": "~20.3.6",
     "@supabase/supabase-js": "^2.39.3",
     "dotenv": "^16.4.7",
     "rxjs": "^7.8.1",
@@ -23,15 +23,15 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~19.0.0",
-    "@angular/cli": "~19.0.0",
-    "@angular/compiler-cli": "~19.0.0",
-    "@angular/localize": "~19.0.0",
+    "@angular/build": "^20.3.6",
+    "@angular/cli": "~20.3.6",
+    "@angular/compiler-cli": "~20.3.6",
+    "@angular/localize": "~20.3.6",
     "@types/node": "22.10.6",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
-    "typescript": "~5.5.0",
+    "typescript": "~5.9.3",
     "vite": "^5.0.0"
   },
   "overrides": {

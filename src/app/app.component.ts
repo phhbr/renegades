@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
@@ -9,7 +9,7 @@ import { AnalyticsService } from './services/analytics.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, CookieConsentComponent, CommonModule],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, CookieConsentComponent],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
