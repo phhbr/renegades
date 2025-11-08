@@ -8,7 +8,7 @@ export const training = {
   'training.in_season.schedule.thursday': 'Thursday: 7:00 PM - 9:00 PM',
   'training.in_season.location.title': 'Location',
   'training.offseason.title': 'Off-Season (November - March)',
-  'training.offseason.description': 'During the off-season, we train at indoor facilities to maintain our practice schedule throughout winter.',
+  'training.offseason.description': 'During the off-season, we additionally train at an indoor facility on Tuesday to maintain our practice schedule throughout winter.',
   'training.offseason.schedule.title': 'Schedule',
   'training.offseason.schedule.tuesday': 'Tuesday: 8:00 PM - 10:00 PM',
   'training.offseason.schedule.thursday': 'Thursday: 7:00 PM - 9:00 PM',
