@@ -5,7 +5,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run optimize-images && ng build",
+    "build:prod": "npm run optimize-images && ng build --configuration production",
+    "optimize-images": "node scripts/optimize-images.js",
     "extract-i18n": "ng extract-i18n --output-path src/locale"
   },
   "dependencies": {
@@ -29,7 +31,11 @@
     "@angular/localize": "~20.3.6",
     "@types/node": "22.10.6",
     "autoprefixer": "^10.4.17",
+    "imagemin": "^9.0.1",
+    "imagemin-avif": "^0.1.6",
+    "imagemin-webp": "^8.0.0",
     "postcss": "^8.4.33",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.1",
     "typescript": "~5.9.3",
     "vite": "^5.0.0"

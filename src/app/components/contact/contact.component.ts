@@ -2,6 +2,7 @@
 import { ChangeDetectionStrategy, Component, signal, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslatePipe } from '../../pipes/translate.pipe';
+import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
 import { MetaService } from '../../services/meta.service';
 import { ContactService } from '../../services/contact.service';
 import { RecaptchaService } from '../../services/recaptcha.service';
@@ -9,7 +10,7 @@ import { RecaptchaService } from '../../services/recaptcha.service';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule, TranslatePipe],
+  imports: [ReactiveFormsModule, TranslatePipe, ResponsiveImageComponent],
   templateUrl: './contact.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

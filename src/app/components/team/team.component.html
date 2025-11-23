@@ -23,7 +23,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           @for (member of staff(); track member.name) {
             <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
-              <img [src]="member.image_url || '/assets/images/player-404.jpg'" [alt]="member.name" class="w-full h-84 object-cover">
+              @if (getImageId(member.image_url)) {
+                <app-responsive-image [src]="'player-' + getImageId(member.image_url)" [alt]="member.name" sizes="(max-width: 768px) 100vw, 50vw" imageClass="w-full h-84 object-cover"></app-responsive-image>
+              } @else {
+                <app-responsive-image src="player-404" [alt]="member.name" sizes="(max-width: 768px) 100vw, 50vw" imageClass="w-full h-84 object-cover"></app-responsive-image>
+              }
               <div class="p-6">
                 <h3 class="text-xl font-bold mb-2 text-primary dark:text-white">{{ member.name }}</h3>
                 <p class="text-primary/70 dark:text-white/70">{{ 'team.role.' + member.role | translate }}</p>
@@ -39,7 +43,11 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           @for (player of players(); track player.name) {
             <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
-              <img [src]="player.image_url || '/assets/images/player-404.jpg'" [alt]="player.name" class="w-full h-72 object-cover">
+              @if (getImageId(player.image_url)) {
+                <app-responsive-image [src]="'player-' + getImageId(player.image_url)" [alt]="player.name" sizes="(max-width: 768px) 100vw, 25vw" imageClass="w-full h-72 object-cover"></app-responsive-image>
+              } @else {
+                <app-responsive-image src="player-404" [alt]="player.name" sizes="(max-width: 768px) 100vw, 25vw" imageClass="w-full h-72 object-cover"></app-responsive-image>
+              }
               <div class="p-4">
                 <h3 class="text-lg font-bold mb-1 text-primary dark:text-white">{{ player.name }}</h3>
                 <p class="text-primary/70 dark:text-white/70">#{{ player.number }} @if(player.position) { - {{ 'team.position.' + player.position | translate }} }</p>

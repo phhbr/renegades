@@ -51,6 +51,11 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*.{avif,webp}",
+                "input": "src/assets/images/optimized",
+                "output": "assets/images/optimized"
               }
             ],
             "index": "src/index.html",

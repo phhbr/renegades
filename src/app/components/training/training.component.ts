@@ -4,11 +4,12 @@ import { TryoutFormComponent } from './tryout-form.component';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { CookieConsentService } from '../../services/cookie-consent.service';
 import { MetaService } from '../../services/meta.service';
+import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
 
 @Component({
   selector: 'app-training',
   standalone: true,
-  imports: [TryoutFormComponent, TranslatePipe],
+  imports: [TryoutFormComponent, TranslatePipe, ResponsiveImageComponent],
   templateUrl: './training.component.html'
 })
 export class TrainingComponent implements OnInit {

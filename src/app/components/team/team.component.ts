@@ -3,11 +3,12 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { TeamService } from '../../services/team.service';
 import { MetaService } from '../../services/meta.service';
+import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
 
 @Component({
   selector: 'app-team',
   standalone: true,
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, ResponsiveImageComponent],
   templateUrl: './team.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -18,6 +19,13 @@ export class TeamComponent implements OnInit {
   players = this.#teamService.players;
   error = signal<string | null>(null);
   loading = signal(true);
+
+  // Extract image ID from asset path (e.g., "/assets/images/players/11.jpg" -> "11")
+  getImageId(url: string | null | undefined): string | null {
+    if (!url) return null;
+    const match = url.match(/players\/(\d+)/);
+    return match ? match[1] : null;
+  }
 
   async ngOnInit() {
     // Update team page metadata
