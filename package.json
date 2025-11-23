@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run optimize-images && ng serve",
     "build": "npm run optimize-images && ng build",
     "build:prod": "npm run optimize-images && ng build --configuration production",
     "optimize-images": "node scripts/optimize-images.js",

@@ -24,7 +24,7 @@
           @for (member of staff(); track member.name) {
             <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
               @if (getImageId(member.image_url)) {
-                <app-responsive-image [src]="'player-' + getImageId(member.image_url)" [alt]="member.name" sizes="(max-width: 768px) 100vw, 50vw" imageClass="w-full h-84 object-cover"></app-responsive-image>
+                <app-responsive-image [src]="'players/' + (getImageId(member.image_url) || '')" [alt]="member.name" sizes="(max-width: 768px) 100vw, 50vw" imageClass="w-full h-84 object-cover"></app-responsive-image>
               } @else {
                 <app-responsive-image src="player-404" [alt]="member.name" sizes="(max-width: 768px) 100vw, 50vw" imageClass="w-full h-84 object-cover"></app-responsive-image>
               }
@@ -44,7 +44,7 @@
           @for (player of players(); track player.name) {
             <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
               @if (getImageId(player.image_url)) {
-                <app-responsive-image [src]="'player-' + getImageId(player.image_url)" [alt]="player.name" sizes="(max-width: 768px) 100vw, 25vw" imageClass="w-full h-72 object-cover"></app-responsive-image>
+                <app-responsive-image [src]="'players/' + (getImageId(player.image_url) || '')" [alt]="player.name" sizes="(max-width: 768px) 100vw, 25vw" imageClass="w-full h-72 object-cover"></app-responsive-image>
               } @else {
                 <app-responsive-image src="player-404" [alt]="player.name" sizes="(max-width: 768px) 100vw, 25vw" imageClass="w-full h-72 object-cover"></app-responsive-image>
               }

@@ -52,8 +52,9 @@ export class ResponsiveImageComponent {
   @Input() imageClass: string = 'w-full h-auto';
   @Input() basePath: string = '/assets/images/optimized'; // Path to optimized images
 
-  // Responsive breakpoints (must match optimize-images.js SIZES)
-  private breakpoints = [640, 1024, 1280, 1920];
+  // Responsive breakpoints — use a conservative set to avoid 404s for missing sizes.
+  // We always generate a `-full` version; smaller breakpoint (640) covers mobile.
+  private breakpoints = [640];
 
   get fallbackSrc(): string {
     return `${this.basePath}/${this.src}-full.jpg`;
@@ -66,9 +67,10 @@ export class ResponsiveImageComponent {
   generateSrcset(format: 'avif' | 'webp' | 'jpg'): string {
     const srcsets = this.breakpoints
       .map(bp => `${this.basePath}/${this.src}-${bp}w.${format} ${bp}w`)
+      .filter(Boolean)
       .join(', ');
-    
-    // Add full-size version
-    return `${srcsets}, ${this.basePath}/${this.src}-full.${format} 2000w`;
+
+    // Add full-size version as a fallback
+    return srcsets ? `${srcsets}, ${this.basePath}/${this.src}-full.${format} 2000w` : `${this.basePath}/${this.src}-full.${format} 2000w`;
   }
 }
