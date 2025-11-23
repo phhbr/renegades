@@ -5,6 +5,7 @@ import { CookieConsentComponent } from './components/cookie-consent/cookie-conse
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AnalyticsService } from './services/analytics.service';
+import { MetaService } from './services/meta.service';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,12 @@ import { AnalyticsService } from './services/analytics.service';
 export class AppComponent {
   isDarkMode = signal(false);
   #analyticsService = inject(AnalyticsService);
+  #metaService = inject(MetaService);
 
   constructor() {
+    // Initialize default meta tags
+    this.#metaService.setDefault();
+
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       this.isDarkMode.set(true);
     }

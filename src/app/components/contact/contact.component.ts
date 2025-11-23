@@ -1,7 +1,8 @@
 
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslatePipe } from '../../pipes/translate.pipe';
+import { MetaService } from '../../services/meta.service';
 import { ContactService } from '../../services/contact.service';
 import { RecaptchaService } from '../../services/recaptcha.service';
 
@@ -12,7 +13,16 @@ import { RecaptchaService } from '../../services/recaptcha.service';
   templateUrl: './contact.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
+  private meta = inject(MetaService);
+
+  ngOnInit(): void {
+    this.meta.updateMeta({
+      title: 'Contact Nürnberg Renegades - Get in Touch',
+      description: 'Have questions about our flag football club? Contact Nürnberg Renegades e.V. - we\'d love to hear from you!',
+      canonical: 'https://nuernberg-renegades.de/contact'
+    });
+  }
   contactForm: FormGroup;
   isSubmitting = signal(false);
   submitSuccess = signal(false);
