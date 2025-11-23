@@ -1,26 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* Note: Font import moved to index.html for better control and preloading */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Critical CSS - inline these styles for faster first paint */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   @apply antialiased;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Add padding to account for fixed navbar */
 .main-content {
-  padding-top: 7rem; /* Increased from 5rem to 7rem for more spacing */
+  padding-top: 7rem;
   min-height: 100vh;
 }
 
+/* Optimize parallax - avoid fixed attachment on mobile for better performance */
 .parallax {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+/* Performance optimizations */
+img {
+  /* Enable lazy loading hints */
+  loading: lazy;
+}
+
+/* Optimize animations for performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Font swap strategy for better performance */
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.gstatic.com/s/inter/v13/-H6kfsEdaJQwNLmUYkB8UvghdTg.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.gstatic.com/s/inter/v13/-H6lfsEdaJQwNLmUYkB8UvQhdTg.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.gstatic.com/s/inter/v13/-H6mfsEdaJQwNLmUYkB8UvQhdTg.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.gstatic.com/s/inter/v13/-H6nfsEdaJQwNLmUYkB8UvQhdTg.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
 }

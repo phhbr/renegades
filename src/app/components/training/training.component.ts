@@ -1,8 +1,9 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, signal, OnInit, inject } from '@angular/core';
 
 import { TryoutFormComponent } from './tryout-form.component';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { CookieConsentService } from '../../services/cookie-consent.service';
+import { MetaService } from '../../services/meta.service';
 
 @Component({
   selector: 'app-training',
@@ -10,7 +11,7 @@ import { CookieConsentService } from '../../services/cookie-consent.service';
   imports: [TryoutFormComponent, TranslatePipe],
   templateUrl: './training.component.html'
 })
-export class TrainingComponent {
+export class TrainingComponent implements OnInit {
   private currentMonth = signal(new Date().getMonth() + 1); // 1-12
 
   isOffSeason = computed(() => {
@@ -20,6 +21,18 @@ export class TrainingComponent {
   });
 
   constructor(private cookieConsentService: CookieConsentService) {}
+
+  private meta = inject(MetaService);
+
+  ngOnInit(): void {
+    this.meta.updateMeta({
+      title: 'Flag Football Training & Tryouts - Nürnberg Renegades',
+      description: 'Join our flag football training sessions in Nürnberg. Learn the sport, meet new players, and compete at all skill levels.',
+      canonical: 'https://nuernberg-renegades.de/training',
+      image: 'https://nuernberg-renegades.de/assets/images/training.jpg',
+      imageAlt: 'Flag football training session'
+    });
+  }
 
   showMap(): boolean {
     const consent = this.cookieConsentService.getConsent();

@@ -38,9 +38,24 @@
                 "output": "/"
               },
               {
+                "glob": "robots.txt",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "sitemap.xml",
+                "input": "src",
+                "output": "/"
+              },
+              {
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*.{avif,webp}",
+                "input": "src/assets/images/optimized",
+                "output": "assets/images/optimized"
               }
             ],
             "index": "src/index.html",
@@ -49,7 +64,24 @@
             "polyfills": ["zone.js"],
             "scripts": [],
             "styles": ["src/global_styles.css"],
-            "tsConfig": "tsconfig.app.json"
+            "tsConfig": "tsconfig.app.json",
+            "budgets": [
+              {
+                "type": "initial",
+                "maximumWarning": "500kb",
+                "maximumError": "1mb"
+              },
+              {
+                "type": "anyComponentStyle",
+                "maximumWarning": "2kb",
+                "maximumError": "4kb"
+              }
+            ]
+            ,
+            "allowedCommonJsDependencies": [
+              "@supabase/realtime-js",
+              "ws"
+            ]
           }
         },
         "serve": {
