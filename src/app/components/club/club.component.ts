@@ -3,12 +3,11 @@ import { Component, OnInit, inject } from '@angular/core';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { MembershipFormComponent } from './membership-form.component';
 import { MetaService } from '../../services/meta.service';
-import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
 
 @Component({
   selector: 'app-club',
   standalone: true,
-  imports: [TranslatePipe, MembershipFormComponent, ResponsiveImageComponent],
+  imports: [TranslatePipe, MembershipFormComponent],
   templateUrl: './club.component.html'
 })
 export class ClubComponent implements OnInit {

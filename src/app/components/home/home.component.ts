@@ -3,7 +3,6 @@ import { Component, signal, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { MetaService } from '../../services/meta.service';
-import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
 
 interface Feature {
   titleKey: string;
@@ -13,7 +12,7 @@ interface Feature {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, TranslatePipe, ResponsiveImageComponent],
+  imports: [RouterLink, TranslatePipe],
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {

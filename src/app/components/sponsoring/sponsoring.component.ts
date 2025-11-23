@@ -3,12 +3,11 @@ import { MetaService } from '../../services/meta.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { SponsorService } from '../../services/sponsor.service';
 import { RouterModule } from '@angular/router';
-import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
 
 @Component({
   selector: 'app-sponsoring',
   standalone: true,
-  imports: [RouterModule, TranslatePipe, ResponsiveImageComponent],
+  imports: [RouterModule, TranslatePipe],
   templateUrl: './sponsoring.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

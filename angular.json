@@ -77,6 +77,11 @@
                 "maximumError": "4kb"
               }
             ]
+            ,
+            "allowedCommonJsDependencies": [
+              "@supabase/realtime-js",
+              "ws"
+            ]
           }
         },
         "serve": {
