@@ -1,0 +1,259 @@
+{
+  "teamMembers": [
+    {
+      "id": "0a48c1a9-bf84-4269-abed-b512057d9a88",
+      "name": "Michael Berndt",
+      "role": null,
+      "image_url": "/assets/images/players/17.jpg",
+      "number": "17",
+      "position": "db",
+      "member_type": "player",
+      "created_at": "2025-01-15 12:52:16.464611+00",
+      "updated_at": "2025-01-18 20:32:41.282284+00"
+    },
+    {
+      "id": "212e4f00-5a92-4267-a021-10396e2eece6",
+      "name": "Fabian Schramm",
+      "role": null,
+      "image_url": "/assets/images/players/11.jpg",
+      "number": "11",
+      "position": "db",
+      "member_type": "player",
+      "created_at": "2025-01-28 12:26:58.200653+00",
+      "updated_at": "2025-01-28 12:26:58.200653+00"
+    },
+    {
+      "id": "26bf9e1d-5e0e-4aab-a753-529e370dd537",
+      "name": "Stanislav Voronkov",
+      "role": "offensive_coordinator",
+      "image_url": "/assets/images/players/23.jpg",
+      "number": null,
+      "position": null,
+      "member_type": "staff",
+      "created_at": "2025-01-28 12:32:09.350095+00",
+      "updated_at": "2025-11-05 19:05:27.183381+00"
+    },
+    {
+      "id": "276d9de1-53d6-4765-a816-6c1110778dc7",
+      "name": "Camilo Fajardo",
+      "role": null,
+      "image_url": "/assets/images/players/1.jpg",
+      "number": "1",
+      "position": "receiver",
+      "member_type": "player",
+      "created_at": "2025-01-15 12:52:16.464611+00",
+      "updated_at": "2025-01-29 20:00:37.654304+00"
+    },
+    {
+      "id": "4274e29d-38e2-4d8e-80f9-ddb004eac352",
+      "name": "Oscar Melendez",
+      "role": null,
+      "image_url": "/assets/images/players/5.jpg",
+      "number": "5",
+      "position": "db",
+      "member_type": "player",
+      "created_at": "2025-01-18 20:36:33.190233+00",
+      "updated_at": "2025-01-18 20:36:33.190233+00"
+    },
+    {
+      "id": "4a82e59c-f91c-40be-8a0c-07e6f91b81bd",
+      "name": "Elli Kammermeier",
+      "role": "",
+      "image_url": "/assets/images/players/27.jpg",
+      "number": "27",
+      "position": "db",
+      "member_type": "player",
+      "created_at": "2025-01-15 12:52:16.464611+00",
+      "updated_at": "2025-01-18 20:35:31.458456+00"
+    },
+    {
+      "id": "50ecd6a6-015d-4c44-96eb-c52e5ca73d55",
+      "name": "Ben Bohnsack",
+      "role": "",
+      "image_url": null,
+      "number": "0",
+      "position": "receiver",
+      "member_type": "player",
+      "created_at": "2025-01-30 12:44:29.058496+00",
+      "updated_at": "2025-01-30 12:44:29.058496+00"
+    },
+    {
+      "id": "544d39f3-e9be-4eff-afbf-e2944f429d32",
+      "name": "Duc Tien Hoang",
+      "role": null,
+      "image_url": null,
+      "number": "7",
+      "position": null,
+      "member_type": "player",
+      "created_at": "2025-01-30 10:24:08.357014+00",
+      "updated_at": "2025-01-30 10:24:08.357014+00"
+    },
+    {
+      "id": "5c05cdc5-e992-4738-af3c-ee41217556b0",
+      "name": "Maurice Marek",
+      "role": null,
+      "image_url": "/assets/images/players/25.jpg",
+      "number": "25",
+      "position": "blitz",
+      "member_type": "player",
+      "created_at": "2025-01-18 20:36:02.315447+00",
+      "updated_at": "2025-01-18 20:36:02.315447+00"
+    },
+    {
+      "id": "619bfe8a-13ad-4e6d-8463-90b5c72590e9",
+      "name": "Jonas Brand",
+      "role": null,
+      "image_url": null,
+      "number": "2",
+      "position": "db",
+      "member_type": "player",
+      "created_at": "2025-01-29 09:02:10.158661+00",
+      "updated_at": "2025-01-29 09:02:10.158661+00"
+    },
+    {
+      "id": "694dafc6-8698-4af8-a44b-c26ef3308320",
+      "name": "James Slack",
+      "role": null,
+      "image_url": null,
+      "number": "10",
+      "position": "quarterback",
+      "member_type": "player",
+      "created_at": "2025-01-28 20:47:04.463309+00",
+      "updated_at": "2025-01-28 20:48:43.055234+00"
+    },
+    {
+      "id": "74697bbc-7e64-41cf-94af-7815683fed01",
+      "name": "Johannes Mörz",
+      "role": null,
+      "image_url": "/assets/images/players/3.jpg",
+      "number": "3",
+      "position": "db",
+      "member_type": "player",
+      "created_at": "2025-01-18 20:36:57.376173+00",
+      "updated_at": "2025-01-18 20:36:57.376173+00"
+    },
+    {
+      "id": "7869466c-0a8c-44b2-bced-bc989a63137d",
+      "name": "Philipp Bruchner",
+      "role": null,
+      "image_url": "/assets/images/players/20.jpg",
+      "number": "20",
+      "position": "blitz",
+      "member_type": "player",
+      "created_at": "2025-01-18 20:26:41.267028+00",
+      "updated_at": "2025-01-18 20:26:41.267028+00"
+    },
+    {
+      "id": "84450347-8932-4707-b06f-8dd0e64937a7",
+      "name": "Stanislav Voronkov",
+      "role": "",
+      "image_url": "/assets/images/players/23.jpg",
+      "number": "23",
+      "position": "receiver",
+      "member_type": "player",
+      "created_at": "2025-01-18 20:38:13.004709+00",
+      "updated_at": "2025-01-28 12:27:04.686072+00"
+    },
+    {
+      "id": "950e7c7a-6068-4ca2-895b-2e90f466d18d",
+      "name": "Kai Ottmann",
+      "role": null,
+      "image_url": null,
+      "number": "8",
+      "position": "quarterback",
+      "member_type": "player",
+      "created_at": "2025-01-29 09:02:44.197648+00",
+      "updated_at": "2025-01-29 09:02:55.423245+00"
+    },
+    {
+      "id": "9f836ece-9d5c-46ce-858c-b36e9be0d421",
+      "name": "Tobias Herrneder",
+      "role": null,
+      "image_url": null,
+      "number": "14",
+      "position": "receiver",
+      "member_type": "player",
+      "created_at": "2025-01-30 10:24:32.245765+00",
+      "updated_at": "2025-01-30 10:24:32.245765+00"
+    },
+    {
+      "id": "a1444942-5dc4-4dc8-845c-2ce75c2dadc2",
+      "name": "Steve Hommel",
+      "role": null,
+      "image_url": null,
+      "number": "18",
+      "position": "",
+      "member_type": "player",
+      "created_at": "2025-01-28 12:36:36.035769+00",
+      "updated_at": "2025-01-28 12:36:36.035769+00"
+    },
+    {
+      "id": "ab9a76fd-cf54-459f-b18b-eeebad408931",
+      "name": "Hannes Philipp",
+      "role": null,
+      "image_url": "/assets/images/players/63.jpg",
+      "number": "63",
+      "position": "db",
+      "member_type": "player",
+      "created_at": "2025-01-18 20:37:26.609212+00",
+      "updated_at": "2025-01-18 20:37:26.609212+00"
+    },
+    {
+      "id": "b819caf5-dc95-414c-94e2-021f08088f7a",
+      "name": "Andreas Scherm",
+      "role": "",
+      "image_url": null,
+      "number": "87",
+      "position": "db",
+      "member_type": "player",
+      "created_at": "2025-01-30 10:27:25.054246+00",
+      "updated_at": "2025-01-30 10:27:25.054246+00"
+    },
+    {
+      "id": "ba5e5ed3-e0c7-4a9c-9855-ead949034823",
+      "name": "Marian Dünkler",
+      "role": "",
+      "image_url": null,
+      "number": "22",
+      "position": "receiver",
+      "member_type": "player",
+      "created_at": "2025-01-28 12:31:06.272056+00",
+      "updated_at": "2025-01-28 12:31:24.997574+00"
+    },
+    {
+      "id": "bf9ae811-4ba9-465a-9772-f7ba6db560d2",
+      "name": "Marcel Gabold",
+      "role": null,
+      "image_url": null,
+      "number": "19",
+      "position": null,
+      "member_type": "player",
+      "created_at": "2025-01-28 12:37:11.877906+00",
+      "updated_at": "2025-01-28 12:37:11.877906+00"
+    },
+    {
+      "id": "f9498f70-c740-4d6f-9e95-3b8ce6baa6da",
+      "name": "Fabian Schramm",
+      "role": "defensive_coordinator",
+      "image_url": "/assets/images/players/11.jpg",
+      "number": "",
+      "position": null,
+      "member_type": "staff",
+      "created_at": "2025-01-18 20:29:56.85433+00",
+      "updated_at": "2025-01-28 12:26:24.035905+00"
+    },
+    {
+      "id": "ff3af80f-4b67-4f50-8cec-b0aa7f5ac395",
+      "name": "Walter Szedlak",
+      "role": null,
+      "image_url": null,
+      "number": "29",
+      "position": null,
+      "member_type": "player",
+      "created_at": "2025-01-30 10:26:19.90063+00",
+      "updated_at": "2025-01-30 10:26:19.90063+00"
+    }
+  ]
+}
+
+

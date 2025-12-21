@@ -1,5 +1,5 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
-import { SupabaseService } from './supabase.service';
+import { HttpClient } from '@angular/common/http';
 
 export interface TeamMember {
   id: string;
@@ -17,7 +17,7 @@ export interface TeamMember {
   providedIn: 'root'
 })
 export class TeamService {
-  #supabaseClient = inject(SupabaseService).client;
+  #http = inject(HttpClient);
   #teamMembers = signal<TeamMember[]>([]);
 
   staff = computed(() => 
@@ -32,14 +32,11 @@ export class TeamService {
 
   async loadTeamMembers() {
     try {
-      const { data, error } = await this.#supabaseClient
-        .from('team_members')
-        .select('*');
+      const response = await this.#http.get<{ teamMembers: TeamMember[] }>('/assets/data/team-members.json').toPromise();
       
-      if (error) throw error;
-      if (!data) throw new Error('No data received');
+      if (!response?.teamMembers) throw new Error('No data received');
 
-      this.#teamMembers.set(data);
+      this.#teamMembers.set(response.teamMembers);
     } catch (error) {
       console.error('Error in loadTeamMembers:', error);
       throw error;

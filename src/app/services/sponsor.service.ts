@@ -1,5 +1,5 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
-import { SupabaseService } from './supabase.service';
+import { HttpClient } from '@angular/common/http';
 
 export interface Sponsor {
   id: string;
@@ -17,7 +17,7 @@ export interface Sponsor {
   providedIn: 'root'
 })
 export class SponsorService {
-  #supabaseClient = inject(SupabaseService).client;
+  #http = inject(HttpClient);
   #sponsors = signal<Sponsor[]>([]);
 
   activeSponsors = computed(() => 
@@ -34,15 +34,14 @@ export class SponsorService {
   );
 
   async loadSponsors() {
-    const { data, error } = await this.#supabaseClient
-      .from('sponsors')
-      .select('*');
-    
-    if (error) {
-      console.error('Error loading sponsors:', error);
-      return;
-    }
+    try {
+      const response = await this.#http.get<{ sponsors: Sponsor[] }>('/assets/data/sponsors.json').toPromise();
+      
+      if (!response?.sponsors) throw new Error('No data received');
 
-    this.#sponsors.set(data);
+      this.#sponsors.set(response.sponsors);
+    } catch (error) {
+      console.error('Error loading sponsors:', error);
+    }
   }
 }
