@@ -74,12 +74,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   #signalPrerenderReady() {
-    setTimeout(() => {
-      if (!this.#routerInitialized && !!window) {
-        (window as any)["prerenderReady"] = true;
+    if (!this.#routerInitialized && !!window) {
         this.#routerInitialized = true;
+      setTimeout(() => {
+        (window as any)["prerenderReady"] = true;
         console.warn("✅ Prerender Ready Signal sent");
-      }
-    }, 3000);
+      }, 3000);
+    }
   }
 }
