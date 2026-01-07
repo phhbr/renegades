@@ -63,7 +63,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.#signalPrerenderReady(), 500);
+    this.#signalPrerenderReady();
   }
 
   toggleTheme() {
@@ -74,9 +74,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   #signalPrerenderReady() {
-    if (this.#routerInitialized && typeof window !== "undefined") {
-      (window as any)["prerenderReady"] = true;
-      this.#routerInitialized = true;
-    }
+    setTimeout(() => {
+      if (this.#routerInitialized && typeof window !== "undefined") {
+        (window as any)["prerenderReady"] = true;
+        this.#routerInitialized = true;
+      }
+    }, 3000);
   }
 }
