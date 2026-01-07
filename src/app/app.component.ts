@@ -78,7 +78,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   #signalPrerenderReady() {
     setTimeout(() => {
-      if (this.#routerInitialized && typeof window !== "undefined") {
+      if (this.#routerInitialized && !!window) {
         (window as any)["prerenderReady"] = true;
         this.#routerInitialized = true;
         console.warn("✅ Prerender Ready Signal sent");
