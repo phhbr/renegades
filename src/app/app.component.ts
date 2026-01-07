@@ -54,18 +54,15 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (isPlatformBrowser(this.#platformId)) {
       this.#router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
-          console.warn("🚀 Navigation End detected:", event.urlAfterRedirects);
           this.#signalPrerenderReady();
         }
       });
     } else {
-      console.warn("🚀 Platform is not browser, signaling prerender ready.");
       this.#signalPrerenderReady();
     }
   }
 
   ngAfterViewInit(): void {
-    console.warn("🚀 After View Init launched.");
     this.#signalPrerenderReady();
   }
 
@@ -78,7 +75,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   #signalPrerenderReady() {
     setTimeout(() => {
-      if (this.#routerInitialized && !!window) {
+      if (!this.#routerInitialized && !!window) {
         (window as any)["prerenderReady"] = true;
         this.#routerInitialized = true;
         console.warn("✅ Prerender Ready Signal sent");
