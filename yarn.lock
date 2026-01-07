@@ -2092,7 +2092,7 @@ baseline-browser-mapping@^2.8.9:
   resolved "https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.8.19.tgz"
   integrity sha512-zoKGUdu6vb2jd3YOq0nnhEDQVbPcHhco3UImJrv5dSkvxTc2pl2WjOPsjZXDwPDSl5eghIMuY3R6J9NDKF3KcQ==
 
-baseline-browser-mapping@^2.9.12:
+baseline-browser-mapping@latest:
   version "2.9.12"
   resolved "https://registry.yarnpkg.com/baseline-browser-mapping/-/baseline-browser-mapping-2.9.12.tgz#fbed5f37edf24b708e6e0b1fb26c70982a577dfc"
   integrity sha512-Mij6Lij93pTAIsSYy5cyBQ975Qh9uLEc5rwGTpomiZeXZL9yIS6uORJakb3ScHgfs0serMMfIbXzokPMuEiRyw==
@@ -2336,11 +2336,6 @@ camelcase-css@^2.0.1:
 caniuse-lite@^1.0.30001702, caniuse-lite@^1.0.30001746:
   version "1.0.30001762"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001762.tgz"
-  integrity sha512-PxZwGNvH7Ak8WX5iXzoK1KPZttBXNPuaOvI2ZYU7NrlM+d9Ov+TUvlLOBNGzVXAntMSMMlJPd+jY6ovrVjSmUw==
-
-caniuse-lite@^1.0.30001762:
-  version "1.0.30001762"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001762.tgz#e4dbfeda63d33258cdde93e53af2023a13ba27d4"
   integrity sha512-PxZwGNvH7Ak8WX5iXzoK1KPZttBXNPuaOvI2ZYU7NrlM+d9Ov+TUvlLOBNGzVXAntMSMMlJPd+jY6ovrVjSmUw==
 
 caw@^2.0.0, caw@^2.0.1:
