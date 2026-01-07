@@ -1,4 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
+import { StorageService } from './storage.service';
 
 export interface CookieConsent {
   necessary: boolean; // Always true, required cookies
@@ -13,20 +14,21 @@ export interface CookieConsent {
 export class CookieConsentService {
   readonly #COOKIE_CONSENT_KEY = 'cookie-consent';
   readonly #consent = signal<CookieConsent | null>(null);
+  readonly #localStorage = inject(StorageService);
 
   constructor() {
     this.loadConsent();
   }
 
   private loadConsent() {
-    const savedConsent = localStorage.getItem(this.#COOKIE_CONSENT_KEY);
+    const savedConsent = this.#localStorage.getItem(this.#COOKIE_CONSENT_KEY);
     if (savedConsent) {
       this.#consent.set(JSON.parse(savedConsent));
     }
   }
 
   updateConsent(consent: CookieConsent) {
-    localStorage.setItem(this.#COOKIE_CONSENT_KEY, JSON.stringify(consent));
+    this.#localStorage.setItem(this.#COOKIE_CONSENT_KEY, JSON.stringify(consent));
     this.#consent.set(consent);
   }
 

@@ -1,39 +1,82 @@
-
-import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { AnalyticsService } from './services/analytics.service';
-import { MetaService } from './services/meta.service';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  OnInit,
+  PLATFORM_ID,
+  PLATFORM_INITIALIZER,
+  signal,
+} from "@angular/core";
+import { NavigationEnd, Router, RouterOutlet } from "@angular/router";
+import { CookieConsentComponent } from "./components/cookie-consent/cookie-consent.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { NavbarComponent } from "./components/navbar/navbar.component";
+import { AnalyticsService } from "./services/analytics.service";
+import { MetaService } from "./services/meta.service";
+import { isPlatformBrowser } from "@angular/common";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, CookieConsentComponent],
-  templateUrl: './app.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [
+    RouterOutlet,
+    NavbarComponent,
+    FooterComponent,
+    CookieConsentComponent,
+  ],
+  templateUrl: "./app.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit {
   isDarkMode = signal(false);
   #analyticsService = inject(AnalyticsService);
   #metaService = inject(MetaService);
+  #platformId = inject(PLATFORM_ID);
+  #router = inject(Router);
+  #routerInitialized = false;
 
   constructor() {
     // Initialize default meta tags
     this.#metaService.setDefault();
 
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       this.isDarkMode.set(true);
     }
 
     effect(() =>
-      document.documentElement.classList.toggle('dark', this.isDarkMode())
+      document.documentElement.classList.toggle("dark", this.isDarkMode())
     );
   }
 
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.#platformId)) {
+      this.#router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          this.#signalPrerenderReady();
+        }
+      });
+    } else {
+      this.#signalPrerenderReady();
+    }
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => this.#signalPrerenderReady(), 500);
+  }
+
   toggleTheme() {
-    this.isDarkMode.update(current => !current);
-    this.#analyticsService.trackEvent('toggle_theme', { theme: this.isDarkMode() ? 'dark' : 'light' });
+    this.isDarkMode.update((current) => !current);
+    this.#analyticsService.trackEvent("toggle_theme", {
+      theme: this.isDarkMode() ? "dark" : "light",
+    });
+  }
+
+  #signalPrerenderReady() {
+    if (this.#routerInitialized && typeof window !== "undefined") {
+      (window as any)["prerenderReady"] = true;
+      this.#routerInitialized = true;
+    }
   }
 }

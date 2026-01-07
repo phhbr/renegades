@@ -1,10 +1,12 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
   private currentLang = signal<string>('en');
+  #localStorage = inject(StorageService);
 
   constructor() {
     // Check browser language
@@ -16,7 +18,7 @@ export class LanguageService {
 
   setLanguage(lang: string) {
     this.currentLang.set(lang);
-    localStorage.setItem('preferredLanguage', lang);
+    this.#localStorage.setItem('preferredLanguage', lang);
   }
 
   getCurrentLang(): string {
