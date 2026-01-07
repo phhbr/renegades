@@ -4,18 +4,15 @@ import {
   Component,
   effect,
   inject,
-  OnInit,
   PLATFORM_ID,
-  PLATFORM_INITIALIZER,
   signal,
 } from "@angular/core";
-import { NavigationEnd, Router, RouterOutlet } from "@angular/router";
+import { Router, RouterOutlet } from "@angular/router";
 import { CookieConsentComponent } from "./components/cookie-consent/cookie-consent.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { AnalyticsService } from "./services/analytics.service";
 import { MetaService } from "./services/meta.service";
-import { isPlatformBrowser } from "@angular/common";
 
 @Component({
   selector: "app-root",
@@ -29,7 +26,7 @@ import { isPlatformBrowser } from "@angular/common";
   templateUrl: "./app.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements AfterViewInit {
   isDarkMode = signal(false);
   #analyticsService = inject(AnalyticsService);
   #metaService = inject(MetaService);
@@ -50,18 +47,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     );
   }
 
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.#platformId)) {
-      this.#router.events.subscribe((event) => {
-        if (event instanceof NavigationEnd) {
-          this.#signalPrerenderReady();
-        }
-      });
-    } else {
-      this.#signalPrerenderReady();
-    }
-  }
-
   ngAfterViewInit(): void {
     this.#signalPrerenderReady();
   }
@@ -75,7 +60,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   #signalPrerenderReady() {
     if (!this.#routerInitialized && !!window) {
-        this.#routerInitialized = true;
+      this.#routerInitialized = true;
       setTimeout(() => {
         (window as any)["prerenderReady"] = true;
         console.warn("✅ Prerender Ready Signal sent");
