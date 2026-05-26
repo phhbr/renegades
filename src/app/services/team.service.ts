@@ -2,7 +2,6 @@ import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 export interface TeamMember {
-  id: string;
   name: string;
   role?: string;
   image_url?: string;
