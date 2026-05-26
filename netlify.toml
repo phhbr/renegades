@@ -1,0 +1,6 @@
+[build]
+  command = "ng build"
+  publish = "dist/demo/browser"
+
+[[plugins]]
+  package = "@netlify/angular-runtime"

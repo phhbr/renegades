@@ -1,4 +1,5 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { environment } from '../../environments/environment';
 
 declare global {
@@ -17,9 +18,12 @@ export class RecaptchaService {
   private readonly siteKey = environment.recaptcha.siteKey;
   private loaded = false;
   private loadPromise: Promise<void> | null = null;
+  #platformId = inject(PLATFORM_ID);
 
   constructor() {
-    this.loadScript();
+    if (isPlatformBrowser(this.#platformId)) {
+      this.loadScript();
+    }
   }
 
   private loadScript(): Promise<void> {
@@ -35,7 +39,7 @@ export class RecaptchaService {
       script.src = `https://www.google.com/recaptcha/api.js?render=${this.siteKey}`;
       script.async = true;
       script.defer = true;
-      
+
       script.onload = () => {
         this.loaded = true;
         resolve();
@@ -48,6 +52,10 @@ export class RecaptchaService {
   }
 
   async executeRecaptcha(action: string): Promise<string> {
+    if (!isPlatformBrowser(this.#platformId)) {
+      return '';
+    }
+
     await this.loadScript();
 
     return new Promise((resolve, reject) => {

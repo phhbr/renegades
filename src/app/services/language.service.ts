@@ -1,4 +1,5 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { StorageService } from './storage.service';
 
 @Injectable({
@@ -7,12 +8,14 @@ import { StorageService } from './storage.service';
 export class LanguageService {
   private currentLang = signal<string>('en');
   #localStorage = inject(StorageService);
+  #platformId = inject(PLATFORM_ID);
 
   constructor() {
-    // Check browser language
-    const browserLang = navigator.language;
-    if (browserLang.startsWith('de')) {
-      this.setLanguage('de');
+    if (isPlatformBrowser(this.#platformId)) {
+      const browserLang = navigator.language;
+      if (browserLang.startsWith('de')) {
+        this.setLanguage('de');
+      }
     }
   }
 

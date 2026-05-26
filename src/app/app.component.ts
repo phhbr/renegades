@@ -7,12 +7,14 @@ import {
   PLATFORM_ID,
   signal,
 } from "@angular/core";
+import { isPlatformBrowser } from "@angular/common";
 import { Router, RouterOutlet } from "@angular/router";
 import { CookieConsentComponent } from "./components/cookie-consent/cookie-consent.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { AnalyticsService } from "./services/analytics.service";
 import { MetaService } from "./services/meta.service";
+import { environment } from "../environments/environment";
 
 @Component({
   selector: "app-root",
@@ -35,16 +37,25 @@ export class AppComponent implements AfterViewInit {
   #routerInitialized = false;
 
   constructor() {
-    // Initialize default meta tags
     this.#metaService.setDefault();
 
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      this.isDarkMode.set(true);
+    if (isPlatformBrowser(this.#platformId)) {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        this.isDarkMode.set(true);
+      }
+
+      const umamiScript = document.getElementById("umami-script");
+      if (umamiScript) {
+        umamiScript.setAttribute("src", environment.analytics.umamiUrl);
+        umamiScript.setAttribute("data-website-id", environment.analytics.websiteId);
+      }
     }
 
-    effect(() =>
-      document.documentElement.classList.toggle("dark", this.isDarkMode())
-    );
+    effect(() => {
+      if (isPlatformBrowser(this.#platformId)) {
+        document.documentElement.classList.toggle("dark", this.isDarkMode());
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -59,10 +70,9 @@ export class AppComponent implements AfterViewInit {
   }
 
   #signalPrerenderReady() {
-    if (!this.#routerInitialized && !!window) {
+    if (!this.#routerInitialized && isPlatformBrowser(this.#platformId)) {
       this.#routerInitialized = true;
-        (window as any)["prerenderReady"] = true;
-        console.warn("✅ Prerender Ready Signal sent");
+      (window as any)["prerenderReady"] = true;
     }
   }
 }

@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-
+import { afterNextRender, ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { CookieConsentService } from '../../services/cookie-consent.service';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { RouterModule } from '@angular/router';
@@ -12,19 +11,22 @@ import { RouterModule } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CookieConsentComponent {
-  showBanner = signal(true);
+  showBanner = signal(false);
+  #cookieConsentService = inject(CookieConsentService);
 
-  constructor(private cookieConsentService: CookieConsentService) {
-    this.showBanner.set(!this.cookieConsentService.hasConsent());
+  constructor() {
+    afterNextRender(() => {
+      this.showBanner.set(!this.#cookieConsentService.hasConsent());
+    });
   }
 
   acceptAll() {
-    this.cookieConsentService.acceptAll();
+    this.#cookieConsentService.acceptAll();
     this.showBanner.set(false);
   }
 
   acceptNecessaryOnly() {
-    this.cookieConsentService.acceptNecessaryOnly();
+    this.#cookieConsentService.acceptNecessaryOnly();
     this.showBanner.set(false);
   }
 }

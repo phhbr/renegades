@@ -26,12 +26,15 @@
             }
           },
           "options": {
+            "outputMode": "server",
+            "server": "src/main.server.ts",
+            "prerender": {
+              "discoverRoutes": true
+            },
+            "ssr": {
+              "entry": "server.ts"
+            },
             "assets": [
-              {
-                "glob": "_redirects",
-                "input": "src",
-                "output": "/"
-              },
               {
                 "glob": "favicon.ico",
                 "input": "src",
@@ -80,6 +83,8 @@
             ,
             "allowedCommonJsDependencies": [
               "@supabase/realtime-js",
+              "@supabase/node-fetch",
+              "whatwg-url",
               "ws"
             ]
           }
