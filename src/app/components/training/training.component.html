@@ -1,12 +1,12 @@
 <main class="main-content bg-secondary dark:bg-dark-secondary text-primary dark:text-white">
   <div class="container mx-auto px-4">
-    <h1 class="text-4xl font-bold mb-12 text-center text-primary dark:text-white">{{ 'training.title' | translate }}</h1>
+    <h1 class="text-4xl font-bold mb-12 text-center tracking-tight text-primary dark:text-white">{{ 'training.title' | translate }}</h1>
 
     @if (isOffSeason()) {
       <!-- Off-Season Section -->
       <section class="mb-16">
-        <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-8">
-          <h2 class="text-3xl font-bold mb-4 text-primary dark:text-white">{{ 'training.offseason.title' | translate }}</h2>
+        <div class="bg-secondary-dark dark:bg-dark-surface rounded-xl border border-gray-100 dark:border-white/8 p-8">
+          <h2 class="text-3xl font-bold mb-4 tracking-tight text-primary dark:text-white">{{ 'training.offseason.title' | translate }}</h2>
           <p class="mb-8 text-primary/80 dark:text-white/80">{{ 'training.offseason.description' | translate }}</p>
           
           <!-- Schedule -->
@@ -95,7 +95,7 @@
     <!-- Regular Season Section -->
     <section class="mb-16">
       <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-8">
-        <h2 class="text-3xl font-bold mb-4 text-primary dark:text-white">{{ 'training.in_season.title' | translate }}</h2>
+        <h2 class="text-3xl font-bold mb-4 tracking-tight text-primary dark:text-white">{{ 'training.in_season.title' | translate }}</h2>
         <p class="mb-8 text-primary/80 dark:text-white/80">{{ 'training.in_season.description' | translate }}</p>
         
         <!-- Schedule -->
@@ -146,8 +146,8 @@
     @if (!isOffSeason()) {
       <!-- Off-Season Section -->
       <section class="mb-16">
-        <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-8">
-          <h2 class="text-3xl font-bold mb-4 text-primary dark:text-white">{{ 'training.offseason.title' | translate }}</h2>
+        <div class="bg-secondary-dark dark:bg-dark-surface rounded-xl border border-gray-100 dark:border-white/8 p-8">
+          <h2 class="text-3xl font-bold mb-4 tracking-tight text-primary dark:text-white">{{ 'training.offseason.title' | translate }}</h2>
           <p class="mb-8 text-primary/80 dark:text-white/80">{{ 'training.offseason.description' | translate }}</p>
           
           <!-- Schedule -->

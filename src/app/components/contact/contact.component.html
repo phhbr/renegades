@@ -1,12 +1,12 @@
 <main class="main-content bg-secondary dark:bg-dark-secondary text-primary dark:text-white min-h-screen py-12">
   <div class="container mx-auto px-4">
-    <h1 class="text-4xl font-bold mb-12 text-center text-primary dark:text-white">{{ 'contact.title' | translate }}</h1>
+    <h1 class="text-4xl font-bold mb-12 text-center tracking-tight text-primary dark:text-white">{{ 'contact.title' | translate }}</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
       <!-- Contact Information -->
       <div>
         <h2 class="text-2xl font-bold mb-6 text-primary dark:text-white">{{ 'contact.info.title' | translate }}</h2>
-        <div class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-6 space-y-4">
+        <div class="bg-secondary-dark dark:bg-dark-surface rounded-xl border border-gray-100 dark:border-white/8 p-6 space-y-4">
           <div>
             <h3 class="font-bold mb-2 text-primary dark:text-white">{{ 'contact.info.email.title' | translate }}</h3>
             <p class="text-primary/80 dark:text-white/80">info&#64;nuernberg-renegades.de</p>
@@ -17,14 +17,14 @@
       <!-- Contact Form -->
       <div>
         <h2 class="text-2xl font-bold mb-6 text-primary dark:text-white">{{ 'contact.form.title' | translate }}</h2>
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-6">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="bg-secondary-dark dark:bg-dark-surface rounded-xl border border-gray-100 dark:border-white/8 p-6 md:p-8">
           <div class="space-y-4">
             <div>
               <label class="block mb-2 text-primary dark:text-white">{{ 'contact.form.name' | translate }}</label>
               <input
                 type="text"
                 formControlName="name"
-                class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+                class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-shadow"
                 placeholder="Justin Jefferson"
               >
             </div>
@@ -33,7 +33,7 @@
               <input
                 type="email"
                 formControlName="email"
-                class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+                class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-shadow"
                 placeholder="jjettas@vikings.com"
               >
             </div>
@@ -42,7 +42,7 @@
               <input
                 type="text"
                 formControlName="subject"
-                class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+                class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-shadow"
                 placeholder="Sponsoring, Tryout, Press, ..."
               >
             </div>
@@ -51,7 +51,7 @@
               <textarea
                 formControlName="message"
                 rows="6"
-                class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+                class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-shadow"
               ></textarea>
             </div>
             
@@ -72,7 +72,7 @@
             <button
               type="submit"
               [disabled]="!contactForm.valid || isSubmitting()"
-              class="w-full bg-accent text-white py-3 rounded-lg font-medium hover:bg-accent-dark transition-colors duration-300 disabled:opacity-50"
+              class="w-full bg-accent text-white py-3 rounded-full font-semibold tracking-wide shadow-md hover:bg-accent-dark hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-md"
             >
               @if (isSubmitting()) {
                 {{ 'contact.form.submitting' | translate }}

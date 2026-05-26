@@ -125,7 +125,7 @@
   <button
     type="submit"
     [disabled]="!membershipForm.valid || isSubmitting()"
-    class="mt-6 w-full bg-accent text-white py-3 rounded-lg font-medium hover:bg-accent-dark transition-colors duration-300 disabled:opacity-50"
+    class="mt-6 w-full bg-accent text-white py-3 rounded-full font-semibold tracking-wide shadow-md hover:bg-accent-dark hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-md"
   >
     @if (isSubmitting()) {
       {{ 'club.join.form.submitting' | translate }}

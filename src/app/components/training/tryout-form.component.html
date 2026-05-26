@@ -1,11 +1,11 @@
-<form [formGroup]="tryoutForm" (ngSubmit)="onSubmit()" class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-8">
+<form [formGroup]="tryoutForm" (ngSubmit)="onSubmit()" class="bg-secondary-dark dark:bg-dark-surface rounded-xl border border-gray-100 dark:border-white/8 p-8">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div>
       <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'training.tryout.form.name' | translate }} *</label>
       <input
         type="text"
         formControlName="name"
-        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-shadow"
       >
     </div>
     <div>
@@ -14,7 +14,7 @@
         type="email"
         formControlName="email"
         required
-                class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+                class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-shadow"
       >
     </div>
     <div>
@@ -22,7 +22,7 @@
       <input
         type="tel"
         formControlName="phone"
-        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-shadow"
       >
     </div>
     <div>
@@ -30,7 +30,7 @@
       <input
         type="number"
         formControlName="age"
-        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-shadow"
       >
     </div>
     <div class="md:col-span-2">
@@ -38,7 +38,7 @@
       <textarea
         formControlName="experience"
         rows="4"
-        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-shadow"
       ></textarea>
     </div>
     <div class="md:col-span-2">
@@ -46,7 +46,7 @@
       <textarea
         formControlName="message"
         rows="6"
-        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border-0 focus:ring-2 focus:ring-accent"
+        class="w-full p-3 rounded-lg bg-secondary dark:bg-dark-secondary text-primary dark:text-white border border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-shadow"
       ></textarea>
     </div>
   </div>
@@ -67,7 +67,7 @@
   <button
     type="submit"
     [disabled]="!tryoutForm.valid || isSubmitting()"
-    class="mt-6 w-full bg-accent text-white py-3 rounded-lg font-medium hover:bg-accent-dark transition-colors duration-300 disabled:opacity-50"
+    class="mt-6 w-full bg-accent text-white py-3 rounded-full font-semibold tracking-wide shadow-md hover:bg-accent-dark hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-md"
   >
     @if (isSubmitting()) {
       {{ 'training.tryout.form.submitting' | translate }}

@@ -36,7 +36,7 @@
     "@types/express": "^4.17.21",
     "@types/node": "22.10.6",
     "autoprefixer": "^10.4.17",
-    "baseline-browser-mapping": "latest",
+    "baseline-browser-mapping": "^2.10.32",
     "imagemin": "^9.0.1",
     "imagemin-avif": "^0.1.6",
     "imagemin-webp": "^8.0.0",
