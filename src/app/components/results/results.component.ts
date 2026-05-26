@@ -50,7 +50,6 @@ export class ResultsComponent implements OnInit, OnDestroy {
   #messageHandler = (event: MessageEvent) => {
     if (event.origin !== WIDGET_ORIGIN) return;
     const { type, height } = event.data ?? {};
-    console.log({ type, height });
     if (type !== "iframeHeight" || typeof height !== "number") return;
 
     const adjusted = Math.max(height, MIN_HEIGHT);
