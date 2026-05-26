@@ -16,10 +16,10 @@ export interface MembershipApplication {
   providedIn: 'root'
 })
 export class MembershipService {
-  #supabaseClient = inject(SupabaseService).client;
+  #supabaseService = inject(SupabaseService);
 
   async submitMembershipApplication(application: MembershipApplication) {
-    const { error: functionError } = await this.#supabaseClient.functions.invoke('send-membership-application', {
+    const { error: functionError } = await this.#supabaseService.client.functions.invoke('send-membership-application', {
       body: { application }
     });
 

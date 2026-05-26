@@ -13,11 +13,10 @@ export interface ContactMessage {
   providedIn: 'root'
 })
 export class ContactService {
-  #supabaseClient = inject(SupabaseService).client;
+  #supabaseService = inject(SupabaseService);
 
   async submitContactForm(message: ContactMessage) {
-    // Trigger Edge Function to send email
-    const { error: functionError } = await this.#supabaseClient.functions.invoke('send-contact-email', {
+    const { error: functionError } = await this.#supabaseService.client.functions.invoke('send-contact-email', {
       body: { message }
     });
 

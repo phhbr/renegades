@@ -15,10 +15,10 @@ export interface TryoutRequest {
   providedIn: 'root'
 })
 export class TryoutService {
-  #supabaseClient = inject(SupabaseService).client;
+  #supabaseService = inject(SupabaseService);
 
   async submitTryoutForm(request: TryoutRequest) {
-    const { error: functionError } = await this.#supabaseClient.functions.invoke('send-tryout-email', {
+    const { error: functionError } = await this.#supabaseService.client.functions.invoke('send-tryout-email', {
       body: { request }
     });
 
