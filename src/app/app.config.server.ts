@@ -9,9 +9,9 @@ const serverRoutes: ServerRoute[] = [
   { path: 'impressum', renderMode: RenderMode.Prerender },
   { path: 'datenschutz', renderMode: RenderMode.Prerender },
   { path: 'ergebnisse', renderMode: RenderMode.Prerender },
-  { path: 'contact', renderMode: RenderMode.Server },
-  { path: 'club', renderMode: RenderMode.Server },
-  { path: 'training', renderMode: RenderMode.Server },
+  { path: 'contact', renderMode: RenderMode.Prerender },
+  { path: 'club', renderMode: RenderMode.Prerender },
+  { path: 'training', renderMode: RenderMode.Prerender },
 ];
 
 const serverConfig: ApplicationConfig = {
