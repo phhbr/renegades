@@ -13,6 +13,7 @@ import { CookieConsentComponent } from "./components/cookie-consent/cookie-conse
 import { FooterComponent } from "./components/footer/footer.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { AnalyticsService } from "./services/analytics.service";
+import { LanguageService } from "./services/language.service";
 import { MetaService } from "./services/meta.service";
 import { environment } from "../environments/environment";
 
@@ -31,6 +32,7 @@ import { environment } from "../environments/environment";
 export class AppComponent implements AfterViewInit {
   isDarkMode = signal(false);
   #analyticsService = inject(AnalyticsService);
+  #languageService = inject(LanguageService);
   #metaService = inject(MetaService);
   #platformId = inject(PLATFORM_ID);
   #router = inject(Router);
@@ -54,6 +56,13 @@ export class AppComponent implements AfterViewInit {
     effect(() => {
       if (isPlatformBrowser(this.#platformId)) {
         document.documentElement.classList.toggle("dark", this.isDarkMode());
+      }
+    });
+
+    effect(() => {
+      const lang = this.#languageService.getCurrentLang();
+      if (isPlatformBrowser(this.#platformId)) {
+        document.documentElement.setAttribute('lang', lang);
       }
     });
   }

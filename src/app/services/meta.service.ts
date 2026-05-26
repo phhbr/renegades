@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 
 export interface PageMeta {
@@ -18,6 +19,21 @@ export interface PageMeta {
 export class MetaService {
   private meta = inject(Meta);
   private title = inject(Title);
+  private doc = inject(DOCUMENT);
+
+  private setLinkTag(rel: string, href: string, hreflang?: string): void {
+    const selector = hreflang
+      ? `link[rel="${rel}"][hreflang="${hreflang}"]`
+      : `link[rel="${rel}"]:not([hreflang])`;
+    let el = this.doc.head.querySelector<HTMLLinkElement>(selector);
+    if (!el) {
+      el = this.doc.createElement('link');
+      el.setAttribute('rel', rel);
+      if (hreflang) el.setAttribute('hreflang', hreflang);
+      this.doc.head.appendChild(el);
+    }
+    el.setAttribute('href', href);
+  }
 
   updateMeta(data: PageMeta): void {
     // Update title
@@ -69,12 +85,23 @@ export class MetaService {
       });
     }
 
-    // Update canonical
+    // Update og:url
+    const pageUrl = data.url ?? data.canonical;
+    if (pageUrl) {
+      this.meta.updateTag({ property: 'og:url', content: pageUrl });
+    }
+
+    // Update canonical link tag
     if (data.canonical) {
-      this.meta.updateTag({
-        rel: 'canonical',
-        href: data.canonical
-      });
+      this.setLinkTag('canonical', data.canonical);
+    }
+
+    // Update hreflang alternate links
+    if (data.canonical) {
+      const base = data.canonical.split('?')[0];
+      this.setLinkTag('alternate', `${base}?lang=de`, 'de');
+      this.setLinkTag('alternate', `${base}?lang=en`, 'en');
+      this.setLinkTag('alternate', base, 'x-default');
     }
 
     // Update Twitter Card
