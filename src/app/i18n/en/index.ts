@@ -10,6 +10,7 @@ import { sponsoring } from './sponsoring';
 import { contact } from './contact';
 import { footer } from './footer';
 import { legal } from './legal';
+import { results } from './results';
 
 export const en = {
   ...nav,
@@ -23,5 +24,6 @@ export const en = {
   ...sponsoring,
   ...contact,
   ...footer,
-  ...legal
+  ...legal,
+  ...results
 };

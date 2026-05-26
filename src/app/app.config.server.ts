@@ -8,6 +8,7 @@ const serverRoutes: ServerRoute[] = [
   { path: 'sponsoring', renderMode: RenderMode.Prerender },
   { path: 'impressum', renderMode: RenderMode.Prerender },
   { path: 'datenschutz', renderMode: RenderMode.Prerender },
+  { path: 'ergebnisse', renderMode: RenderMode.Prerender },
   // Form pages: Supabase creates WebSocket connections server-side that block prerender.
   // These pages are pure client-side forms with no SEO-critical content.
   { path: 'contact', renderMode: RenderMode.Client },

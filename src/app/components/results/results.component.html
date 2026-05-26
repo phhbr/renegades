@@ -1,0 +1,41 @@
+<main class="main-content bg-secondary dark:bg-dark-secondary text-primary dark:text-white min-h-screen py-12">
+  <div class="container mx-auto px-4">
+    <h1 class="text-4xl font-bold mb-12 text-center tracking-tight text-primary dark:text-white">{{ 'results.title' | translate }}</h1>
+
+    <div class="space-y-16">
+      <!-- First Team -->
+      <section>
+        <h2 class="text-3xl font-bold mb-8 tracking-tight text-primary dark:text-white">{{ 'results.firstTeam' | translate }}</h2>
+        <div class="rounded-xl overflow-hidden shadow-sm bg-secondary-dark dark:bg-dark-surface">
+          <iframe
+            #firstTeamIframe
+            [src]="firstTeamUrl"
+            [style.height.px]="firstTeamHeight()"
+            class="w-full"
+            style="border: none;"
+            scrolling="no"
+            [title]="'results.firstTeam' | translate"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Second Team -->
+      <section>
+        <h2 class="text-3xl font-bold mb-8 tracking-tight text-primary dark:text-white">{{ 'results.secondTeam' | translate }}</h2>
+        <div class="rounded-xl overflow-hidden shadow-sm bg-secondary-dark dark:bg-dark-surface">
+          <iframe
+            #secondTeamIframe
+            [src]="secondTeamUrl"
+            [style.height.px]="secondTeamHeight()"
+            class="w-full"
+            style="border: none;"
+            scrolling="no"
+            [title]="'results.secondTeam' | translate"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>

@@ -22,6 +22,10 @@ export const routes: Routes = [
     loadComponent: () => import('./components/sponsoring/sponsoring.component').then(m => m.SponsoringComponent)
   },
   {
+    path: 'ergebnisse',
+    loadComponent: () => import('./components/results/results.component').then(m => m.ResultsComponent)
+  },
+  {
     path: 'contact',
     loadComponent: () => import('./components/contact/contact.component').then(m => m.ContactComponent)
   },

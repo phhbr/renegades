@@ -4,5 +4,6 @@ export const nav = {
   'nav.club': 'Club',
   'nav.training': 'Training',
   'nav.sponsoring': 'Sponsoring',
+  'nav.results': 'Results',
   'nav.contact': 'Contact'
 };

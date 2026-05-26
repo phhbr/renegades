@@ -38,23 +38,28 @@
           routerLinkActive="!text-accent"
           class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
         >{{ 'nav.team' | translate }}</a>
-        <a 
-          routerLink="/club" 
+        <a
+          routerLink="/ergebnisse"
+          routerLinkActive="!text-accent"
+          class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+        >{{ 'nav.results' | translate }}</a>
+        <a
+          routerLink="/club"
           routerLinkActive="!text-accent"
           class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
         >{{ 'nav.club' | translate }}</a>
-        <a 
-          routerLink="/training" 
+        <a
+          routerLink="/training"
           routerLinkActive="!text-accent"
           class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
         >{{ 'nav.training' | translate }}</a>
-        <a 
-          routerLink="/sponsoring" 
+        <a
+          routerLink="/sponsoring"
           routerLinkActive="!text-accent"
           class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
         >{{ 'nav.sponsoring' | translate }}</a>
-        <a 
-          routerLink="/contact" 
+        <a
+          routerLink="/contact"
           routerLinkActive="!text-accent"
           class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
         >{{ 'nav.contact' | translate }}</a>
@@ -94,8 +99,14 @@
             (click)="closeMenu()"
             class="block px-3 py-2 rounded-md text-base font-medium text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
           >{{ 'nav.team' | translate }}</a>
-          <a 
-            routerLink="/club" 
+          <a
+            routerLink="/ergebnisse"
+            routerLinkActive="!text-accent bg-secondary-dark dark:bg-dark-primary/10"
+            (click)="closeMenu()"
+            class="block px-3 py-2 rounded-md text-base font-medium text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+          >{{ 'nav.results' | translate }}</a>
+          <a
+            routerLink="/club"
             routerLinkActive="!text-accent bg-secondary-dark dark:bg-dark-primary/10"
             (click)="closeMenu()"
             class="block px-3 py-2 rounded-md text-base font-medium text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
