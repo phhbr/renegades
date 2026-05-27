@@ -23,7 +23,15 @@ export const routes: Routes = [
   },
   {
     path: 'ergebnisse',
-    loadComponent: () => import('./components/results/results.component').then(m => m.ResultsComponent)
+    children: [
+      { path: '', redirectTo: '1-mannschaft/spielplan', pathMatch: 'full' },
+      { path: '1-mannschaft', redirectTo: '1-mannschaft/spielplan', pathMatch: 'full' },
+      { path: '2-mannschaft', redirectTo: '2-mannschaft/spielplan', pathMatch: 'full' },
+      {
+        path: ':team/:tab',
+        loadComponent: () => import('./components/results/results.component').then(m => m.ResultsComponent)
+      }
+    ]
   },
   {
     path: 'contact',
