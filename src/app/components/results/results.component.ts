@@ -2,82 +2,99 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  computed,
+  effect,
   inject,
   OnDestroy,
   OnInit,
   PLATFORM_ID,
   signal,
+  untracked,
   viewChild,
-} from "@angular/core";
-import { isPlatformBrowser } from "@angular/common";
-import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+} from '@angular/core';
+import { isPlatformBrowser, NgClass } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { TranslatePipe } from '../../pipes/translate.pipe';
+import { MetaService } from '../../services/meta.service';
 
-import { TranslatePipe } from "../../pipes/translate.pipe";
-import { MetaService } from "../../services/meta.service";
+type Team = '1-mannschaft' | '2-mannschaft';
+type Tab = 'spielplan' | 'tabelle' | 'live';
 
-const WIDGET_ORIGIN = "https://claudiost.github.io";
-const MIN_HEIGHT = 1454;
+const WIDGET_ORIGIN = 'https://claudiost.github.io';
+const WIDGET_BASE = 'https://claudiost.github.io/renegades-scores/widget.html';
+const MIN_HEIGHT = 400;
+const TEAM_IDS: Record<Team, number> = { '1-mannschaft': 159, '2-mannschaft': 287 };
 
 @Component({
-  selector: "app-results",
+  selector: 'app-results',
   standalone: true,
-  imports: [TranslatePipe],
-  templateUrl: "./results.component.html",
+  imports: [TranslatePipe, RouterLink, NgClass],
+  templateUrl: './results.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ResultsComponent implements OnInit, OnDestroy {
   #meta = inject(MetaService);
   #sanitizer = inject(DomSanitizer);
   #platformId = inject(PLATFORM_ID);
+  #route = inject(ActivatedRoute);
 
-  firstTeamIframe = viewChild<ElementRef<HTMLIFrameElement>>("firstTeamIframe");
-  secondTeamIframe = viewChild<ElementRef<HTMLIFrameElement>>(
-    "secondTeamIframe",
-  );
+  readonly tabs: Tab[] = ['spielplan', 'tabelle', 'live'];
 
-  firstTeamHeight = signal(MIN_HEIGHT);
-  secondTeamHeight = signal(MIN_HEIGHT);
+  readonly #params = toSignal(this.#route.params, { initialValue: {} });
 
-  firstTeamUrl: SafeResourceUrl = this.#sanitizer
-    .bypassSecurityTrustResourceUrl(
-      "https://claudiost.github.io/renegades-scores/widget.html?t=159&color=ffab00",
+  readonly team = computed<Team>(() => {
+    const t = this.#params()['team'];
+    return t === '2-mannschaft' ? '2-mannschaft' : '1-mannschaft';
+  });
+
+  readonly tab = computed<Tab>(() => {
+    const t = this.#params()['tab'];
+    return t === 'tabelle' ? 'tabelle' : t === 'live' ? 'live' : 'spielplan';
+  });
+
+  readonly iframeHeight = signal(MIN_HEIGHT);
+
+  readonly iframeUrl = computed<SafeResourceUrl | null>(() => {
+    if (this.tab() !== 'spielplan') return null;
+    const id = TEAM_IDS[this.team()];
+    return this.#sanitizer.bypassSecurityTrustResourceUrl(
+      `${WIDGET_BASE}?t=${id}&view=spielplan&color=ffab00`,
     );
-  secondTeamUrl: SafeResourceUrl = this.#sanitizer
-    .bypassSecurityTrustResourceUrl(
-      "https://claudiost.github.io/renegades-scores/widget.html?t=287&color=ffab00",
-    );
+  });
 
-  #messageHandler = (event: MessageEvent) => {
+  readonly iframeRef = viewChild<ElementRef<HTMLIFrameElement>>('widgetIframe');
+
+  readonly #resetHeight = effect(() => {
+    this.iframeUrl(); // track URL changes (team or tab switch)
+    untracked(() => this.iframeHeight.set(MIN_HEIGHT));
+  });
+
+  readonly #messageHandler = (event: MessageEvent) => {
     if (event.origin !== WIDGET_ORIGIN) return;
     const { type, height } = event.data ?? {};
-    if (type !== "iframeHeight" || typeof height !== "number") return;
-
-    const adjusted = Math.max(height, MIN_HEIGHT);
-    if (event.source === this.firstTeamIframe()?.nativeElement.contentWindow) {
-      this.firstTeamHeight.set(adjusted);
-    } else if (
-      event.source === this.secondTeamIframe()?.nativeElement.contentWindow
-    ) {
-      this.secondTeamHeight.set(adjusted);
+    if (type !== 'iframeHeight' || typeof height !== 'number') return;
+    if (event.source === this.iframeRef()?.nativeElement.contentWindow) {
+      this.iframeHeight.set(Math.max(height, MIN_HEIGHT));
     }
   };
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.#meta.updateMeta({
-      title: "Ergebnisse & Tabelle - Nürnberg Renegades",
+      title: 'Ergebnisse & Tabelle - Nürnberg Renegades',
       description:
-        "Aktuelle Ergebnisse und Tabellenstände der 1. und 2. Mannschaft der Nürnberg Renegades e.V. in der DFFL.",
-      canonical: "https://nuernberg-renegades.de/ergebnisse",
+        'Aktuelle Spielergebnisse, Tabelle und Spielplan der 1. und 2. Mannschaft der Nürnberg Renegades e.V. in der DFFL.',
+      canonical: 'https://nuernberg-renegades.de/ergebnisse',
     });
-
     if (isPlatformBrowser(this.#platformId)) {
-      window.addEventListener("message", this.#messageHandler);
+      window.addEventListener('message', this.#messageHandler);
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (isPlatformBrowser(this.#platformId)) {
-      window.removeEventListener("message", this.#messageHandler);
+      window.removeEventListener('message', this.#messageHandler);
     }
   }
 }

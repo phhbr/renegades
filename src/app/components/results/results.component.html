@@ -1,41 +1,76 @@
 <main class="main-content bg-secondary dark:bg-dark-secondary text-primary dark:text-white min-h-screen py-12">
   <div class="container mx-auto px-4">
-    <h1 class="text-4xl font-bold mb-12 text-center tracking-tight text-primary dark:text-white">{{ 'results.title' | translate }}</h1>
+    <h1 class="text-4xl font-bold mb-8 text-center tracking-tight">
+      {{ 'results.title' | translate }}
+    </h1>
 
-    <div class="space-y-16">
-      <!-- First Team -->
-      <section>
-        <h2 class="text-3xl font-bold mb-8 tracking-tight text-primary dark:text-white">{{ 'results.firstTeam' | translate }}</h2>
-        <div class="rounded-xl overflow-hidden shadow-sm bg-secondary-dark dark:bg-dark-surface">
-          <iframe
-            #firstTeamIframe
-            [src]="firstTeamUrl"
-            [style.height.px]="firstTeamHeight()"
-            class="w-full"
-            style="border: none;"
-            scrolling="no"
-            [title]="'results.firstTeam' | translate"
-            loading="lazy"
-          ></iframe>
-        </div>
-      </section>
-
-      <!-- Second Team -->
-      <section>
-        <h2 class="text-3xl font-bold mb-8 tracking-tight text-primary dark:text-white">{{ 'results.secondTeam' | translate }}</h2>
-        <div class="rounded-xl overflow-hidden shadow-sm bg-secondary-dark dark:bg-dark-surface">
-          <iframe
-            #secondTeamIframe
-            [src]="secondTeamUrl"
-            [style.height.px]="secondTeamHeight()"
-            class="w-full"
-            style="border: none;"
-            scrolling="no"
-            [title]="'results.secondTeam' | translate"
-            loading="lazy"
-          ></iframe>
-        </div>
-      </section>
+    <!-- Team Selector -->
+    <div class="flex gap-3 mb-8 justify-center">
+      <a
+        routerLink="/ergebnisse/1-mannschaft/spielplan"
+        class="px-5 py-2 rounded-full font-semibold text-sm transition-colors duration-200"
+        [ngClass]="team() === '1-mannschaft'
+          ? 'bg-accent text-primary'
+          : 'bg-secondary-dark dark:bg-dark-surface text-gray-400'"
+      >{{ 'results.team1' | translate }}</a>
+      <a
+        routerLink="/ergebnisse/2-mannschaft/spielplan"
+        class="px-5 py-2 rounded-full font-semibold text-sm transition-colors duration-200"
+        [ngClass]="team() === '2-mannschaft'
+          ? 'bg-accent text-primary'
+          : 'bg-secondary-dark dark:bg-dark-surface text-gray-400'"
+      >{{ 'results.team2' | translate }}</a>
     </div>
+
+    <!-- Tab Bar -->
+    <div class="border-b border-gray-200 dark:border-white/10 mb-8">
+      <nav class="flex">
+        @for (t of tabs; track t) {
+          <a
+            [routerLink]="'/ergebnisse/' + team() + '/' + t"
+            class="px-4 py-3 text-sm font-medium transition-colors duration-200 border-b-2 -mb-px flex items-center gap-2"
+            [ngClass]="tab() === t
+              ? 'border-accent text-accent'
+              : 'border-transparent text-gray-500 dark:text-gray-400'"
+          >
+            @if (t === 'live') {
+              <span class="inline-block w-2 h-2 rounded-full bg-gray-400"></span>
+            }
+            {{ 'results.tab.' + t | translate }}
+          </a>
+        }
+      </nav>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="rounded-xl overflow-hidden bg-secondary-dark dark:bg-dark-surface">
+      @if (tab() === 'spielplan') {
+        @if (iframeUrl(); as url) {
+          <iframe
+            #widgetIframe
+            [src]="url"
+            [style.height.px]="iframeHeight()"
+            class="w-full"
+            style="border: none;"
+            scrolling="no"
+            [title]="'results.tab.spielplan' | translate"
+            loading="lazy"
+          ></iframe>
+        }
+      } @else if (tab() === 'tabelle') {
+        <div class="flex flex-col items-center justify-center py-16 gap-4 text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M3 14h18M10 3v18M14 3v18" />
+          </svg>
+          <p class="text-sm">{{ 'results.placeholder' | translate }}</p>
+        </div>
+      } @else {
+        <div class="flex flex-col items-center justify-center py-16 gap-4 text-gray-400">
+          <span class="inline-block w-3 h-3 rounded-full bg-gray-400"></span>
+          <p class="text-sm">{{ 'results.noLiveGame' | translate }}</p>
+        </div>
+      }
+    </div>
+
   </div>
 </main>
