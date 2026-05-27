@@ -1,5 +1,10 @@
 export const results = {
   'results.title': 'Results',
-  'results.firstTeam': '1st Team',
-  'results.secondTeam': '2nd Team',
+  'results.team1': '1st Team',
+  'results.team2': '2nd Team',
+  'results.tab.spielplan': 'Schedule',
+  'results.tab.tabelle': 'Standings',
+  'results.tab.live': 'Live',
+  'results.placeholder': 'Coming soon',
+  'results.noLiveGame': 'No live game right now',
 };
