@@ -15,3 +15,7 @@ supabase/config.toml
 
 # ENV
 .env
+
+# Local planning docs
+docs/
+.superpowers/
