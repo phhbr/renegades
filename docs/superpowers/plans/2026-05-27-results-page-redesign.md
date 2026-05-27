@@ -162,12 +162,10 @@ import {
   untracked,
   viewChild,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgClass } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
-
-import { NgClass } from '@angular/common';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { MetaService } from '../../services/meta.service';
 
@@ -267,14 +265,14 @@ export class ResultsComponent implements OnInit, OnDestroy {
         routerLink="/ergebnisse/1-mannschaft/spielplan"
         class="px-5 py-2 rounded-full font-semibold text-sm transition-colors duration-200"
         [ngClass]="team() === '1-mannschaft'
-          ? 'bg-accent text-black'
+          ? 'bg-accent text-primary'
           : 'bg-secondary-dark dark:bg-dark-surface text-gray-400'"
       >{{ 'results.team1' | translate }}</a>
       <a
         routerLink="/ergebnisse/2-mannschaft/spielplan"
         class="px-5 py-2 rounded-full font-semibold text-sm transition-colors duration-200"
         [ngClass]="team() === '2-mannschaft'
-          ? 'bg-accent text-black'
+          ? 'bg-accent text-primary'
           : 'bg-secondary-dark dark:bg-dark-surface text-gray-400'"
       >{{ 'results.team2' | translate }}</a>
     </div>
@@ -286,11 +284,9 @@ export class ResultsComponent implements OnInit, OnDestroy {
           <a
             [routerLink]="'/ergebnisse/' + team() + '/' + t"
             class="px-4 py-3 text-sm font-medium transition-colors duration-200 border-b-2 -mb-px flex items-center gap-2"
-            [class.border-accent]="tab() === t"
-            [class.text-accent]="tab() === t"
-            [class.border-transparent]="tab() !== t"
-            [class.text-gray-500]="tab() !== t"
-            [class.dark:text-gray-400]="tab() !== t"
+            [ngClass]="tab() === t
+              ? 'border-accent text-accent'
+              : 'border-transparent text-gray-500 dark:text-gray-400'"
           >
             @if (t === 'live') {
               <span class="inline-block w-2 h-2 rounded-full bg-gray-400"></span>
