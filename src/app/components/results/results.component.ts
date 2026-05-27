@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Params, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { MetaService } from '../../services/meta.service';
@@ -42,7 +42,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
 
   readonly tabs: Tab[] = ['spielplan', 'tabelle', 'live'];
 
-  readonly #params = toSignal(this.#route.params, { initialValue: {} });
+  readonly #params = toSignal(this.#route.params, { initialValue: {} as Params });
 
   readonly team = computed<Team>(() => {
     const t = this.#params()['team'];
@@ -71,6 +71,18 @@ export class ResultsComponent implements OnInit, OnDestroy {
     untracked(() => this.iframeHeight.set(MIN_HEIGHT));
   });
 
+  readonly #updateMeta = effect(() => {
+    const team = this.team();
+    const tab = this.tab();
+    const canonicalBase = 'https://nuernberg-renegades.de/ergebnisse';
+    this.#meta.updateMeta({
+      title: 'Ergebnisse & Tabelle - Nürnberg Renegades',
+      description:
+        'Aktuelle Spielergebnisse, Tabelle und Spielplan der 1. und 2. Mannschaft der Nürnberg Renegades e.V. in der DFFL.',
+      canonical: `${canonicalBase}/${team}/${tab}`,
+    });
+  });
+
   readonly #messageHandler = (event: MessageEvent) => {
     if (event.origin !== WIDGET_ORIGIN) return;
     const { type, height } = event.data ?? {};
@@ -81,12 +93,6 @@ export class ResultsComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit(): void {
-    this.#meta.updateMeta({
-      title: 'Ergebnisse & Tabelle - Nürnberg Renegades',
-      description:
-        'Aktuelle Spielergebnisse, Tabelle und Spielplan der 1. und 2. Mannschaft der Nürnberg Renegades e.V. in der DFFL.',
-      canonical: 'https://nuernberg-renegades.de/ergebnisse',
-    });
     if (isPlatformBrowser(this.#platformId)) {
       window.addEventListener('message', this.#messageHandler);
     }
