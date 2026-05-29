@@ -43,7 +43,7 @@
     {
       "name": "Oscar Melendez",
       "role": null,
-      "image_url": "/assets/images/players/5.jpg",
+      "image_url": null,
       "number": "5",
       "position": "blitz",
       "member_type": "player",
@@ -231,7 +231,7 @@
       "updated_at": "2026-05-28T16:16:08.635Z"
     },
     {
-      "name": "Nicolas Palme",
+      "name": "Nico Palme",
       "role": null,
       "image_url": null,
       "number": "33",
@@ -271,7 +271,7 @@
       "updated_at": "2026-05-28T16:16:08.635Z"
     },
     {
-      "name": "J Bulger",
+      "name": "Joseph Bulger",
       "role": null,
       "image_url": null,
       "number": "48",
