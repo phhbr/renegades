@@ -6,5 +6,4 @@ export const results = {
   'results.tab.tabelle': 'Standings',
   'results.tab.live': 'Live',
   'results.placeholder': 'Coming soon',
-  'results.noLiveGame': 'No live game right now',
 };
