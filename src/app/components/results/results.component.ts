@@ -58,9 +58,8 @@ export class ResultsComponent implements OnInit, OnDestroy {
 
   readonly iframeUrl = computed<SafeResourceUrl | null>(() => {
     const t = this.tab();
-    if (t !== 'spielplan' && t !== 'tabelle') return null;
     const id = TEAM_IDS[this.team()];
-    const view = t === 'tabelle' ? 'table' : 'spielplan';
+    const view = t === 'tabelle' ? 'table' : t === 'live' ? 'live' : 'spielplan';
     return this.#sanitizer.bypassSecurityTrustResourceUrl(
       `${WIDGET_BASE}?t=${id}&view=${view}&color=ffab00`,
     );

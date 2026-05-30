@@ -44,24 +44,17 @@
 
     <!-- Tab Content -->
     <div class="rounded-xl overflow-hidden bg-secondary-dark dark:bg-dark-surface">
-      @if (tab() === 'spielplan' || tab() === 'tabelle') {
-        @if (iframeUrl(); as url) {
-          <iframe
-            #widgetIframe
-            [src]="url"
-            [style.height.px]="iframeHeight()"
-            [style.border]="0"
-            class="w-full"
-            scrolling="no"
-            [title]="'results.tab.' + tab() | translate"
-            loading="lazy"
-          ></iframe>
-        }
-      } @else {
-        <div class="flex flex-col items-center justify-center py-16 gap-4 text-gray-400">
-          <span class="inline-block w-3 h-3 rounded-full bg-gray-400"></span>
-          <p class="text-sm">{{ 'results.noLiveGame' | translate }}</p>
-        </div>
+      @if (iframeUrl(); as url) {
+        <iframe
+          #widgetIframe
+          [src]="url"
+          [style.height.px]="iframeHeight()"
+          [style.border]="0"
+          class="w-full"
+          scrolling="no"
+          [title]="'results.tab.' + tab() | translate"
+          loading="lazy"
+        ></iframe>
       }
     </div>
 
