@@ -10,7 +10,7 @@ export const faq = {
   'faq.q4.question': 'Wie kann ich Mitglied werden oder zum Probetraining kommen?',
   'faq.q4.answer': 'Melde dich über unser Kontaktformular oder komm direkt zu einem unserer Trainingstermine vorbei. Den Mitgliedsantrag findest du auf unserer Vereinsseite.',
   'faq.q5.question': 'Welche Ausrüstung brauche ich zu Beginn?',
-  'faq.q5.answer': 'Für den Einstieg reichen Sportkleidung und feste Schuhe. Flags und weiteres Equipment stellen wir, sobald du regelmäßig am Training teilnimmst.',
+  'faq.q5.answer': 'Für den Einstieg reichen Sportkleidung und Fußballschuhe. Flags und weiteres Equipment stellen wir, sobald du regelmäßig am Training teilnimmst.',
   'faq.q6.question': 'Wann und wo trainiert ihr?',
   'faq.q6.answer': 'Unsere Trainingszeiten und -orte für Saison und Nebensaison findest du auf unserer Trainingsseite.',
   'faq.q7.question': 'In welchen Ligen spielt ihr?',

@@ -10,7 +10,7 @@ export const faq = {
   'faq.q4.question': 'How can I join or attend a trial training?',
   'faq.q4.answer': 'Get in touch through our contact form or come directly to one of our training sessions. You can find the membership application on our club page.',
   'faq.q5.question': 'What equipment do I need to get started?',
-  'faq.q5.answer': 'Sportswear and sturdy shoes are enough to get started. We provide flags and further equipment once you\'re training with us regularly.',
+  'faq.q5.answer': 'Sportswear and cleats are enough to get started. We provide flags and further equipment once you\'re training with us regularly.',
   'faq.q6.question': 'When and where do you train?',
   'faq.q6.answer': 'You can find our in-season and off-season training times and locations on our training page.',
   'faq.q7.question': 'Which leagues do you play in?',
