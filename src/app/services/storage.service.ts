@@ -44,6 +44,23 @@ export class StorageService {
     return this.#request?.headers?.get(name) ?? null;
   }
 
+  getQueryParam(name: string): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+
+    const url = this.#request?.url;
+    if (!url) {
+      return null;
+    }
+
+    try {
+      return new URL(url).searchParams.get(name);
+    } catch {
+      return null;
+    }
+  }
+
   getCookie(name: string): string | null {
     if (isPlatformBrowser(this.platformId)) {
       return this.#readCookieHeader(document.cookie, name);

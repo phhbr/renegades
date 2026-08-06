@@ -1,5 +1,8 @@
 .hero-bg {
-  background-image: url('/assets/images/hero-flag-football.avif');
+  background-image: image-set(
+    url('/assets/images/optimized/hero-flag-football-1920w.avif') type('image/avif'),
+    url('/assets/images/optimized/hero-flag-football-1920w.webp') type('image/webp')
+  );
 }
 
 .hero-overlay {
@@ -31,6 +34,13 @@
 }
 
 @media (max-width: 768px) {
+  .hero-bg {
+    background-image: image-set(
+      url('/assets/images/optimized/hero-flag-football-640w.avif') type('image/avif'),
+      url('/assets/images/optimized/hero-flag-football-640w.webp') type('image/webp')
+    );
+  }
+
   .hero-overlay {
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.93), rgba(17, 18, 23, 0.9) 50%, rgba(25, 27, 32, 0.84));
   }

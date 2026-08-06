@@ -13,6 +13,13 @@ export class LanguageService {
   #platformId = inject(PLATFORM_ID);
 
   constructor() {
+    // Explicit ?lang= query param (e.g. from hreflang links Google follows) takes priority over any saved preference.
+    const queryLang = this.#localStorage.getQueryParam('lang');
+    if (queryLang === 'de' || queryLang === 'en') {
+      this.setLanguage(queryLang);
+      return;
+    }
+
     const savedLanguage = this.#localStorage.getCookie('preferredLanguage') ?? this.#localStorage.getItem('preferredLanguage');
     if (savedLanguage === 'de' || savedLanguage === 'en') {
       this.currentLangSignal.set(savedLanguage);

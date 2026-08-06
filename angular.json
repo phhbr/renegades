@@ -40,11 +40,14 @@
           "options": {
             "outputMode": "server",
             "server": "src/main.server.ts",
-            "prerender": {
-              "discoverRoutes": true
-            },
             "ssr": {
               "entry": "server.ts"
+            },
+            "security": {
+              "allowedHosts": [
+                "nuernberg-renegades.de",
+                "www.nuernberg-renegades.de"
+              ]
             },
             "assets": [
               {
