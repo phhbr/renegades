@@ -38,6 +38,10 @@ export const routes: Routes = [
     loadComponent: () => import('./components/contact/contact.component').then(m => m.ContactComponent)
   },
   {
+    path: 'faq',
+    loadComponent: () => import('./components/faq/faq.component').then(m => m.FaqComponent)
+  },
+  {
     path: 'impressum',
     loadComponent: () => import('./components/legal/impressum.component').then(m => m.ImpressumComponent)
   },

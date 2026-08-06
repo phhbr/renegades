@@ -1,0 +1,22 @@
+export const faq = {
+  'faq.title': 'Häufig gestellte Fragen',
+  'faq.subtitle': 'Antworten auf die häufigsten Fragen rund um Nürnberg Renegades e.V., Mitgliedschaft und Flag Football.',
+  'faq.q1.question': 'Was ist Flag Football?',
+  'faq.q1.answer': 'Flag Football ist eine kontaktarme Variante des American Football. Anstatt den Ballträger zu tackeln, wird ihm eine Flagge von der Hüfte gezogen. Das macht den Sport zugänglich für alle Alters- und Fitnessstufen.',
+  'faq.q2.question': 'Brauche ich Erfahrung, um mitzumachen?',
+  'faq.q2.answer': 'Nein. Wir heißen Anfänger:innen genauso willkommen wie erfahrene Spieler:innen. Komm einfach zu einem Probetraining vorbei und finde heraus, ob Flag Football zu dir passt.',
+  'faq.q3.question': 'Was kostet die Mitgliedschaft?',
+  'faq.q3.answer': 'Die aktive Spielmitgliedschaft kostet 18 € pro Monat. Andere Mitgliedschaftsarten, zum Beispiel eine fördernde Mitgliedschaft, können abweichende Beiträge haben. Details erfährst du über unser Kontaktformular.',
+  'faq.q4.question': 'Wie kann ich Mitglied werden oder zum Probetraining kommen?',
+  'faq.q4.answer': 'Melde dich über unser Kontaktformular oder komm direkt zu einem unserer Trainingstermine vorbei. Den Mitgliedsantrag findest du auf unserer Vereinsseite.',
+  'faq.q5.question': 'Welche Ausrüstung brauche ich zu Beginn?',
+  'faq.q5.answer': 'Für den Einstieg reichen Sportkleidung und feste Schuhe. Flags und weiteres Equipment stellen wir, sobald du regelmäßig am Training teilnimmst.',
+  'faq.q6.question': 'Wann und wo trainiert ihr?',
+  'faq.q6.answer': 'Unsere Trainingszeiten und -orte für Saison und Nebensaison findest du auf unserer Trainingsseite.',
+  'faq.q7.question': 'In welchen Ligen spielt ihr?',
+  'faq.q7.answer': 'Unsere 1. Mannschaft spielt in der 1. DFFL, Deutschlands höchster Spielklasse. Unsere 2. Mannschaft tritt in der Bayernliga an.',
+  'faq.q8.question': 'Wie kann ich den Verein als Sponsor unterstützen?',
+  'faq.q8.answer': 'Wir freuen uns über Unternehmen, die uns unterstützen möchten. Alle Infos zu Sponsoring-Möglichkeiten findest du auf unserer Sponsoring-Seite.',
+  'faq.cta.contact': 'Weitere Fragen? Kontaktiere uns',
+  'faq.cta.club': 'Zur Mitgliedschaft'
+};

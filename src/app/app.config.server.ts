@@ -12,6 +12,7 @@ const serverRoutes: ServerRoute[] = [
   { path: 'ergebnisse/:team', renderMode: RenderMode.Server },
   { path: 'ergebnisse/:team/:tab', renderMode: RenderMode.Server },
   { path: 'contact', renderMode: RenderMode.Server },
+  { path: 'faq', renderMode: RenderMode.Server },
   { path: 'club', renderMode: RenderMode.Server },
   { path: 'training', renderMode: RenderMode.Server },
 ];

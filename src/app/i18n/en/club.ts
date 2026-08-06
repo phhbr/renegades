@@ -6,7 +6,7 @@ export const club = {
   'club.about.leadership.title': 'Club Leadership',
   'club.about.leadership.description': 'Our club is led by a dedicated board consisting of experienced players and sports managers. The board works on a voluntary basis and is committed to the continuous development of the club and its members.',
   'club.about.successes.title': 'Achievements',
-  'club.about.successes.description': 'Since our foundation, we have achieved remarkable success: promotion to the 1st DFFL Division, multiple regional tournament victories, and the development of over 50 active players. Our club is proud to support both beginners and experienced players.',
+  'club.about.successes.description': 'Since our foundation, we have achieved remarkable success: promotion of our 1st team to the 1st DFFL Division, the growth of a 2nd team competing in the Bayernliga, multiple regional tournament victories, and the development of over 50 active players. Our club is proud to support both beginners and experienced players.',
   'club.membership.title': 'Become a Member',
   'club.membership.description': 'Become part of our flag football family! As a club member, you get access to professional training, tournaments, and a great community of sports enthusiasts.',
   'club.membership.benefits.title': 'Membership Benefits',

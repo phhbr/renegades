@@ -1,6 +1,7 @@
 <main class="main-content bg-secondary dark:bg-dark-secondary text-primary dark:text-white min-h-screen py-12">
   <div class="container mx-auto px-4">
-    <h1 class="text-4xl font-bold mb-12 text-center tracking-tight text-primary dark:text-white">{{ 'team.title' | translate }}</h1>
+    <h1 class="text-4xl font-bold mb-4 text-center tracking-tight text-primary dark:text-white">{{ 'team.title' | translate }}</h1>
+    <p class="mb-12 max-w-3xl mx-auto text-center text-primary/80 dark:text-white/80">{{ 'team.intro' | translate }}</p>
 
     @if (loading()) {
       <div class="flex justify-center items-center py-12">

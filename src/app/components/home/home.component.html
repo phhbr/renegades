@@ -82,6 +82,32 @@
   <section class="relative py-20 md:py-24">
     <div class="container mx-auto max-w-6xl px-6">
       <div class="mb-10 flex items-end justify-between gap-6">
+        <h2 class="display-heading text-3xl font-bold tracking-tight md:text-4xl">{{ 'home.teams.heading' | translate }}</h2>
+        <div class="hidden h-px flex-1 bg-[var(--brand-line)]/60 md:block"></div>
+      </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+        <article class="athletic-card rounded-3xl p-7">
+          <h3 class="display-heading text-xl font-bold tracking-tight text-[var(--ink-0)]">{{ 'home.teams.first.title' | translate }}</h3>
+          <p class="mt-4 leading-relaxed text-[var(--ink-muted)]">{{ 'home.teams.first.description' | translate }}</p>
+        </article>
+        <article class="athletic-card rounded-3xl p-7">
+          <h3 class="display-heading text-xl font-bold tracking-tight text-[var(--ink-0)]">{{ 'home.teams.second.title' | translate }}</h3>
+          <p class="mt-4 leading-relaxed text-[var(--ink-muted)]">{{ 'home.teams.second.description' | translate }}</p>
+        </article>
+      </div>
+      <div class="mt-8">
+        <a routerLink="/ergebnisse" class="btn-base btn-primary btn-size-md" aria-label="See results and standings for both teams">
+          {{ 'home.teams.cta' | translate }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-separator"></div>
+
+  <section class="relative py-20 md:py-24">
+    <div class="container mx-auto max-w-6xl px-6">
+      <div class="mb-10 flex items-end justify-between gap-6">
         <h2 class="display-heading text-3xl font-bold tracking-tight md:text-4xl">{{ 'home.features.heading' | translate }}</h2>
         <div class="hidden h-px flex-1 bg-[var(--brand-line)]/60 md:block"></div>
       </div>

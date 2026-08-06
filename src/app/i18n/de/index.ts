@@ -11,6 +11,7 @@ import { contact } from './contact';
 import { footer } from './footer';
 import { legal } from './legal';
 import { results } from './results';
+import { faq } from './faq';
 
 export const de = {
   ...nav,
@@ -25,5 +26,6 @@ export const de = {
   ...contact,
   ...footer,
   ...legal,
-  ...results
+  ...results,
+  ...faq
 };

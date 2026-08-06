@@ -6,7 +6,7 @@ export const club = {
   'club.about.leadership.title': 'Vereinsführung',
   'club.about.leadership.description': 'Unser Verein wird von einem engagierten Vorstand geleitet, der sich aus erfahrenen Spielern und Sportmanagern zusammensetzt. Der Vorstand arbeitet ehrenamtlich und setzt sich für die kontinuierliche Entwicklung des Vereins und seiner Mitglieder ein.',
   'club.about.successes.title': 'Erfolge',
-  'club.about.successes.description': 'Seit unserer Gründung haben wir beachtliche Erfolge erzielt: Aufstieg in die 1. DFFL Division, mehrere regionale Turniersiege und die Entwicklung von über 50 aktiven Spielern. Unser Verein ist stolz darauf, sowohl Anfänger als auch erfahrene Spieler zu fördern.',
+  'club.about.successes.description': 'Seit unserer Gründung haben wir beachtliche Erfolge erzielt: Aufstieg der 1. Mannschaft in die 1. DFFL Division, der Aufbau einer 2. Mannschaft in der Bayernliga, mehrere regionale Turniersiege und die Entwicklung von über 50 aktiven Spielern. Unser Verein ist stolz darauf, sowohl Anfänger als auch erfahrene Spieler zu fördern.',
   'club.membership.title': 'Mitglied werden',
   'club.membership.description': 'Werden Sie Teil unserer Flag Football Familie! Als Vereinsmitglied erhalten Sie Zugang zu professionellem Training, Turnieren und einer großartigen Gemeinschaft von Sportbegeisterten.',
   'club.membership.benefits.title': 'Mitgliedsvorteile',

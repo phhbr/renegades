@@ -6,7 +6,8 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class LanguageService {
-  private readonly currentLangSignal = signal<string>('en');
+  // German-first site: default to 'de' unless a saved preference or explicit English signal says otherwise.
+  private readonly currentLangSignal = signal<string>('de');
   readonly currentLang = this.currentLangSignal.asReadonly();
   #localStorage = inject(StorageService);
   #platformId = inject(PLATFORM_ID);
@@ -19,15 +20,15 @@ export class LanguageService {
     }
 
     const acceptLanguage = this.#localStorage.getRequestHeader('accept-language');
-    if (acceptLanguage && /(^|[,;\s])de(-|[,;\s]|$)/i.test(acceptLanguage)) {
-      this.currentLangSignal.set('de');
+    if (acceptLanguage && /(^|[,;\s])en(-|[,;\s]|$)/i.test(acceptLanguage) && !/(^|[,;\s])de(-|[,;\s]|$)/i.test(acceptLanguage)) {
+      this.currentLangSignal.set('en');
       return;
     }
 
     if (isPlatformBrowser(this.#platformId)) {
       const browserLang = navigator.language;
-      if (browserLang.startsWith('de')) {
-        this.currentLangSignal.set('de');
+      if (browserLang.startsWith('en') && !browserLang.startsWith('de')) {
+        this.currentLangSignal.set('en');
       }
     }
   }

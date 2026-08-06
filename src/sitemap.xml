@@ -50,6 +50,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nuernberg-renegades.de/contact?lang=en" />
   </url>
   <url>
+    <loc>https://nuernberg-renegades.de/faq</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://nuernberg-renegades.de/faq?lang=de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://nuernberg-renegades.de/faq?lang=en" />
+  </url>
+  <url>
     <loc>https://nuernberg-renegades.de/impressum</loc>
     <lastmod>2025-11-23</lastmod>
     <changefreq>yearly</changefreq>

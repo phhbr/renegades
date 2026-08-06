@@ -1,4 +1,5 @@
 export const footer = {
+  'footer.faq': 'FAQ',
   'footer.impressum': 'Impressum',
   'footer.privacy': 'Datenschutzerklärung',
   'footer.rights': 'Alle Rechte vorbehalten.',

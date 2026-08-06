@@ -1,0 +1,29 @@
+<main class="main-content bg-secondary dark:bg-dark-secondary text-primary dark:text-white min-h-screen py-12">
+  <div class="container mx-auto px-4 max-w-3xl">
+    <h1 class="text-4xl font-bold mb-4 text-center tracking-tight text-primary dark:text-white">{{ 'faq.title' | translate }}</h1>
+    <p class="mb-12 text-center text-primary/80 dark:text-white/80">{{ 'faq.subtitle' | translate }}</p>
+
+    <div class="space-y-4">
+      @for (item of items; track item.questionKey) {
+        <details class="group bg-secondary-dark dark:bg-dark-surface rounded-lg p-6 open:pb-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-primary dark:text-white">
+            {{ item.questionKey | translate }}
+            <svg class="w-5 h-5 flex-shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+          </summary>
+          <p class="mt-4 text-primary/80 dark:text-white/80">{{ item.answerKey | translate }}</p>
+        </details>
+      }
+    </div>
+
+    <div class="mt-12 flex flex-wrap justify-center gap-4">
+      <a routerLink="/contact" class="btn-base btn-primary btn-size-md" aria-label="Contact us with further questions">
+        {{ 'faq.cta.contact' | translate }}
+      </a>
+      <a routerLink="/club" class="btn-base btn-secondary-light btn-size-md" aria-label="Learn more about membership">
+        {{ 'faq.cta.club' | translate }}
+      </a>
+    </div>
+  </div>
+</main>

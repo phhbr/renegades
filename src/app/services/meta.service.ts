@@ -125,11 +125,25 @@ export class MetaService {
 
   setDefault(): void {
     this.updateMeta({
-      title: 'Nürnberg Renegades e.V. - Flag Football Club in Nürnberg | 1. DFFL',
-      description: 'Join Nürnberg Renegades e.V., Nürnberg\'s premier flag football club competing in DFFL First Division. Professional coaching, welcoming community, and competitive play for all skill levels.',
-      keywords: 'flag football nürnberg, flag football nuremberg, DFFL, Deutsche Flag Football Liga, Nürnberg Renegades',
+      title: 'Nürnberg Renegades e.V. - Flag Football Club in Nürnberg | 1. DFFL & Bayernliga',
+      description: 'Join Nürnberg Renegades e.V., Nürnberg\'s flag football club fielding two teams: our 1st team in the 1. DFFL and our 2nd team in the Bayernliga. Professional coaching, welcoming community, and competitive play for all skill levels.',
+      keywords: 'flag football nürnberg, flag football nuremberg, DFFL, Bayernliga flag football, Deutsche Flag Football Liga, Nürnberg Renegades',
       canonical: 'https://nuernberg-renegades.de/',
       image: 'https://nuernberg-renegades.de/assets/images/hero-flag-football.avif'
     });
+  }
+
+  /** Injects/replaces a page-scoped JSON-LD script tag, identified by id. */
+  setJsonLd(id: string, data: unknown): void {
+    this.removeJsonLd(id);
+    const script = this.doc.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = id;
+    script.text = JSON.stringify(data);
+    this.doc.head.appendChild(script);
+  }
+
+  removeJsonLd(id: string): void {
+    this.doc.getElementById(id)?.remove();
   }
 }

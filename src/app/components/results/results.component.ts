@@ -79,7 +79,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
     this.#meta.updateMeta({
       title: 'Ergebnisse, Tabelle & Spielplan | Nürnberg Renegades',
       description:
-        'Aktuelle Spielergebnisse, Tabellen und Spielpläne der 1. und 2. Mannschaft der Nürnberg Renegades e.V. in der DFFL.',
+        'Aktuelle Spielergebnisse, Tabellen und Spielpläne der Nürnberg Renegades e.V.: 1. Mannschaft in der 1. DFFL und 2. Mannschaft in der Bayernliga.',
       canonical: `${canonicalBase}/${team}/${tab}`,
     });
   });

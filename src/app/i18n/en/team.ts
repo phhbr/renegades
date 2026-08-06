@@ -1,5 +1,6 @@
 export const team = {
   'team.title': 'Our Team',
+  'team.intro': 'Nürnberg Renegades e.V. fields two teams: our 1st team competes in the 1. DFFL, Germany\'s top division, while our 2nd team plays in the Bayernliga, giving newer and developing players regular competitive game time.',
   'team.staff.title': 'Coaching Staff',
   'team.players.title': 'Players',
   'team.role.ceo': 'Club President',

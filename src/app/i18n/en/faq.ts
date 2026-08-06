@@ -1,0 +1,22 @@
+export const faq = {
+  'faq.title': 'Frequently Asked Questions',
+  'faq.subtitle': 'Answers to the most common questions about Nürnberg Renegades e.V., membership, and flag football.',
+  'faq.q1.question': 'What is flag football?',
+  'faq.q1.answer': 'Flag football is a low-contact variant of American football. Instead of tackling the ball carrier, defenders pull a flag from their belt. That makes the sport accessible to all ages and fitness levels.',
+  'faq.q2.question': 'Do I need experience to join?',
+  'faq.q2.answer': 'No. We welcome beginners just as much as experienced players. Come to a trial training session and find out if flag football is for you.',
+  'faq.q3.question': 'How much does membership cost?',
+  'faq.q3.answer': 'Active playing membership costs 18 € per month. Other membership types, such as a supporting membership, may have different rates. Reach out via our contact form for details.',
+  'faq.q4.question': 'How can I join or attend a trial training?',
+  'faq.q4.answer': 'Get in touch through our contact form or come directly to one of our training sessions. You can find the membership application on our club page.',
+  'faq.q5.question': 'What equipment do I need to get started?',
+  'faq.q5.answer': 'Sportswear and sturdy shoes are enough to get started. We provide flags and further equipment once you\'re training with us regularly.',
+  'faq.q6.question': 'When and where do you train?',
+  'faq.q6.answer': 'You can find our in-season and off-season training times and locations on our training page.',
+  'faq.q7.question': 'Which leagues do you play in?',
+  'faq.q7.answer': 'Our 1st team competes in the 1. DFFL, Germany\'s top division. Our 2nd team plays in the Bayernliga.',
+  'faq.q8.question': 'How can I support the club as a sponsor?',
+  'faq.q8.answer': 'We welcome businesses who want to support us. You can find all sponsoring details on our sponsoring page.',
+  'faq.cta.contact': 'More questions? Contact us',
+  'faq.cta.club': 'Become a member'
+};

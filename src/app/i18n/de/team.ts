@@ -1,5 +1,6 @@
 export const team = {
   'team.title': 'Unser Team',
+  'team.intro': 'Die Nürnberg Renegades e.V. stellen zwei Mannschaften: unsere 1. Mannschaft spielt in der 1. DFFL, Deutschlands höchster Spielklasse, während unsere 2. Mannschaft in der Bayernliga antritt und jüngeren sowie neuen Spielern regelmäßige Wettkampfpraxis bietet.',
   'team.staff.title': 'Trainer-Team',
   'team.players.title': 'Spieler',
   'team.role.ceo': 'Vorstandsvorsitzender',
