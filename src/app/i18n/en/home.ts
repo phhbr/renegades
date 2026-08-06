@@ -28,5 +28,11 @@ export const home = {
   'home.about.description': 'The Nürnberg Renegades e.V. is dedicated to promoting flag football and developing players of all skill levels. We focus on building a strong community through teamwork, sportsmanship, and competitive play.',
   'home.ready.title': 'Ready to Join?',
   'home.ready.subtitle': 'Experience the thrill of flag football with us',
-  'home.ready.cta': 'Contact Us'
+  'home.ready.cta': 'Contact Us',
+  'home.news.heading': 'Latest News',
+  'home.news.season.title': 'Season Recap: Regular Season Complete',
+  'home.news.season.description': 'Our 1st team finished the 1. DFFL in 9th place out of 16 teams, while our 2nd team secured a strong 3rd place out of 23 teams in the Bayernliga.',
+  'home.news.season.cta': 'See Results & Standings',
+  'home.news.event.title': 'Up Next: Flagapalooza III',
+  'home.news.event.description': 'We\'re preparing for Flagapalooza III, taking place August 21–23, 2026 in Cheltenham, United Kingdom.'
 };

@@ -28,5 +28,11 @@ export const home = {
   'home.about.description': 'Die Nürnberg Renegades e.V. widmen sich der Förderung von Flag Football und der Entwicklung von Spielern aller Leistungsstufen. Wir legen Wert auf den Aufbau einer starken Gemeinschaft durch Teamwork, Sportsgeist und sportlichen Wettkampf.',
   'home.ready.title': 'Bereit mitzumachen?',
   'home.ready.subtitle': 'Erlebe den Nervenkitzel des Flag Footballs mit uns',
-  'home.ready.cta': 'Kontaktiere Uns'
+  'home.ready.cta': 'Kontaktiere Uns',
+  'home.news.heading': 'Aktuelles',
+  'home.news.season.title': 'Saisonrückblick: Reguläre Saison beendet',
+  'home.news.season.description': 'Unsere 1. Mannschaft beendete die 1. DFFL auf Platz 9 von 16 Teams, unsere 2. Mannschaft sicherte sich Platz 3 von 23 Teams in der Bayernliga.',
+  'home.news.season.cta': 'Ergebnisse & Tabellen ansehen',
+  'home.news.event.title': 'Nächstes Ziel: Flagapalooza III',
+  'home.news.event.description': 'Wir bereiten uns auf die Flagapalooza III vor, vom 21. bis 23. August 2026 in Cheltenham, Großbritannien.'
 };
