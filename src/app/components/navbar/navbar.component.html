@@ -3,7 +3,11 @@
     <div class="flex h-16 items-center justify-between md:h-[4.5rem]">
       <!-- Logo and Title -->
       <a routerLink="/" class="flex items-center gap-2 text-[var(--ink-0)] md:gap-3">
-        <img src="/assets/images/logo-avatar.png" alt="Nürnberg Renegades Logo" class="h-9 w-9 rounded-full border border-[var(--brand-line)]/65 bg-white/85 p-1 md:h-12 md:w-12">
+        <picture>
+          <source srcset="/assets/images/optimized/logo-avatar-192w.avif" type="image/avif">
+          <source srcset="/assets/images/optimized/logo-avatar-192w.webp" type="image/webp">
+          <img src="/assets/images/optimized/logo-avatar-192w.png" alt="Nürnberg Renegades Logo" width="192" height="210" class="h-9 w-9 rounded-full border border-[var(--brand-line)]/65 bg-white/85 p-1 md:h-12 md:w-12">
+        </picture>
         <span class="display-heading max-w-[180px] truncate text-sm font-semibold tracking-tight md:max-w-none md:text-lg">Nürnberg Renegades e.V.</span>
       </a>
 

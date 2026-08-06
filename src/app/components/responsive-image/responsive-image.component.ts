@@ -6,13 +6,17 @@ import { CommonModule } from '@angular/common';
  * Automatically generates srcset for modern image formats (AVIF, WebP, JPEG)
  * with responsive sizes for multiple breakpoints.
  *
+ * Intended for larger, opaque content images (e.g. player/team photos) with
+ * 640w+ variants. Not suited for small icons/logos needing transparency or
+ * sub-640px sizes — use a plain <picture> with dedicated small variants instead.
+ *
  * Usage:
  * <app-responsive-image
- *   [src]="'logo-avatar'"
- *   [alt]="'Team logo'"
- *   [sizes]="'(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'"
+ *   [src]="'players/' + playerId"
+ *   [alt]="'Player name'"
+ *   [sizes]="'(max-width: 768px) 100vw, 50vw'"
  *   [priority]="true"
- *   [class]="'w-full h-auto'"
+ *   [imageClass]="'w-full h-auto'"
  * ></app-responsive-image>
  */
 @Component({
