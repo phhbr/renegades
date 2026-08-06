@@ -16,6 +16,8 @@
   <link rel="canonical" href="https://nuernberg-renegades.de/">
 
   <!-- Performance Hints -->
+  <!-- Hero image lives in a lazy-loaded component stylesheet, so the preload scanner can't find it without this hint -->
+  <link rel="preload" as="image" href="/assets/images/hero-flag-football.avif" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
