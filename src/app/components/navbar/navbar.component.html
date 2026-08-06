@@ -10,7 +10,7 @@
       <!-- Mobile Menu Button -->
       <button 
         (click)="toggleMenu()"
-        class="rounded-xl p-2 text-[var(--ink-0)] transition-colors duration-300 hover:bg-[var(--surface-2)] md:hidden"
+        class="rounded-xl p-2 text-[var(--ink-0)] transition-colors duration-300 hover:bg-[var(--surface-2)] lg:hidden"
       >
         <span class="sr-only">Open menu</span>
         @if (isMenuOpen()) {
@@ -26,42 +26,42 @@
       </button>
 
       <!-- Desktop Navigation -->
-      <div class="hidden items-center space-x-3 md:flex lg:space-x-5 xl:space-x-7">
+      <div class="hidden items-center space-x-4 lg:flex xl:space-x-7">
         <a 
           routerLink="/" 
           routerLinkActive="nav-link--active"
           [routerLinkActiveOptions]="{exact: true}" 
-          class="nav-link text-[0.82rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] lg:text-[0.92rem]"
+          class="nav-link text-[0.85rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] xl:text-[0.92rem]"
         >{{ 'nav.home' | translate }}</a>
         <a 
           routerLink="/team" 
           routerLinkActive="nav-link--active"
-          class="nav-link text-[0.82rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] lg:text-[0.92rem]"
+          class="nav-link text-[0.85rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] xl:text-[0.92rem]"
         >{{ 'nav.team' | translate }}</a>
         <a
           routerLink="/ergebnisse"
           routerLinkActive="nav-link--active"
-          class="nav-link text-[0.82rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] lg:text-[0.92rem]"
+          class="nav-link text-[0.85rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] xl:text-[0.92rem]"
         >{{ 'nav.results' | translate }}</a>
         <a
           routerLink="/club"
           routerLinkActive="nav-link--active"
-          class="nav-link text-[0.82rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] lg:text-[0.92rem]"
+          class="nav-link text-[0.85rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] xl:text-[0.92rem]"
         >{{ 'nav.club' | translate }}</a>
         <a
           routerLink="/training"
           routerLinkActive="nav-link--active"
-          class="nav-link text-[0.82rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] lg:text-[0.92rem]"
+          class="nav-link text-[0.85rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] xl:text-[0.92rem]"
         >{{ 'nav.training' | translate }}</a>
         <a
           routerLink="/sponsoring"
           routerLinkActive="nav-link--active"
-          class="nav-link text-[0.82rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] lg:text-[0.92rem]"
+          class="nav-link text-[0.85rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] xl:text-[0.92rem]"
         >{{ 'nav.sponsoring' | translate }}</a>
         <a
           routerLink="/contact"
           routerLinkActive="nav-link--active"
-          class="nav-link text-[0.82rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] lg:text-[0.92rem]"
+          class="nav-link text-[0.85rem] text-[var(--ink-0)]/86 hover:text-[var(--ink-0)] xl:text-[0.92rem]"
         >{{ 'nav.contact' | translate }}</a>
         <app-language-switcher />
         <button 
@@ -84,7 +84,7 @@
 
     <!-- Mobile Navigation Menu -->
     @if (isMenuOpen()) {
-      <div class="md:hidden">
+      <div class="lg:hidden">
         <div class="space-y-1 border-t border-[var(--brand-line)]/60 px-2 pb-3 pt-2">
           <a 
             routerLink="/" 
