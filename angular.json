@@ -22,7 +22,19 @@
               "namedChunks": false,
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false
+              "sourceMap": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]
             }
           },
           "options": {
@@ -73,19 +85,6 @@
             "scripts": [],
             "styles": ["src/global_styles.css"],
             "tsConfig": "tsconfig.app.json",
-            "budgets": [
-              {
-                "type": "initial",
-                "maximumWarning": "500kb",
-                "maximumError": "1mb"
-              },
-              {
-                "type": "anyComponentStyle",
-                "maximumWarning": "2kb",
-                "maximumError": "4kb"
-              }
-            ]
-            ,
             "allowedCommonJsDependencies": [
               "@supabase/realtime-js",
               "@supabase/node-fetch",

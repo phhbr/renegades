@@ -67,7 +67,7 @@ Browser request
 
 | File | Purpose |
 | --- | --- |
-| `server.ts` | Express server for local dev + `netlifyAppEngineHandler` export for Netlify |
+| `server.ts` | Exports `netlifyAppEngineHandler`/`reqHandler` — invoked by the Netlify Edge Function runtime, not a standalone listener |
 | `src/main.server.ts` | Server bootstrap entry point |
 | `src/app/app.config.ts` | Shared `ApplicationConfig` (providers used on both client and server) |
 | `src/app/app.config.server.ts` | Server-only providers: route render modes |
@@ -155,16 +155,12 @@ VITE_RECAPTCHA_SITE_KEY=your-recaptcha-site-key
 ### Running locally
 
 ```bash
-# Live-reload dev server (no SSR, fastest iteration)
+# Dev server with SSR + hydration (Angular's dev middleware renders and hydrates each request)
 ng serve
-
-# Production SSR server (to verify server-rendering locally)
-ng build
-NG_ALLOWED_HOSTS=localhost node dist/demo/server/server.mjs
-# → http://localhost:4000
+# → http://localhost:4200
 ```
 
-`NG_ALLOWED_HOSTS` is required locally — Angular's SSRF protection blocks `localhost` by default. This variable is not needed on Netlify.
+`server.ts` only exports handler functions (`netlifyAppEngineHandler`, `reqHandler`) for the Netlify Edge Function runtime — running `node dist/demo/server/server.mjs` directly does **not** start a listener; it just loads the module and exits. To verify SSR/hydration locally, use `ng serve` and check the browser console: in development mode Angular logs hydration diagnostics (e.g. `Angular hydrated N component(s) ... 0 component(s) were skipped`), which are stripped in production builds.
 
 ### Build
 
