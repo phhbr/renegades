@@ -10,44 +10,44 @@ Official website for the Nürnberg Renegades Flag Football Club.
 | --- | --- |
 | Framework | Angular 20 with SSR |
 | Styling | TailwindCSS |
-| Database & Auth | Supabase |
+| Database & Auth | Supabase (form submissions only) |
 | Email | Resend (via Supabase Edge Functions) |
 | Hosting | Netlify (Edge Functions + CDN) |
 | Analytics | Umami |
-| i18n | Angular i18n (DE / EN) |
+| i18n | Custom `TranslatePipe` + `LanguageService` (DE default, EN fallback), SSR-aware via cookies/`Accept-Language` |
 
 ## Architecture
 
 ### Rendering strategy
 
-The app uses Angular SSR with a hybrid rendering approach configured in `src/app/app.config.server.ts`:
+The app uses full Angular SSR (no build-time prerendering) configured in `src/app/app.config.server.ts` — every route renders on the server per request:
 
-| Route | Mode | Reason |
-| --- | --- | --- |
-| `/` | Prerender | Static content, SEO-critical |
-| `/team` | Prerender | Static content, SEO-critical |
-| `/sponsoring` | Prerender | Static content, SEO-critical |
-| `/impressum` | Prerender | Static content, legal |
-| `/datenschutz` | Prerender | Static content, legal |
-| `/contact` | Client | Form page; Supabase creates WebSocket connections server-side that block prerendering |
-| `/club` | Client | Form page; same reason |
-| `/training` | Client | Form page; same reason |
+| Route | Mode |
+| --- | --- |
+| `/` | Server |
+| `/team` | Server |
+| `/club` | Server |
+| `/training` | Server |
+| `/ergebnisse`, `/ergebnisse/:team`, `/ergebnisse/:team/:tab` | Server |
+| `/sponsoring` | Server |
+| `/contact` | Server |
+| `/faq` | Server |
+| `/impressum` | Server |
+| `/datenschutz` | Server |
 
-Prerendered pages are built to static HTML at `ng build` time and served directly from the Netlify CDN — no function invoked per request. Client-rendered pages are served as a CSR shell and hydrated in the browser.
+All routes render on the server for every request (`RenderMode.Server`) rather than being prerendered at build time. This is required because language and theme preferences are resolved from request cookies and headers (`Accept-Language`, `Sec-CH-Prefers-Color-Scheme`) so the very first response is already in the visitor's language/theme — something build-time prerendering can't do per-request.
 
 ### Build output
 
 ```text
 dist/demo/
-├── browser/          # Static assets + prerendered HTML (served from CDN)
-│   ├── index.html         # CSR shell (for /contact, /club, /training)
-│   ├── team/index.html    # Prerendered
-│   ├── sponsoring/index.html
-│   ├── impressum/index.html
-│   ├── datenschutz/index.html
+├── browser/          # Static assets (served from CDN)
+│   ├── index.csr.html     # CSR shell, used as fallback
+│   ├── llms.txt            # AI-agent discovery file
+│   ├── robots.txt / sitemap.xml
 │   └── *.js / *.css       # Hashed asset bundles
 └── server/           # SSR server bundle (deployed as Netlify Edge Function)
-    ├── server.mjs         # Entry point — handles non-prerendered requests
+    ├── server.mjs         # Entry point — handles every request
     └── main.server.mjs    # Angular server bootstrap
 ```
 
@@ -56,13 +56,10 @@ dist/demo/
 ```text
 Browser request
     │
-    ├── /team, /sponsoring, /impressum, /datenschutz, /
-    │       └── Netlify CDN → prerendered index.html (instant, no cold start)
+    ├── Any page route (/, /team, /club, /training, /ergebnisse, /faq, ...)
+    │       └── Netlify Edge Function (server.mjs) → SSR HTML → browser hydrates
     │
-    ├── /contact, /club, /training
-    │       └── Netlify Edge Function (server.mjs) → CSR shell → browser hydrates
-    │
-    └── Static assets (*.js, *.css, images)
+    └── Static assets (*.js, *.css, images, llms.txt, robots.txt, sitemap.xml)
             └── Netlify CDN
 ```
 
@@ -86,12 +83,14 @@ Browser request
 │   │   │   ├── contact/           # Contact form
 │   │   │   ├── cookie-consent/    # GDPR cookie banner
 │   │   │   ├── cookie-settings/   # Cookie preference page
+│   │   │   ├── faq/               # FAQ page with FAQPage JSON-LD schema
 │   │   │   ├── footer/
 │   │   │   ├── home/
 │   │   │   ├── language-switcher/
 │   │   │   ├── legal/             # Impressum + Datenschutz
 │   │   │   ├── navbar/
 │   │   │   ├── responsive-image/
+│   │   │   ├── results/           # Results/standings for both teams
 │   │   │   ├── sponsoring/
 │   │   │   ├── team/
 │   │   │   └── training/          # Training info + tryout form
@@ -99,25 +98,28 @@ Browser request
 │   │   │   ├── analytics.service.ts
 │   │   │   ├── contact.service.ts
 │   │   │   ├── cookie-consent.service.ts
-│   │   │   ├── language.service.ts
+│   │   │   ├── language.service.ts   # SSR-aware: cookie → Accept-Language → navigator.language
 │   │   │   ├── membership.service.ts
-│   │   │   ├── meta.service.ts
+│   │   │   ├── meta.service.ts       # Meta tags + JSON-LD (setJsonLd/removeJsonLd)
 │   │   │   ├── recaptcha.service.ts
-│   │   │   ├── sponsor.service.ts
-│   │   │   ├── storage.service.ts    # localStorage wrapper (SSR-safe)
+│   │   │   ├── sponsor.service.ts    # Reads src/assets/data/sponsors.json
+│   │   │   ├── storage.service.ts    # localStorage + cookie wrapper (SSR-safe)
 │   │   │   ├── supabase.service.ts
-│   │   │   ├── team.service.ts
+│   │   │   ├── team.service.ts       # Reads src/assets/data/team-members.json
 │   │   │   └── tryout.service.ts
-│   │   ├── i18n/                  # Translation files (DE/EN)
+│   │   ├── i18n/                  # Translation dictionaries (DE/EN)
 │   │   ├── pipes/
 │   │   ├── app.component.ts
 │   │   ├── app.config.ts          # Shared providers
 │   │   ├── app.config.server.ts   # Server providers + render modes
 │   │   └── app.routes.ts
-│   ├── assets/images/
+│   ├── assets/
+│   │   ├── data/                  # team-members.json, sponsors.json
+│   │   └── images/
 │   ├── environments/
 │   │   ├── environment.ts         # Dev (uses .env values)
 │   │   └── environment.prod.ts    # Production
+│   ├── llms.txt                    # AI-agent discovery file
 │   └── global_styles.css
 ├── supabase/
 │   ├── functions/
@@ -171,7 +173,7 @@ ng build              # Development build
 ng build --configuration production  # Production build
 ```
 
-Output in `dist/demo/`. The build prerendering step renders 5 static routes to HTML.
+Output in `dist/demo/`. Every route renders per request via SSR — the build produces no prerendered route HTML (`Prerendered 0 static routes`).
 
 ## Deployment
 
@@ -180,9 +182,9 @@ Output in `dist/demo/`. The build prerendering step renders 5 static routes to H
 Push to the connected branch. The `@netlify/angular-runtime` plugin takes care of everything:
 
 1. Recognizes `netlifyAppEngineHandler` in `server.ts`
-2. Runs `ng build` — prerendered HTML goes to `dist/demo/browser/`
-3. Deploys `dist/demo/server/server.mjs` as a Netlify Edge Function
-4. Pre-rendered pages are served from CDN; dynamic requests go through the edge function
+2. Runs `ng build`
+3. Deploys `dist/demo/server/server.mjs` as a Netlify Edge Function — it handles every page request (full SSR, no prerendering)
+4. Static assets (JS/CSS bundles, images, `robots.txt`, `sitemap.xml`, `llms.txt`) are served from CDN
 
 Set these environment variables in the Netlify dashboard:
 
@@ -200,6 +202,7 @@ supabase db push
 
 # Deploy Edge Functions
 supabase functions deploy send-contact-email
+supabase functions deploy send-membership-application
 supabase functions deploy send-tryout-email
 
 # Set Edge Function secrets
@@ -208,9 +211,9 @@ supabase secrets set NOTIFICATION_EMAILS=email1@example.com,email2@example.com
 supabase secrets set RECAPTCHA_SECRET_KEY=your-recaptcha-secret-key
 ```
 
-Database tables: `team_members`, `sponsors`, `press_coverage`
+Database tables: none for content — team roster and sponsor data live in `src/assets/data/team-members.json` and `src/assets/data/sponsors.json` (migrated off Supabase for performance; see `supabase/migrations/20251221000000_drop_team_and_sponsors.sql`). Supabase Edge Functions handle only transactional email: contact form, membership applications, and tryout requests.
 
-Row Level Security: public read for team members and active sponsors; admin-only write; public contact form submissions.
+Row Level Security: public contact/membership/tryout form submissions handled entirely via Edge Functions; no client-side database reads/writes remain.
 
 ### reCAPTCHA
 
@@ -220,15 +223,18 @@ Row Level Security: public read for team members and active sponsors; admin-only
 
 ## Features
 
-- Multilingual (DE/EN)
+- Two teams: 1st team in the 1. DFFL, 2nd team in the Bayernliga
+- Multilingual (DE/EN), SSR-aware language & theme preferences (cookies + `Accept-Language`/`Sec-CH-Prefers-Color-Scheme` headers)
 - Dark / Light mode
+- FAQ page with `FAQPage` JSON-LD schema
+- `llms.txt` for AI-agent discoverability
 - GDPR-compliant cookie consent
 - Fully responsive
 - reCAPTCHA v3 on all forms
 - Contact form with email notifications
 - Club membership form
 - Tryout request form
-- Server-side rendering with prerendering for SEO
+- Full server-side rendering (SSR) on every request for SEO and personalization
 - Lazy-loaded routes
 
 ## License
