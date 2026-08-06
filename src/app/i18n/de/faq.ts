@@ -8,7 +8,7 @@ export const faq = {
   'faq.q3.question': 'Was kostet die Mitgliedschaft?',
   'faq.q3.answer': 'Die aktive Spielmitgliedschaft kostet 18 € pro Monat. Andere Mitgliedschaftsarten, zum Beispiel eine fördernde Mitgliedschaft, können abweichende Beiträge haben. Details erfährst du über unser Kontaktformular.',
   'faq.q4.question': 'Wie kann ich Mitglied werden oder zum Probetraining kommen?',
-  'faq.q4.answer': 'Melde dich über unser Kontaktformular oder komm direkt zu einem unserer Trainingstermine vorbei. Den Mitgliedsantrag findest du auf unserer Vereinsseite.',
+  'faq.q4.answer': 'Du musst uns nicht vorher kontaktieren – komm einfach in Sportkleidung und Fußballschuhen zu einem unserer Trainingstermine vorbei. Unser Kontaktformular oder das Probetraining-Formular auf der Trainingsseite auszufüllen ist optional, falls du uns vorab Bescheid geben möchtest. Den Mitgliedsantrag findest du auf unserer Vereinsseite.',
   'faq.q5.question': 'Welche Ausrüstung brauche ich zu Beginn?',
   'faq.q5.answer': 'Für den Einstieg reichen Sportkleidung und Fußballschuhe. Flags und weiteres Equipment stellen wir, sobald du regelmäßig am Training teilnimmst.',
   'faq.q6.question': 'Wann und wo trainiert ihr?',

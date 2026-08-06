@@ -8,7 +8,7 @@ export const faq = {
   'faq.q3.question': 'How much does membership cost?',
   'faq.q3.answer': 'Active playing membership costs 18 € per month. Other membership types, such as a supporting membership, may have different rates. Reach out via our contact form for details.',
   'faq.q4.question': 'How can I join or attend a trial training?',
-  'faq.q4.answer': 'Get in touch through our contact form or come directly to one of our training sessions. You can find the membership application on our club page.',
+  'faq.q4.answer': 'No need to contact us first — just show up to one of our training sessions in sportswear and cleats. Filling out our contact form or the try-out form on our training page is optional if you\'d like us to know you\'re coming. You can find the membership application on our club page.',
   'faq.q5.question': 'What equipment do I need to get started?',
   'faq.q5.answer': 'Sportswear and cleats are enough to get started. We provide flags and further equipment once you\'re training with us regularly.',
   'faq.q6.question': 'When and where do you train?',

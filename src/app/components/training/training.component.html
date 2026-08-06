@@ -2,6 +2,17 @@
   <div class="container mx-auto px-4">
     <h1 class="text-4xl font-bold mb-12 text-center tracking-tight text-primary dark:text-white">{{ 'training.title' | translate }}</h1>
 
+    <!-- Drop-in Callout -->
+    <section class="mb-16">
+      <div class="bg-accent/10 dark:bg-accent/15 rounded-xl border-2 border-accent p-8 text-center">
+        <span class="inline-block mb-4 px-4 py-1.5 rounded-full bg-accent text-white text-sm font-semibold tracking-wide">
+          {{ 'training.dropin.badge' | translate }}
+        </span>
+        <h2 class="text-3xl font-bold mb-4 tracking-tight text-primary dark:text-white">{{ 'training.dropin.title' | translate }}</h2>
+        <p class="max-w-2xl mx-auto text-primary/80 dark:text-white/80">{{ 'training.dropin.description' | translate }}</p>
+      </div>
+    </section>
+
     @if (isOffSeason()) {
       <!-- Off-Season Section -->
       <section class="mb-16">
@@ -235,7 +246,8 @@
 
     <!-- Try-out Form -->
     <section>
-      <h2 class="text-3xl font-bold mb-8 text-primary dark:text-white">{{ 'training.tryout.title' | translate }}</h2>
+      <h2 class="text-3xl font-bold mb-4 text-primary dark:text-white">{{ 'training.tryout.title' | translate }}</h2>
+      <p class="mb-8 text-primary/80 dark:text-white/80">{{ 'training.dropin.form_hint' | translate }}</p>
       <app-tryout-form />
     </section>
   </div>

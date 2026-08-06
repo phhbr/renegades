@@ -36,7 +36,7 @@ export class FaqComponent implements OnDestroy {
   constructor() {
     this.meta.updateMeta({
       title: 'FAQ – Häufige Fragen | Nürnberg Renegades',
-      description: 'Antworten auf häufige Fragen zu Nürnberg Renegades e.V.: Mitgliedschaft, Kosten, Training und unsere Teams in der 1. DFFL und der Bayernliga.',
+      description: 'Antworten auf häufige Fragen zu Nürnberg Renegades e.V.: Mitgliedschaft, Kosten, Probetraining ohne Anmeldung und unsere Teams in der 1. DFFL und der Bayernliga.',
       canonical: 'https://nuernberg-renegades.de/faq'
     });
 

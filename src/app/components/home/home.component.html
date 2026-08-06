@@ -36,6 +36,7 @@
             {{ 'nav.contact' | translate }}
           </a>
         </div>
+        <p class="mt-4 text-sm text-white/85">{{ 'home.hero.note' | translate }}</p>
       </div>
 
       <aside class="reveal-up-delay athletic-card xl:col-span-5 rounded-3xl p-6 md:p-8">
@@ -173,13 +174,22 @@
         <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[var(--ink-muted)] md:text-xl">
           {{ 'home.ready.subtitle' | translate }}
         </p>
-        <a
-          routerLink="/contact"
-          class="btn-base btn-primary btn-size-lg mt-9"
-          aria-label="Contact us to join the team"
-        >
-          {{ 'home.ready.cta' | translate }}
-        </a>
+        <div class="mt-9 flex flex-wrap justify-center gap-4">
+          <a
+            routerLink="/contact"
+            class="btn-base btn-primary btn-size-lg"
+            aria-label="Contact us to join the team"
+          >
+            {{ 'home.ready.cta' | translate }}
+          </a>
+          <a
+            routerLink="/training"
+            class="btn-base btn-secondary-light btn-size-lg"
+            aria-label="See our training times and locations"
+          >
+            {{ 'home.ready.cta_secondary' | translate }}
+          </a>
+        </div>
       </div>
     </div>
   </section>
