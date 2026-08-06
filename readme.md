@@ -122,10 +122,10 @@ Browser request
 │   ├── llms.txt                    # AI-agent discovery file
 │   └── global_styles.css
 ├── supabase/
-│   ├── functions/
-│   │   ├── send-contact-email/    # Contact form → Resend
-│   │   └── send-tryout-email/     # Tryout request → Resend
-│   └── migrations/
+│   └── functions/
+│       ├── send-contact-email/           # Contact form → Resend
+│       ├── send-membership-application/  # Membership form → Resend
+│       └── send-tryout-email/            # Tryout request → Resend
 ├── server.ts                      # SSR server entry
 ├── netlify.toml
 └── tailwind.config.js
@@ -198,7 +198,6 @@ VITE_RECAPTCHA_SITE_KEY
 
 ```bash
 supabase link --project-ref your-project-ref
-supabase db push
 
 # Deploy Edge Functions
 supabase functions deploy send-contact-email
@@ -211,9 +210,9 @@ supabase secrets set NOTIFICATION_EMAILS=email1@example.com,email2@example.com
 supabase secrets set RECAPTCHA_SECRET_KEY=your-recaptcha-secret-key
 ```
 
-Database tables: none for content — team roster and sponsor data live in `src/assets/data/team-members.json` and `src/assets/data/sponsors.json` (migrated off Supabase for performance; see `supabase/migrations/20251221000000_drop_team_and_sponsors.sql`). Supabase Edge Functions handle only transactional email: contact form, membership applications, and tryout requests.
+Database tables: none — the project has no managed schema or migrations. Team roster and sponsor data live in `src/assets/data/team-members.json` and `src/assets/data/sponsors.json`. Supabase is used only for Edge Functions handling transactional email: contact form, membership applications, and tryout requests.
 
-Row Level Security: public contact/membership/tryout form submissions handled entirely via Edge Functions; no client-side database reads/writes remain.
+Row Level Security: not applicable — no database reads/writes remain, only Edge Function invocations.
 
 ### reCAPTCHA
 
