@@ -9,15 +9,58 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --surface-0: #f7f7f5;
+  --surface-1: #ffffff;
+  --surface-2: #f0f0ec;
+  --ink-0: #111318;
+  --ink-muted: #46505b;
+  --brand-amber: #ffb100;
+  --brand-line: #d8d8d2;
+}
+
+.dark {
+  --surface-0: #0f1013;
+  --surface-1: #16181d;
+  --surface-2: #20232a;
+  --ink-0: #f5f5f2;
+  --ink-muted: #c4c7cd;
+  --brand-amber: #ffc03a;
+  --brand-line: #343740;
+}
+
 body {
   @apply antialiased;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--ink-0);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(17, 19, 24, 0.08), transparent 38%),
+    radial-gradient(circle at 95% 16%, rgba(255, 171, 0, 0.09), transparent 30%),
+    var(--surface-0);
+}
+
+p {
+  line-height: 1.68;
+}
+
+h1,
+h2,
+h3,
+h4,
+.display-heading {
+  font-family: 'Sora', 'Manrope', sans-serif;
 }
 
 /* Add padding to account for fixed navbar */
 .main-content {
-  padding-top: 7rem;
+  padding-top: 6rem;
   min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding-top: 6.5rem;
+  }
 }
 
 /* Optimize parallax - avoid fixed attachment on mobile for better performance */
@@ -40,6 +83,101 @@ img {
   loading: lazy;
 }
 
+.athletic-card {
+  background: linear-gradient(150deg, var(--surface-1), var(--surface-2));
+  border: 1px solid rgba(32, 34, 39, 0.18);
+  box-shadow: 0 10px 32px rgba(16, 35, 40, 0.08);
+}
+
+.dark .athletic-card {
+  box-shadow: none;
+}
+
+.section-separator {
+  height: 1px;
+  width: min(1100px, calc(100% - 3rem));
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, rgba(108, 112, 120, 0.45), transparent);
+}
+
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: transform 220ms ease, background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.btn-base:hover {
+  transform: translateY(-1px);
+}
+
+.btn-base:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--brand-amber);
+  color: #0f1217;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+}
+
+.btn-primary:hover {
+  background: #ffbe2e;
+}
+
+.btn-secondary-dark {
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  backdrop-filter: blur(2px);
+}
+
+.btn-secondary-dark:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary-light {
+  border: 1px solid rgba(17, 19, 24, 0.35);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--ink-0);
+}
+
+.btn-secondary-light:hover {
+  background: #ffffff;
+}
+
+.btn-size-md {
+  padding: 0.78rem 1.7rem;
+  font-size: 0.92rem;
+}
+
+.btn-size-lg {
+  padding: 0.95rem 2.25rem;
+  font-size: 0.98rem;
+}
+
+.reveal-up {
+  animation: revealUp 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.reveal-up-delay {
+  animation: revealUp 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Optimize animations for performance */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -49,33 +187,9 @@ img {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
 
-/* Font swap strategy for better performance */
-@font-face {
-  font-family: 'Inter';
-  src: url('https://fonts.gstatic.com/s/inter/v13/-H6kfsEdaJQwNLmUYkB8UvghdTg.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('https://fonts.gstatic.com/s/inter/v13/-H6lfsEdaJQwNLmUYkB8UvQhdTg.woff2') format('woff2');
-  font-weight: 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('https://fonts.gstatic.com/s/inter/v13/-H6mfsEdaJQwNLmUYkB8UvQhdTg.woff2') format('woff2');
-  font-weight: 600;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('https://fonts.gstatic.com/s/inter/v13/-H6nfsEdaJQwNLmUYkB8UvQhdTg.woff2') format('woff2');
-  font-weight: 700;
-  font-display: swap;
+  .reveal-up,
+  .reveal-up-delay {
+    animation: none !important;
+  }
 }

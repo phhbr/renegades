@@ -77,9 +77,9 @@ export class ResultsComponent implements OnInit, OnDestroy {
     const tab = this.tab();
     const canonicalBase = 'https://nuernberg-renegades.de/ergebnisse';
     this.#meta.updateMeta({
-      title: 'Ergebnisse & Tabelle - Nürnberg Renegades',
+      title: 'Ergebnisse, Tabelle & Spielplan | Nürnberg Renegades',
       description:
-        'Aktuelle Spielergebnisse, Tabelle und Spielplan der 1. und 2. Mannschaft der Nürnberg Renegades e.V. in der DFFL.',
+        'Aktuelle Spielergebnisse, Tabellen und Spielpläne der 1. und 2. Mannschaft der Nürnberg Renegades e.V. in der DFFL.',
       canonical: `${canonicalBase}/${team}/${tab}`,
     });
   });

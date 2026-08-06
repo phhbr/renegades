@@ -26,8 +26,8 @@ export class TrainingComponent implements OnInit {
 
   ngOnInit(): void {
     this.meta.updateMeta({
-      title: 'Flag Football Training & Tryouts - Nürnberg Renegades',
-      description: 'Join our flag football training sessions in Nürnberg. Learn the sport, meet new players, and compete at all skill levels.',
+      title: 'Training & Tryouts | Nürnberg Renegades',
+      description: 'Join Nürnberg Renegades for flag football training and tryouts in Nürnberg. Learn the sport, meet the team, and improve at any level.',
       canonical: 'https://nuernberg-renegades.de/training',
       image: 'https://nuernberg-renegades.de/assets/images/training.jpg',
       imageAlt: 'Flag football training session'

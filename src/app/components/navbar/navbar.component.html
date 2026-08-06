@@ -1,16 +1,16 @@
-<nav class="bg-secondary dark:bg-dark-surface border-b border-gray-100 dark:border-white/10 fixed w-full top-0 z-50">
+<nav class="fixed top-0 z-50 w-full border-b border-[var(--brand-line)]/60 bg-[var(--surface-1)]/95 text-[var(--ink-0)] backdrop-blur-xl">
   <div class="container mx-auto px-4">
-    <div class="flex justify-between items-center h-16 md:h-20">
+    <div class="flex h-16 items-center justify-between md:h-[4.5rem]">
       <!-- Logo and Title -->
-      <a routerLink="/" class="flex items-center space-x-2 text-primary dark:text-white">
-        <img src="/assets/images/logo-avatar.png" alt="Nürnberg Renegades Logo" class="w-8 p-1 h-8 md:w-20 md:h-20">
-        <span class="text-sm md:text-xl font-medium truncate max-w-[180px] md:max-w-none">Nürnberg Renegades e.V.</span>
+      <a routerLink="/" class="flex items-center gap-2 text-[var(--ink-0)] md:gap-3">
+        <img src="/assets/images/logo-avatar.png" alt="Nürnberg Renegades Logo" class="h-9 w-9 rounded-full border border-[var(--brand-line)]/65 bg-white/85 p-1 md:h-12 md:w-12">
+        <span class="display-heading max-w-[180px] truncate text-sm font-semibold tracking-tight md:max-w-none md:text-lg">Nürnberg Renegades e.V.</span>
       </a>
 
       <!-- Mobile Menu Button -->
       <button 
         (click)="toggleMenu()"
-        class="md:hidden p-2 rounded-lg hover:bg-secondary-dark dark:hover:bg-dark-primary/10 transition-colors duration-300 text-primary dark:text-white"
+        class="rounded-xl p-2 text-[var(--ink-0)] transition-colors duration-300 hover:bg-[var(--surface-2)] md:hidden"
       >
         <span class="sr-only">Open menu</span>
         @if (isMenuOpen()) {
@@ -26,47 +26,47 @@
       </button>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-8">
+      <div class="hidden items-center space-x-7 md:flex">
         <a 
           routerLink="/" 
-          routerLinkActive="!text-accent" 
+          routerLinkActive="nav-link--active"
           [routerLinkActiveOptions]="{exact: true}" 
-          class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+          class="nav-link text-[var(--ink-0)]/86 hover:text-[var(--ink-0)]"
         >{{ 'nav.home' | translate }}</a>
         <a 
           routerLink="/team" 
-          routerLinkActive="!text-accent"
-          class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+          routerLinkActive="nav-link--active"
+          class="nav-link text-[var(--ink-0)]/86 hover:text-[var(--ink-0)]"
         >{{ 'nav.team' | translate }}</a>
         <a
           routerLink="/ergebnisse"
-          routerLinkActive="!text-accent"
-          class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+          routerLinkActive="nav-link--active"
+          class="nav-link text-[var(--ink-0)]/86 hover:text-[var(--ink-0)]"
         >{{ 'nav.results' | translate }}</a>
         <a
           routerLink="/club"
-          routerLinkActive="!text-accent"
-          class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+          routerLinkActive="nav-link--active"
+          class="nav-link text-[var(--ink-0)]/86 hover:text-[var(--ink-0)]"
         >{{ 'nav.club' | translate }}</a>
         <a
           routerLink="/training"
-          routerLinkActive="!text-accent"
-          class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+          routerLinkActive="nav-link--active"
+          class="nav-link text-[var(--ink-0)]/86 hover:text-[var(--ink-0)]"
         >{{ 'nav.training' | translate }}</a>
         <a
           routerLink="/sponsoring"
-          routerLinkActive="!text-accent"
-          class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+          routerLinkActive="nav-link--active"
+          class="nav-link text-[var(--ink-0)]/86 hover:text-[var(--ink-0)]"
         >{{ 'nav.sponsoring' | translate }}</a>
         <a
           routerLink="/contact"
-          routerLinkActive="!text-accent"
-          class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+          routerLinkActive="nav-link--active"
+          class="nav-link text-[var(--ink-0)]/86 hover:text-[var(--ink-0)]"
         >{{ 'nav.contact' | translate }}</a>
         <app-language-switcher />
         <button 
           (click)="toggleTheme.emit()"
-          class="p-2 rounded-lg hover:bg-secondary-dark dark:hover:bg-dark-primary/10 transition-colors duration-300 text-primary dark:text-white"
+          class="rounded-xl p-2 text-[var(--ink-0)] transition-colors duration-300 hover:bg-[var(--surface-2)]"
         >
           <span class="sr-only">Toggle theme</span>
           @if (isDarkMode()) {
@@ -85,55 +85,55 @@
     <!-- Mobile Navigation Menu -->
     @if (isMenuOpen()) {
       <div class="md:hidden">
-        <div class="px-2 pt-2 pb-3 space-y-1">
+        <div class="space-y-1 border-t border-[var(--brand-line)]/60 px-2 pb-3 pt-2">
           <a 
             routerLink="/" 
-            routerLinkActive="!text-accent bg-secondary-dark dark:bg-dark-primary/10" 
+            routerLinkActive="!text-[var(--ink-0)] bg-[var(--surface-2)]"
             [routerLinkActiveOptions]="{exact: true}"
             (click)="closeMenu()"
-            class="block px-3 py-2 rounded-md text-base font-medium text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+            class="block rounded-md px-3 py-2 text-base font-semibold text-[var(--ink-0)]/86 transition-colors duration-300 hover:text-[var(--ink-0)]"
           >{{ 'nav.home' | translate }}</a>
           <a 
             routerLink="/team" 
-            routerLinkActive="!text-accent bg-secondary-dark dark:bg-dark-primary/10"
+            routerLinkActive="!text-[var(--ink-0)] bg-[var(--surface-2)]"
             (click)="closeMenu()"
-            class="block px-3 py-2 rounded-md text-base font-medium text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+            class="block rounded-md px-3 py-2 text-base font-semibold text-[var(--ink-0)]/86 transition-colors duration-300 hover:text-[var(--ink-0)]"
           >{{ 'nav.team' | translate }}</a>
           <a
             routerLink="/ergebnisse"
-            routerLinkActive="!text-accent bg-secondary-dark dark:bg-dark-primary/10"
+            routerLinkActive="!text-[var(--ink-0)] bg-[var(--surface-2)]"
             (click)="closeMenu()"
-            class="block px-3 py-2 rounded-md text-base font-medium text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+            class="block rounded-md px-3 py-2 text-base font-semibold text-[var(--ink-0)]/86 transition-colors duration-300 hover:text-[var(--ink-0)]"
           >{{ 'nav.results' | translate }}</a>
           <a
             routerLink="/club"
-            routerLinkActive="!text-accent bg-secondary-dark dark:bg-dark-primary/10"
+            routerLinkActive="!text-[var(--ink-0)] bg-[var(--surface-2)]"
             (click)="closeMenu()"
-            class="block px-3 py-2 rounded-md text-base font-medium text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+            class="block rounded-md px-3 py-2 text-base font-semibold text-[var(--ink-0)]/86 transition-colors duration-300 hover:text-[var(--ink-0)]"
           >{{ 'nav.club' | translate }}</a>
           <a 
             routerLink="/training" 
-            routerLinkActive="!text-accent bg-secondary-dark dark:bg-dark-primary/10"
+            routerLinkActive="!text-[var(--ink-0)] bg-[var(--surface-2)]"
             (click)="closeMenu()"
-            class="block px-3 py-2 rounded-md text-base font-medium text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+            class="block rounded-md px-3 py-2 text-base font-semibold text-[var(--ink-0)]/86 transition-colors duration-300 hover:text-[var(--ink-0)]"
           >{{ 'nav.training' | translate }}</a>
           <a 
             routerLink="/sponsoring" 
-            routerLinkActive="!text-accent bg-secondary-dark dark:bg-dark-primary/10"
+            routerLinkActive="!text-[var(--ink-0)] bg-[var(--surface-2)]"
             (click)="closeMenu()"
-            class="block px-3 py-2 rounded-md text-base font-medium text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+            class="block rounded-md px-3 py-2 text-base font-semibold text-[var(--ink-0)]/86 transition-colors duration-300 hover:text-[var(--ink-0)]"
           >{{ 'nav.sponsoring' | translate }}</a>
           <a 
             routerLink="/contact" 
-            routerLinkActive="!text-accent bg-secondary-dark dark:bg-dark-primary/10"
+            routerLinkActive="!text-[var(--ink-0)] bg-[var(--surface-2)]"
             (click)="closeMenu()"
-            class="block px-3 py-2 rounded-md text-base font-medium text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+            class="block rounded-md px-3 py-2 text-base font-semibold text-[var(--ink-0)]/86 transition-colors duration-300 hover:text-[var(--ink-0)]"
           >{{ 'nav.contact' | translate }}</a>
           <div class="flex items-center justify-between px-3 py-2">
             <app-language-switcher />
             <button 
               (click)="toggleTheme.emit()"
-              class="p-2 rounded-lg hover:bg-secondary-dark dark:hover:bg-dark-primary/10 transition-colors duration-300 text-primary dark:text-white"
+              class="rounded-lg p-2 text-[var(--ink-0)] transition-colors duration-300 hover:bg-[var(--surface-2)]"
             >
               <span class="sr-only">Toggle theme</span>
               @if (isDarkMode()) {

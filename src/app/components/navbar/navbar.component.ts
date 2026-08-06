@@ -8,6 +8,7 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
   standalone: true,
   imports: [RouterLink, RouterLinkActive, TranslatePipe, LanguageSwitcherComponent],
   templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent {

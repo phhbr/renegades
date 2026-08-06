@@ -5,7 +5,7 @@
     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="text-sm text-primary dark:text-white">
         {{ 'cookies.message' | translate }}
-        <a routerLink="/datenschutz" class="text-accent hover:text-accent-dark underline cursor-pointer">{{
+        <a routerLink="/datenschutz" class="text-accent dark:text-[var(--brand-amber)] hover:text-accent-dark dark:hover:text-white underline cursor-pointer font-semibold">{{
           'cookies.privacy_link' | translate }}</a>
       </div>
       <div class="flex gap-4">
@@ -14,7 +14,7 @@
           {{ 'cookies.necessary_only' | translate }}
         </button>
         <button (click)="acceptAll()"
-          class="px-4 py-2 text-sm font-medium text-white bg-accent rounded-lg hover:bg-accent-dark transition-colors duration-300">
+          class="px-4 py-2 text-sm font-semibold text-white bg-accent rounded-lg hover:bg-accent-dark transition-colors duration-300">
           {{ 'cookies.accept_all' | translate }}
         </button>
       </div>

@@ -13,7 +13,8 @@ interface Feature {
   selector: 'app-home',
   standalone: true,
   imports: [RouterLink, TranslatePipe],
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   private meta = inject(MetaService);
@@ -37,8 +38,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.meta.updateMeta({
-      title: 'Nürnberg Renegades e.V. - Flag Football Club in Nürnberg | 1. DFFL',
-      description: 'Join Nürnberg Renegades e.V., Nürnberg\'s premier flag football club competing in the DFFL First Division. Professional coaching, welcoming community, and competitive play for all skill levels.',
+      title: 'Nürnberg Renegades e.V. | Flag Football in Nürnberg',
+      description: 'Nürnberg Renegades e.V. is a competitive flag football club in Nürnberg with training, tryouts, and community for every skill level.',
       canonical: 'https://nuernberg-renegades.de/',
       image: 'https://nuernberg-renegades.de/assets/images/hero-flag-football.avif',
       imageAlt: 'Nürnberg Renegades flag football team'

@@ -30,8 +30,8 @@ export class TeamComponent implements OnInit {
   async ngOnInit() {
     // Update team page metadata
     this.#meta.updateMeta({
-      title: 'Meet the Nürnberg Renegades - Team & Players',
-      description: 'Meet the talented flag football players and staff of Nürnberg Renegades e.V. Competing in the DFFL First Division.',
+      title: 'Team & Players | Nürnberg Renegades',
+      description: 'Meet the players and staff of Nürnberg Renegades e.V. competing in Germany\'s top flag football division.',
       canonical: 'https://nuernberg-renegades.de/team',
       image: 'https://nuernberg-renegades.de/assets/images/team-huddle.jpg',
       imageAlt: 'Nürnberg Renegades team huddle'

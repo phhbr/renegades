@@ -15,8 +15,8 @@ module.exports = {
           dark: '#f5f5f5',      // Light gray for backgrounds
         },
         accent: {
-          DEFAULT: '#ffab00',    // Gold
-          dark: '#ff9100',       // Darker gold for hover
+          DEFAULT: '#8a5d00',    // Accessible gold-brown for text and fills
+          dark: '#6f4a00',       // Darker hover shade
         },
         dark: {
           primary: '#ffffff',    // White text for dark mode
@@ -25,7 +25,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Manrope', 'sans-serif'],
       },
     },
   },

@@ -15,8 +15,8 @@ export class ClubComponent implements OnInit {
 
   ngOnInit(): void {
     this.meta.updateMeta({
-      title: 'About Nürnberg Renegades - Club & Membership',
-      description: 'Learn about Nürnberg Renegades e.V., membership, community activities and how to join our flag football club.',
+      title: 'Club & Mitgliedschaft | Nürnberg Renegades',
+      description: 'Erfahre mehr über Nürnberg Renegades e.V., unsere Mitgliedschaft, Community und den Einstieg ins Flag Football.',
       canonical: 'https://nuernberg-renegades.de/club'
     });
   }

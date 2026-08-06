@@ -1,0 +1,51 @@
+.hero-bg {
+  background-image: url('/assets/images/hero-flag-football.avif');
+}
+
+.hero-overlay {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(18, 20, 26, 0.82) 50%, rgba(28, 30, 35, 0.76));
+}
+
+.hero-highlight {
+  background: radial-gradient(circle at top right, rgba(255, 177, 0, 0.34), transparent 36%);
+}
+
+.hero-subtitle {
+  display: inline-block;
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.36);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.about-bg {
+  background-image: image-set(
+    url('/assets/images/optimized/about-team-huddle-full.avif') type('image/avif'),
+    url('/assets/images/optimized/about-team-huddle-full.webp') type('image/webp'),
+    url('/assets/images/about-team-huddle.jpg') type('image/jpeg')
+  );
+}
+
+.about-overlay {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(19, 21, 26, 0.8) 52%, rgba(27, 29, 34, 0.72));
+}
+
+@media (max-width: 768px) {
+  .hero-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.93), rgba(17, 18, 23, 0.9) 50%, rgba(25, 27, 32, 0.84));
+  }
+
+  .hero-highlight {
+    background: radial-gradient(circle at 78% 12%, rgba(255, 177, 0, 0.28), transparent 40%);
+  }
+
+  .about-overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(19, 21, 26, 0.8) 62%, rgba(27, 29, 34, 0.68));
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.86), rgba(18, 20, 26, 0.74) 50%, rgba(28, 30, 35, 0.66));
+  }
+}

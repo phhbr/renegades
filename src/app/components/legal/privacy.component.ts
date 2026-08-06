@@ -13,8 +13,8 @@ export class PrivacyComponent implements OnInit {
 
   ngOnInit(): void {
     this.meta.updateMeta({
-      title: 'Datenschutz (Privacy Policy) - Nürnberg Renegades e.V.',
-      description: 'Privacy policy and data protection information for Nürnberg Renegades e.V.',
+      title: 'Datenschutz | Nürnberg Renegades e.V.',
+      description: 'Datenschutzhinweise und Informationen zum Umgang mit personenbezogenen Daten bei Nürnberg Renegades e.V.',
       canonical: 'https://nuernberg-renegades.de/datenschutz'
     });
   }

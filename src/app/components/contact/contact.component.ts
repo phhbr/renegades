@@ -18,8 +18,8 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.meta.updateMeta({
-      title: 'Contact Nürnberg Renegades - Get in Touch',
-      description: 'Have questions about our flag football club? Contact Nürnberg Renegades e.V. - we\'d love to hear from you!',
+      title: 'Kontakt | Nürnberg Renegades',
+      description: 'Fragen zum Flag Football, Training oder zur Mitgliedschaft? Kontaktiere Nürnberg Renegades e.V. über unser Formular.',
       canonical: 'https://nuernberg-renegades.de/contact'
     });
   }

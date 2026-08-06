@@ -1,6 +1,6 @@
 <div [class.dark]="isDarkMode()">
   <app-navbar [isDarkMode]="isDarkMode()" (toggleTheme)="toggleTheme()" />
-  <div class="min-h-screen bg-secondary dark:bg-dark-secondary text-primary dark:text-dark-primary flex flex-col">
+  <div class="min-h-screen bg-[var(--surface-0)] text-[var(--ink-0)] flex flex-col">
     <router-outlet />
     <app-footer />
   </div>

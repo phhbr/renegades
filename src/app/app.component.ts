@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   effect,
+  DOCUMENT,
   inject,
   PLATFORM_ID,
   signal,
@@ -15,6 +16,7 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { AnalyticsService } from "./services/analytics.service";
 import { LanguageService } from "./services/language.service";
 import { MetaService } from "./services/meta.service";
+import { StorageService } from "./services/storage.service";
 import { environment } from "../environments/environment";
 
 @Component({
@@ -30,10 +32,13 @@ import { environment } from "../environments/environment";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements AfterViewInit {
+  readonly #themeStorageKey = 'preferredTheme';
   isDarkMode = signal(false);
   #analyticsService = inject(AnalyticsService);
   #languageService = inject(LanguageService);
   #metaService = inject(MetaService);
+  #storageService = inject(StorageService);
+  #document = inject(DOCUMENT);
   #platformId = inject(PLATFORM_ID);
   #router = inject(Router);
   #routerInitialized = false;
@@ -41,11 +46,21 @@ export class AppComponent implements AfterViewInit {
   constructor() {
     this.#metaService.setDefault();
 
-    if (isPlatformBrowser(this.#platformId)) {
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    const savedTheme = this.#storageService.getCookie(this.#themeStorageKey) ?? this.#storageService.getItem(this.#themeStorageKey);
+    if (savedTheme === 'dark') {
+      this.isDarkMode.set(true);
+    } else if (savedTheme === 'light') {
+      this.isDarkMode.set(false);
+    } else {
+      const themeHint = this.#storageService.getRequestHeader('sec-ch-prefers-color-scheme');
+      if (themeHint === 'dark') {
+        this.isDarkMode.set(true);
+      } else if (isPlatformBrowser(this.#platformId) && window.matchMedia("(prefers-color-scheme: dark)").matches) {
         this.isDarkMode.set(true);
       }
+    }
 
+    if (isPlatformBrowser(this.#platformId)) {
       const umamiScript = document.getElementById("umami-script");
       if (umamiScript) {
         umamiScript.setAttribute("src", environment.analytics.umamiUrl);
@@ -54,16 +69,14 @@ export class AppComponent implements AfterViewInit {
     }
 
     effect(() => {
-      if (isPlatformBrowser(this.#platformId)) {
-        document.documentElement.classList.toggle("dark", this.isDarkMode());
-      }
+      this.#document.documentElement.classList.toggle("dark", this.isDarkMode());
+      this.#storageService.setItem(this.#themeStorageKey, this.isDarkMode() ? 'dark' : 'light');
+      this.#storageService.setCookie(this.#themeStorageKey, this.isDarkMode() ? 'dark' : 'light');
     });
 
     effect(() => {
-      const lang = this.#languageService.getCurrentLang();
-      if (isPlatformBrowser(this.#platformId)) {
-        document.documentElement.setAttribute('lang', lang);
-      }
+      const lang = this.#languageService.currentLang();
+      this.#document.documentElement.setAttribute('lang', lang);
     });
   }
 

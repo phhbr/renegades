@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
  *   [src]="'logo-avatar'"
  *   [alt]="'Team logo'"
  *   [sizes]="'(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'"
+ *   [priority]="true"
  *   [class]="'w-full h-auto'"
  * ></app-responsive-image>
  */
@@ -37,7 +38,9 @@ import { CommonModule } from '@angular/common';
         [src]="fallbackSrc"
         [alt]="alt"
         [class]="imageClass"
-        loading="lazy"
+        [attr.loading]="priority ? 'eager' : 'lazy'"
+        [attr.fetchpriority]="priority ? 'high' : 'auto'"
+        decoding="async"
         [srcset]="generateSrcset('jpg')"
         [sizes]="sizes"
       />
@@ -51,6 +54,7 @@ export class ResponsiveImageComponent {
   @Input() sizes: string = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
   @Input() imageClass: string = 'w-full h-auto';
   @Input() basePath: string = '/assets/images/optimized'; // Path to optimized images
+  @Input() priority = false;
 
   // Responsive breakpoints — use a conservative set to avoid 404s for missing sizes.
   // We always generate a `-full` version; smaller breakpoint (640) covers mobile.

@@ -1,19 +1,19 @@
-<footer class="bg-secondary dark:bg-dark-surface text-primary dark:text-white py-8 mt-auto">
+<footer class="mt-auto border-t border-[var(--brand-line)]/55 bg-[var(--surface-1)]/90 py-10 text-[var(--ink-0)] backdrop-blur">
   <div class="container mx-auto px-4">
-    <div class="flex flex-col space-y-6">
+    <div class="flex flex-col space-y-8">
       <!-- Main Footer Content -->
-      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
-          <a routerLink="/impressum" class="hover:text-accent transition-colors duration-300">
+      <div class="flex flex-col items-center justify-between space-y-5 md:flex-row md:space-y-0">
+        <div class="flex flex-col items-center space-y-2 md:flex-row md:space-x-5 md:space-y-0">
+          <a routerLink="/impressum" class="text-sm font-semibold tracking-wide text-primary/90 dark:text-white/90 transition-colors duration-300 hover:text-accent dark:hover:text-[var(--brand-amber)]">
             {{ "footer.impressum" | translate }}
           </a>
-          <a routerLink="/datenschutz" class="hover:text-accent transition-colors duration-300">
+          <a routerLink="/datenschutz" class="text-sm font-semibold tracking-wide text-primary/90 dark:text-white/90 transition-colors duration-300 hover:text-accent dark:hover:text-[var(--brand-amber)]">
             {{ "footer.privacy" | translate }}
           </a>
         </div>
         <div class="flex items-center space-x-4">
           <a href="https://www.instagram.com/renegades_nuernberg/" target="_blank" rel="noopener noreferrer"
-            class="text-primary dark:text-white hover:text-accent dark:hover:text-accent transition-colors duration-300"
+            class="rounded-full bg-[var(--surface-2)] p-2 text-primary dark:text-white/90 transition-colors duration-300 hover:text-accent dark:hover:text-[var(--brand-amber)]"
             aria-label="Follow us on Instagram">
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
               class="w-6 h-6" stroke="currentColor" fill="currentColor" viewBox="0 0 56.7 56.7"
@@ -29,30 +29,30 @@
               </g>
             </svg>
           </a>
-          <div class="text-sm text-primary/70 dark:text-white/70">
+          <div class="text-sm text-primary/80 dark:text-white/80">
             © {{ currentYear() }} Nürnberg Renegades e.V. {{ "footer.rights" | translate }}
           </div>
         </div>
       </div>
 
       <!-- License Information -->
-      <div class="text-xs text-primary/60 dark:text-white/60 text-center space-y-2">
+      <div class="space-y-2 text-center text-xs text-primary/80 dark:text-white/78">
         <p>
           {{ "footer.license.source" | translate }}
-          <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer" class="hover:text-accent">
+          <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary dark:text-white/90 transition-colors hover:text-accent dark:hover:text-[var(--brand-amber)]">
             {{ "footer.license.mit" | translate }}
           </a>
           {{ "footer.license.licensed" | translate }}
         </p>
         <div class="space-y-1">
-          <p class="font-medium">{{ "footer.images.credits" | translate }}</p>
+          <p class="font-semibold">{{ "footer.images.credits" | translate }}</p>
           <p>
             {{ "footer.images.background" | translate }}
-            <a href="https://www.pexels.com/@ketut-subiyanto" target="_blank" rel="noopener noreferrer" class="hover:text-accent">Ketut Subiyanto</a>,
+            <a href="https://www.pexels.com/@ketut-subiyanto" target="_blank" rel="noopener noreferrer" class="font-medium text-primary dark:text-white/90 transition-colors hover:text-accent dark:hover:text-[var(--brand-amber)]">Ketut Subiyanto</a>,
             {{ "footer.images.team" | translate }}
-            <a href="https://www.pexels.com/@jeffrey-czum" target="_blank" rel="noopener noreferrer" class="hover:text-accent">Jeffrey Czum</a>,
+            <a href="https://www.pexels.com/@pavel-danilyuk" target="_blank" rel="noopener noreferrer" class="font-medium text-primary dark:text-white/90 transition-colors hover:text-accent dark:hover:text-[var(--brand-amber)]">Pavel Danilyuk</a>,
             {{ "footer.images.contact" | translate }}
-            <a href="https://www.pexels.com/@fauxels" target="_blank" rel="noopener noreferrer" class="hover:text-accent">fauxels</a>.
+            <a href="https://www.pexels.com/@fauxels" target="_blank" rel="noopener noreferrer" class="font-medium text-primary dark:text-white/90 transition-colors hover:text-accent dark:hover:text-[var(--brand-amber)]">fauxels</a>.
           </p>
           <p>{{ "footer.images.club" | translate:{ year: currentYear().toString()} }}</p>
         </div>

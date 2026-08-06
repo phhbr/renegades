@@ -16,7 +16,7 @@ export class ImpressumComponent implements OnInit {
   ngOnInit(): void {
     this.meta.updateMeta({
       title: 'Impressum - Nürnberg Renegades e.V.',
-      description: 'Legal information and impressum for Nürnberg Renegades e.V.',
+      description: 'Impressum und rechtliche Angaben für Nürnberg Renegades e.V.',
       canonical: 'https://nuernberg-renegades.de/impressum'
     });
   }

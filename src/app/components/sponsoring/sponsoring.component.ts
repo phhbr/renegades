@@ -18,8 +18,8 @@ export class SponsoringComponent implements OnInit {
 
   async ngOnInit() {
     this.#meta.updateMeta({
-      title: 'Sponsor Nürnberg Renegades - Support Flag Football',
-      description: 'Become a sponsor of Nürnberg Renegades e.V. Support competitive flag football in Germany and reach our community.',
+      title: 'Sponsoring | Nürnberg Renegades',
+      description: 'Support Nürnberg Renegades e.V. as a sponsor and help grow competitive flag football in Nürnberg and beyond.',
       canonical: 'https://nuernberg-renegades.de/sponsoring'
     });
 
