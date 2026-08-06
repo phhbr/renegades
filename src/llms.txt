@@ -1,0 +1,21 @@
+# Nürnberg Renegades e.V.
+
+> Nürnberg Renegades e.V. is a flag football club in Nürnberg, Germany, fielding two teams: the 1st team competes in the 1. DFFL (Germany's top division) and the 2nd team plays in the Bayernliga.
+
+This file helps AI agents and language models understand the site structure and locate the club's official pages.
+
+## Pages
+
+- [Home](https://nuernberg-renegades.de/): Club overview, both teams, and how to join.
+- [Team](https://nuernberg-renegades.de/team): Coaching staff and player roster.
+- [Club](https://nuernberg-renegades.de/club): Club history, leadership, membership, and how to apply.
+- [Training](https://nuernberg-renegades.de/training): Training times, locations, and tryouts.
+- [Results](https://nuernberg-renegades.de/ergebnisse): Schedules and standings for both teams.
+- [Sponsoring](https://nuernberg-renegades.de/sponsoring): Sponsorship information and current partners.
+- [FAQ](https://nuernberg-renegades.de/faq): Frequently asked questions about membership, cost, and the club.
+- [Contact](https://nuernberg-renegades.de/contact): Contact form and email address.
+
+## Optional
+
+- [Impressum](https://nuernberg-renegades.de/impressum): Legal notice.
+- [Datenschutz](https://nuernberg-renegades.de/datenschutz): Privacy policy.
