@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component, input, output, signal } from '@angu
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
+import { LocalePathPipe } from '../../pipes/locale-path.pipe';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, TranslatePipe, LanguageSwitcherComponent],
+  imports: [RouterLink, RouterLinkActive, TranslatePipe, LanguageSwitcherComponent, LocalePathPipe],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

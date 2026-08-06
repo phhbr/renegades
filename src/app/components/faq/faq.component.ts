@@ -4,6 +4,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 import { MetaService } from '../../services/meta.service';
 import { LanguageService } from '../../services/language.service';
 import { translations } from '../../i18n/translations';
+import { LocalePathPipe } from '../../pipes/locale-path.pipe';
 
 interface FaqItem {
   questionKey: string;
@@ -13,7 +14,7 @@ interface FaqItem {
 @Component({
   selector: 'app-faq',
   standalone: true,
-  imports: [TranslatePipe, RouterLink],
+  imports: [TranslatePipe, RouterLink, LocalePathPipe],
   templateUrl: './faq.component.html'
 })
 export class FaqComponent implements OnDestroy {
@@ -35,9 +36,9 @@ export class FaqComponent implements OnDestroy {
 
   constructor() {
     this.meta.updateMeta({
-      title: 'FAQ – Häufige Fragen | Nürnberg Renegades',
-      description: 'Antworten auf häufige Fragen zu Nürnberg Renegades e.V.: Mitgliedschaft, Kosten, Probetraining ohne Anmeldung und unsere Teams in der 1. DFFL und der Bayernliga.',
-      canonical: 'https://nuernberg-renegades.de/faq'
+      titleKey: 'meta.faq.title',
+      descriptionKey: 'meta.faq.description',
+      path: '/faq'
     });
 
     // Rebuild the FAQPage schema whenever the active language changes.

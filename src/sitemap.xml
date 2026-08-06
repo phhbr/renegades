@@ -2,83 +2,201 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://nuernberg-renegades.de/</loc>
+    <loc>https://www.nuernberg-renegades.de/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nuernberg-renegades.de/?lang=de" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nuernberg-renegades.de/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/" />
   </url>
   <url>
-    <loc>https://nuernberg-renegades.de/team</loc>
-    <lastmod>2025-11-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nuernberg-renegades.de/team?lang=de" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nuernberg-renegades.de/team?lang=en" />
-  </url>
-  <url>
-    <loc>https://nuernberg-renegades.de/club</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nuernberg-renegades.de/club?lang=de" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nuernberg-renegades.de/club?lang=en" />
-  </url>
-  <url>
-    <loc>https://nuernberg-renegades.de/training</loc>
+    <loc>https://www.nuernberg-renegades.de/training</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nuernberg-renegades.de/training?lang=de" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nuernberg-renegades.de/training?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/training" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/training" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/training" />
   </url>
   <url>
-    <loc>https://nuernberg-renegades.de/ergebnisse/1-mannschaft/spielplan</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nuernberg-renegades.de/ergebnisse/2-mannschaft/spielplan</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nuernberg-renegades.de/sponsoring</loc>
+    <loc>https://www.nuernberg-renegades.de/team</loc>
     <lastmod>2025-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nuernberg-renegades.de/sponsoring?lang=de" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nuernberg-renegades.de/sponsoring?lang=en" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/team" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/team" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/team" />
   </url>
   <url>
-    <loc>https://nuernberg-renegades.de/contact</loc>
+    <loc>https://www.nuernberg-renegades.de/club</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/club" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/club" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/club" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/contact</loc>
     <lastmod>2025-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nuernberg-renegades.de/contact?lang=de" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nuernberg-renegades.de/contact?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/contact" />
   </url>
   <url>
-    <loc>https://nuernberg-renegades.de/faq</loc>
+    <loc>https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/spielplan</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/spielplan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft/spielplan" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/spielplan" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/spielplan</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/spielplan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/spielplan" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/spielplan" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/sponsoring</loc>
+    <lastmod>2025-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/sponsoring" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/sponsoring" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/sponsoring" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/faq</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://nuernberg-renegades.de/faq?lang=de" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://nuernberg-renegades.de/faq?lang=en" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/faq" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/faq" />
   </url>
   <url>
-    <loc>https://nuernberg-renegades.de/impressum</loc>
+    <loc>https://www.nuernberg-renegades.de/impressum</loc>
     <lastmod>2025-11-23</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/impressum" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/impressum" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/impressum" />
   </url>
   <url>
-    <loc>https://nuernberg-renegades.de/datenschutz</loc>
+    <loc>https://www.nuernberg-renegades.de/datenschutz</loc>
     <lastmod>2025-11-23</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/datenschutz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/datenschutz" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/datenschutz" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/training</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/training" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/training" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/training" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/team</loc>
+    <lastmod>2025-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/team" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/team" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/team" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/club</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/club" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/club" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/club" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/contact</loc>
+    <lastmod>2025-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/contact" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft/spielplan</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/spielplan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft/spielplan" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/spielplan" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/spielplan</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/spielplan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/spielplan" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/spielplan" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/sponsoring</loc>
+    <lastmod>2025-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/sponsoring" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/sponsoring" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/sponsoring" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/faq</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/faq" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/faq" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/impressum</loc>
+    <lastmod>2025-11-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/impressum" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/impressum" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/impressum" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/datenschutz</loc>
+    <lastmod>2025-11-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/datenschutz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/datenschutz" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/datenschutz" />
   </url>
 </urlset>

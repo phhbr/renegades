@@ -18,10 +18,10 @@
     </div>
 
     <div class="mt-12 flex flex-wrap justify-center gap-4">
-      <a routerLink="/contact" class="btn-base btn-primary btn-size-md" aria-label="Contact us with further questions">
+      <a [routerLink]="'/contact' | localePath" class="btn-base btn-primary btn-size-md" aria-label="Contact us with further questions">
         {{ 'faq.cta.contact' | translate }}
       </a>
-      <a routerLink="/club" class="btn-base btn-secondary-light btn-size-md" aria-label="Learn more about membership">
+      <a [routerLink]="'/club' | localePath" class="btn-base btn-secondary-light btn-size-md" aria-label="Learn more about membership">
         {{ 'faq.cta.club' | translate }}
       </a>
     </div>

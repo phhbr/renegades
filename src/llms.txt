@@ -4,18 +4,20 @@
 
 This file helps AI agents and language models understand the site structure and locate the club's official pages.
 
+The site is published in two languages: German at the root (`/training`) and English under an `/en` prefix (`/en/training`). The pages below link to the German originals; prefix any path with `/en` for the English version.
+
 ## Pages
 
-- [Home](https://nuernberg-renegades.de/): Club overview, both teams, and how to join.
-- [Team](https://nuernberg-renegades.de/team): Coaching staff and player roster.
-- [Club](https://nuernberg-renegades.de/club): Club history, leadership, membership, and how to apply.
-- [Training](https://nuernberg-renegades.de/training): Training times, locations, and drop-in tryouts — no sign-up needed, just show up.
-- [Results](https://nuernberg-renegades.de/ergebnisse): Schedules and standings for both teams.
-- [Sponsoring](https://nuernberg-renegades.de/sponsoring): Sponsorship information and current partners.
-- [FAQ](https://nuernberg-renegades.de/faq): Frequently asked questions about membership, cost, and the club.
-- [Contact](https://nuernberg-renegades.de/contact): Contact form and email address.
+- [Home](https://www.nuernberg-renegades.de/): Club overview, both teams, and how to join.
+- [Team](https://www.nuernberg-renegades.de/team): Coaching staff and player roster.
+- [Club](https://www.nuernberg-renegades.de/club): Club history, leadership, membership, and how to apply.
+- [Training](https://www.nuernberg-renegades.de/training): Training times, locations, and drop-in tryouts — no sign-up needed, just show up.
+- [Results](https://www.nuernberg-renegades.de/ergebnisse): Schedules and standings for both teams.
+- [Sponsoring](https://www.nuernberg-renegades.de/sponsoring): Sponsorship information and current partners.
+- [FAQ](https://www.nuernberg-renegades.de/faq): Frequently asked questions about membership, cost, and the club.
+- [Contact](https://www.nuernberg-renegades.de/contact): Contact form and email address.
 
 ## Optional
 
-- [Impressum](https://nuernberg-renegades.de/impressum): Legal notice.
-- [Datenschutz](https://nuernberg-renegades.de/datenschutz): Privacy policy.
+- [Impressum](https://www.nuernberg-renegades.de/impressum): Legal notice.
+- [Datenschutz](https://www.nuernberg-renegades.de/datenschutz): Privacy policy.

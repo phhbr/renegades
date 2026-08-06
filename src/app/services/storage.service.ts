@@ -44,6 +44,24 @@ export class StorageService {
     return this.#request?.headers?.get(name) ?? null;
   }
 
+  /** Current request path — `location.pathname` in the browser, the request URL during SSR. */
+  getPathname(): string {
+    if (isPlatformBrowser(this.platformId)) {
+      return window.location.pathname;
+    }
+
+    const url = this.#request?.url;
+    if (!url) {
+      return '/';
+    }
+
+    try {
+      return new URL(url).pathname;
+    } catch {
+      return '/';
+    }
+  }
+
   getQueryParam(name: string): string | null {
     if (isPlatformBrowser(this.platformId)) {
       return new URLSearchParams(window.location.search).get(name);

@@ -12,6 +12,7 @@ import { footer } from './footer';
 import { legal } from './legal';
 import { results } from './results';
 import { faq } from './faq';
+import { meta } from './meta';
 
 export const en = {
   ...nav,
@@ -27,5 +28,6 @@ export const en = {
   ...footer,
   ...legal,
   ...results,
-  ...faq
+  ...faq,
+  ...meta
 };

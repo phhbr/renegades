@@ -1,4 +1,5 @@
 import { Component, signal, OnInit, inject } from '@angular/core';
+import { LocalePathPipe } from '../../pipes/locale-path.pipe';
 
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '../../pipes/translate.pipe';
@@ -12,7 +13,7 @@ interface Feature {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, TranslatePipe],
+  imports: [RouterLink, TranslatePipe, LocalePathPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -38,10 +39,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.meta.updateMeta({
-      title: 'Nürnberg Renegades e.V. | Flag Football in Nürnberg',
-      description: 'Nürnberg Renegades e.V. is a flag football club fielding two teams: our 1st team in the 1. DFFL and our 2nd team in the Bayernliga. No sign-up needed — just drop in to a training session and try it out.',
-      canonical: 'https://nuernberg-renegades.de/',
-      image: 'https://nuernberg-renegades.de/assets/images/hero-flag-football.avif',
+      titleKey: 'meta.home.title',
+      descriptionKey: 'meta.home.description',
+      path: '/',
+      image: 'https://www.nuernberg-renegades.de/assets/images/hero-flag-football.avif',
       imageAlt: 'Nürnberg Renegades flag football team'
     });
   }

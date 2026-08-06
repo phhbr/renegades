@@ -16,7 +16,8 @@ export class ContactService {
   #supabaseService = inject(SupabaseService);
 
   async submitContactForm(message: ContactMessage) {
-    const { error: functionError } = await this.#supabaseService.client.functions.invoke('send-contact-email', {
+    const supabase = await this.#supabaseService.getClient();
+    const { error: functionError } = await supabase.functions.invoke('send-contact-email', {
       body: { message }
     });
 

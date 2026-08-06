@@ -15,9 +15,9 @@ export class ClubComponent implements OnInit {
 
   ngOnInit(): void {
     this.meta.updateMeta({
-      title: 'Club & Mitgliedschaft | Nürnberg Renegades',
-      description: 'Erfahre mehr über Nürnberg Renegades e.V., unsere Mitgliedschaft und Community. Keine Anmeldung nötig — komm einfach zu einem Probetraining vorbei.',
-      canonical: 'https://nuernberg-renegades.de/club'
+      titleKey: 'meta.club.title',
+      descriptionKey: 'meta.club.description',
+      path: '/club'
     });
   }
 }

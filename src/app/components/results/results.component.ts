@@ -18,6 +18,7 @@ import { ActivatedRoute, Params, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { MetaService } from '../../services/meta.service';
+import { LocalePathPipe } from '../../pipes/locale-path.pipe';
 
 type Team = '1-mannschaft' | '2-mannschaft';
 type Tab = 'spielplan' | 'tabelle' | 'live';
@@ -30,7 +31,7 @@ const TEAM_IDS: Record<Team, number> = { '1-mannschaft': 159, '2-mannschaft': 28
 @Component({
   selector: 'app-results',
   standalone: true,
-  imports: [TranslatePipe, RouterLink, NgClass],
+  imports: [TranslatePipe, RouterLink, NgClass, LocalePathPipe],
   templateUrl: './results.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -75,12 +76,10 @@ export class ResultsComponent implements OnInit, OnDestroy {
   readonly #updateMeta = effect(() => {
     const team = this.team();
     const tab = this.tab();
-    const canonicalBase = 'https://nuernberg-renegades.de/ergebnisse';
     this.#meta.updateMeta({
-      title: 'Ergebnisse, Tabelle & Spielplan | Nürnberg Renegades',
-      description:
-        'Aktuelle Spielergebnisse, Tabellen und Spielpläne der Nürnberg Renegades e.V.: 1. Mannschaft in der 1. DFFL und 2. Mannschaft in der Bayernliga.',
-      canonical: `${canonicalBase}/${team}/${tab}`,
+      titleKey: 'meta.results.title',
+      descriptionKey: 'meta.results.description',
+      path: `/ergebnisse/${team}/${tab}`,
     });
   });
 

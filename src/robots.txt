@@ -8,7 +8,7 @@ Disallow: /*.js.map
 Disallow: /*.css.map
 
 # Sitemaps
-Sitemap: https://nuernberg-renegades.de/sitemap.xml
+Sitemap: https://www.nuernberg-renegades.de/sitemap.xml
 
 # Crawl delay (in seconds)
 Crawl-delay: 1

@@ -2,20 +2,26 @@ import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
 import { provideServerRendering, withRoutes, RenderMode, ServerRoute } from '@angular/ssr';
 import { appConfig } from './app.config';
 
-const serverRoutes: ServerRoute[] = [
-  { path: '', renderMode: RenderMode.Server },
-  { path: 'team', renderMode: RenderMode.Server },
-  { path: 'sponsoring', renderMode: RenderMode.Server },
-  { path: 'impressum', renderMode: RenderMode.Server },
-  { path: 'datenschutz', renderMode: RenderMode.Server },
-  { path: 'ergebnisse', renderMode: RenderMode.Server },
-  { path: 'ergebnisse/:team', renderMode: RenderMode.Server },
-  { path: 'ergebnisse/:team/:tab', renderMode: RenderMode.Server },
-  { path: 'contact', renderMode: RenderMode.Server },
-  { path: 'faq', renderMode: RenderMode.Server },
-  { path: 'club', renderMode: RenderMode.Server },
-  { path: 'training', renderMode: RenderMode.Server },
+const pagePaths = [
+  '',
+  'team',
+  'sponsoring',
+  'impressum',
+  'datenschutz',
+  'ergebnisse',
+  'ergebnisse/:team',
+  'ergebnisse/:team/:tab',
+  'contact',
+  'faq',
+  'club',
+  'training',
 ];
+
+// Both locales render per request; `/en/...` mirrors the German tree one-for-one.
+const serverRoutes: ServerRoute[] = pagePaths.flatMap(path => [
+  { path, renderMode: RenderMode.Server } as ServerRoute,
+  { path: path ? `en/${path}` : 'en', renderMode: RenderMode.Server } as ServerRoute,
+]);
 
 const serverConfig: ApplicationConfig = {
   providers: [

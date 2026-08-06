@@ -1,6 +1,12 @@
 import { Routes } from '@angular/router';
+import { EN_PREFIX } from './i18n/locale';
 
-export const routes: Routes = [
+/**
+ * Language-neutral page tree. Mounted twice: at the root for German and under `/en`
+ * for English, so every page has one indexable URL per language. Redirects inside are
+ * relative on purpose — they resolve within whichever locale they are mounted in.
+ */
+const pages: Routes = [
   {
     path: '',
     loadComponent: () => import('./components/home/home.component').then(m => m.HomeComponent)
@@ -49,4 +55,9 @@ export const routes: Routes = [
     path: 'datenschutz',
     loadComponent: () => import('./components/legal/privacy.component').then(m => m.PrivacyComponent)
   }
+];
+
+export const routes: Routes = [
+  { path: EN_PREFIX.slice(1), children: pages },
+  ...pages
 ];

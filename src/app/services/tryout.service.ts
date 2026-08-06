@@ -18,7 +18,8 @@ export class TryoutService {
   #supabaseService = inject(SupabaseService);
 
   async submitTryoutForm(request: TryoutRequest) {
-    const { error: functionError } = await this.#supabaseService.client.functions.invoke('send-tryout-email', {
+    const supabase = await this.#supabaseService.getClient();
+    const { error: functionError } = await supabase.functions.invoke('send-tryout-email', {
       body: { request }
     });
 

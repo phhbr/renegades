@@ -15,9 +15,9 @@ export class ImpressumComponent implements OnInit {
 
   ngOnInit(): void {
     this.meta.updateMeta({
-      title: 'Impressum - Nürnberg Renegades e.V.',
-      description: 'Impressum und rechtliche Angaben für Nürnberg Renegades e.V.',
-      canonical: 'https://nuernberg-renegades.de/impressum'
+      titleKey: 'meta.impressum.title',
+      descriptionKey: 'meta.impressum.description',
+      path: '/impressum'
     });
   }
 }

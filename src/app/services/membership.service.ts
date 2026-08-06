@@ -19,7 +19,8 @@ export class MembershipService {
   #supabaseService = inject(SupabaseService);
 
   async submitMembershipApplication(application: MembershipApplication) {
-    const { error: functionError } = await this.#supabaseService.client.functions.invoke('send-membership-application', {
+    const supabase = await this.#supabaseService.getClient();
+    const { error: functionError } = await supabase.functions.invoke('send-membership-application', {
       body: { application }
     });
 

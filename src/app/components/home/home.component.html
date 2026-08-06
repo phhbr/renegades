@@ -22,14 +22,14 @@
         </p>
         <div class="mt-10 flex flex-wrap gap-4">
           <a
-            routerLink="/training"
+            [routerLink]="'/training' | localePath"
             class="btn-base btn-primary btn-size-lg"
             aria-label="Join our flag football team"
           >
             {{ 'home.hero.cta' | translate }}
           </a>
           <a
-            routerLink="/contact"
+            [routerLink]="'/contact' | localePath"
             class="btn-base btn-secondary-dark btn-size-lg"
             aria-label="Get in touch with our club"
           >
@@ -90,7 +90,7 @@
         <article class="athletic-card rounded-3xl p-7">
           <h3 class="display-heading text-xl font-bold tracking-tight text-[var(--ink-0)]">{{ 'home.news.season.title' | translate }}</h3>
           <p class="mt-4 leading-relaxed text-[var(--ink-muted)]">{{ 'home.news.season.description' | translate }}</p>
-          <a routerLink="/ergebnisse" class="btn-base btn-secondary-light btn-size-md mt-6" aria-label="See results and standings for both teams">
+          <a [routerLink]="'/ergebnisse' | localePath" class="btn-base btn-secondary-light btn-size-md mt-6" aria-label="See results and standings for both teams">
             {{ 'home.news.season.cta' | translate }}
           </a>
         </article>
@@ -121,7 +121,7 @@
         </article>
       </div>
       <div class="mt-8">
-        <a routerLink="/ergebnisse" class="btn-base btn-primary btn-size-md" aria-label="See results and standings for both teams">
+        <a [routerLink]="'/ergebnisse' | localePath" class="btn-base btn-primary btn-size-md" aria-label="See results and standings for both teams">
           {{ 'home.teams.cta' | translate }}
         </a>
       </div>
@@ -176,14 +176,14 @@
         </p>
         <div class="mt-9 flex flex-wrap justify-center gap-4">
           <a
-            routerLink="/contact"
+            [routerLink]="'/contact' | localePath"
             class="btn-base btn-primary btn-size-lg"
             aria-label="Contact us to join the team"
           >
             {{ 'home.ready.cta' | translate }}
           </a>
           <a
-            routerLink="/training"
+            [routerLink]="'/training' | localePath"
             class="btn-base btn-secondary-light btn-size-lg"
             aria-label="See our training times and locations"
           >

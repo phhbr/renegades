@@ -1,17 +1,23 @@
 import { Injectable, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
+import { LanguageService } from './language.service';
+import { translations } from '../i18n/translations';
+import { LANGS, Lang, SITE_ORIGIN, localizedUrl } from '../i18n/locale';
 
 export interface PageMeta {
-  title: string;
-  description: string;
-  keywords?: string;
+  /** Translation key for the page title, e.g. 'meta.team.title'. */
+  titleKey: string;
+  /** Translation key for the meta description. */
+  descriptionKey: string;
+  /** Language-neutral path, e.g. '/team'. The canonical and hreflang URLs are derived from it. */
+  path: string;
   image?: string;
   imageAlt?: string;
-  url?: string;
   type?: 'website' | 'article';
-  canonical?: string;
 }
+
+const OG_LOCALES: Record<Lang, string> = { de: 'de_DE', en: 'en_US' };
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +26,7 @@ export class MetaService {
   private meta = inject(Meta);
   private title = inject(Title);
   private doc = inject(DOCUMENT);
+  private language = inject(LanguageService);
 
   private setLinkTag(rel: string, href: string, hreflang?: string): void {
     const selector = hreflang
@@ -35,101 +42,62 @@ export class MetaService {
     el.setAttribute('href', href);
   }
 
+  private translate(key: string, lang: Lang): string {
+    return (translations[lang] as Record<string, string>)?.[key] ?? key;
+  }
+
   updateMeta(data: PageMeta): void {
-    // Update title
-    this.title.setTitle(data.title);
+    const lang = this.language.getCurrentLang();
+    const title = this.translate(data.titleKey, lang);
+    const description = this.translate(data.descriptionKey, lang);
+    const canonical = localizedUrl(data.path, lang);
 
-    // Update description
+    this.title.setTitle(title);
+    this.meta.updateTag({ name: 'description', content: description });
+
+    // Open Graph
+    this.meta.updateTag({ property: 'og:title', content: title });
+    this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({ property: 'og:url', content: canonical });
+    this.meta.updateTag({ property: 'og:locale', content: OG_LOCALES[lang] });
     this.meta.updateTag({
-      name: 'description',
-      content: data.description
-    });
-
-    // Update keywords if provided
-    if (data.keywords) {
-      this.meta.updateTag({
-        name: 'keywords',
-        content: data.keywords
-      });
-    }
-
-    // Update Open Graph
-    this.meta.updateTag({
-      property: 'og:title',
-      content: data.title
-    });
-
-    this.meta.updateTag({
-      property: 'og:description',
-      content: data.description
+      property: 'og:locale:alternate',
+      content: OG_LOCALES[lang === 'de' ? 'en' : 'de'],
     });
 
     if (data.image) {
-      this.meta.updateTag({
-        property: 'og:image',
-        content: data.image
-      });
+      this.meta.updateTag({ property: 'og:image', content: data.image });
+      this.meta.updateTag({ name: 'twitter:image', content: data.image });
     }
 
     if (data.imageAlt) {
-      this.meta.updateTag({
-        property: 'og:image:alt',
-        content: data.imageAlt
-      });
+      this.meta.updateTag({ property: 'og:image:alt', content: data.imageAlt });
     }
 
     if (data.type) {
-      this.meta.updateTag({
-        property: 'og:type',
-        content: data.type
-      });
+      this.meta.updateTag({ property: 'og:type', content: data.type });
     }
 
-    // Update og:url
-    const pageUrl = data.url ?? data.canonical;
-    if (pageUrl) {
-      this.meta.updateTag({ property: 'og:url', content: pageUrl });
+    // Self-referencing canonical per locale, plus a reciprocal hreflang cluster.
+    // Both alternates must return 200 and point back at each other, or Google drops the pair.
+    this.setLinkTag('canonical', canonical);
+    for (const alternate of LANGS) {
+      this.setLinkTag('alternate', localizedUrl(data.path, alternate), alternate);
     }
+    this.setLinkTag('alternate', localizedUrl(data.path, 'de'), 'x-default');
 
-    // Update canonical link tag
-    if (data.canonical) {
-      this.setLinkTag('canonical', data.canonical);
-    }
-
-    // Update hreflang alternate links
-    if (data.canonical) {
-      const base = data.canonical.split('?')[0];
-      this.setLinkTag('alternate', `${base}?lang=de`, 'de');
-      this.setLinkTag('alternate', `${base}?lang=en`, 'en');
-      this.setLinkTag('alternate', base, 'x-default');
-    }
-
-    // Update Twitter Card
-    this.meta.updateTag({
-      name: 'twitter:title',
-      content: data.title
-    });
-
-    this.meta.updateTag({
-      name: 'twitter:description',
-      content: data.description
-    });
-
-    if (data.image) {
-      this.meta.updateTag({
-        name: 'twitter:image',
-        content: data.image
-      });
-    }
+    // Twitter Card
+    this.meta.updateTag({ name: 'twitter:title', content: title });
+    this.meta.updateTag({ name: 'twitter:description', content: description });
+    this.meta.updateTag({ name: 'twitter:url', content: canonical });
   }
 
   setDefault(): void {
     this.updateMeta({
-      title: 'Nürnberg Renegades e.V. - Flag Football Club in Nürnberg | 1. DFFL & Bayernliga',
-      description: 'Join Nürnberg Renegades e.V., Nürnberg\'s flag football club fielding two teams: our 1st team in the 1. DFFL and our 2nd team in the Bayernliga. Professional coaching, welcoming community, and competitive play for all skill levels.',
-      keywords: 'flag football nürnberg, flag football nuremberg, DFFL, Bayernliga flag football, Deutsche Flag Football Liga, Nürnberg Renegades',
-      canonical: 'https://nuernberg-renegades.de/',
-      image: 'https://nuernberg-renegades.de/assets/images/hero-flag-football.avif'
+      titleKey: 'meta.home.title',
+      descriptionKey: 'meta.home.description',
+      path: '/',
+      image: `${SITE_ORIGIN}/assets/images/hero-flag-football.avif`,
     });
   }
 

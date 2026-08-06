@@ -8,14 +8,14 @@
     <!-- Team Selector -->
     <div class="flex gap-3 mb-8 justify-center">
       <a
-        routerLink="/ergebnisse/1-mannschaft/spielplan"
+        [routerLink]="'/ergebnisse/1-mannschaft/spielplan' | localePath"
         class="px-5 py-2 rounded-full font-semibold text-sm transition-colors duration-200"
         [ngClass]="team() === '1-mannschaft'
           ? 'bg-accent text-white'
           : 'bg-secondary-dark dark:bg-dark-surface text-gray-700 dark:text-gray-300'"
       >{{ 'results.team1' | translate }}</a>
       <a
-        routerLink="/ergebnisse/2-mannschaft/spielplan"
+        [routerLink]="'/ergebnisse/2-mannschaft/spielplan' | localePath"
         class="px-5 py-2 rounded-full font-semibold text-sm transition-colors duration-200"
         [ngClass]="team() === '2-mannschaft'
           ? 'bg-accent text-white'
@@ -28,7 +28,7 @@
       <nav class="flex">
         @for (t of tabs; track t) {
           <a
-            [routerLink]="'/ergebnisse/' + team() + '/' + t"
+            [routerLink]="('/ergebnisse/' + team() + '/' + t) | localePath"
             class="px-4 py-3 text-sm font-medium transition-colors duration-200 border-b-2 -mb-px flex items-center gap-2"
             [ngClass]="tab() === t
               ? 'border-accent text-accent dark:text-[var(--brand-amber)]'

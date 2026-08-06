@@ -14,7 +14,7 @@ Official website for the Nürnberg Renegades Flag Football Club.
 | Email | Resend (via Supabase Edge Functions) |
 | Hosting | Netlify (Edge Functions + CDN) |
 | Analytics | Umami |
-| i18n | Custom `TranslatePipe` + `LanguageService` (DE default, EN fallback), SSR-aware via cookies/`Accept-Language` |
+| i18n | Custom `TranslatePipe` + `LanguageService`, DE at `/`, EN at `/en` (URL decides the language) |
 
 ## Architecture
 
@@ -34,8 +34,18 @@ The app uses full Angular SSR (no build-time prerendering) configured in `src/ap
 | `/faq` | Server |
 | `/impressum` | Server |
 | `/datenschutz` | Server |
+| `/en/*` (same tree, English) | Server |
 
-All routes render on the server for every request (`RenderMode.Server`) rather than being prerendered at build time. This is required because language and theme preferences are resolved from request cookies and headers (`Accept-Language`, `Sec-CH-Prefers-Color-Scheme`) so the very first response is already in the visitor's language/theme — something build-time prerendering can't do per-request.
+### Locale URLs
+
+German is served from the root, English from an `/en` prefix — `/training` and `/en/training` are
+separate, indexable URLs, each with a self-referencing canonical and a reciprocal hreflang pair.
+The URL is the only source of truth for the active language: cookies and `Accept-Language` no
+longer swap the content, because two languages on one URL meant Google could index only one of
+them. `src/app/i18n/locale.ts` holds the scheme, `LocalePathPipe` keeps `routerLink`s inside the
+active locale, and `server.ts` 301-redirects the legacy `?lang=` URLs onto the new paths.
+
+All routes render on the server for every request (`RenderMode.Server`) rather than being prerendered at build time. This is required because the theme preference is resolved from request cookies and headers (`Sec-CH-Prefers-Color-Scheme`) so the very first response is already in the visitor's theme — something build-time prerendering can't do per-request.
 
 ### Build output
 
@@ -98,9 +108,9 @@ Browser request
 │   │   │   ├── analytics.service.ts
 │   │   │   ├── contact.service.ts
 │   │   │   ├── cookie-consent.service.ts
-│   │   │   ├── language.service.ts   # SSR-aware: cookie → Accept-Language → navigator.language
+│   │   │   ├── language.service.ts   # Language comes from the URL (/ = de, /en = en)
 │   │   │   ├── membership.service.ts
-│   │   │   ├── meta.service.ts       # Meta tags + JSON-LD (setJsonLd/removeJsonLd)
+│   │   │   ├── meta.service.ts       # Per-locale canonical + hreflang, meta tags, JSON-LD
 │   │   │   ├── recaptcha.service.ts
 │   │   │   ├── sponsor.service.ts    # Reads src/assets/data/sponsors.json
 │   │   │   ├── storage.service.ts    # localStorage + cookie wrapper (SSR-safe)
@@ -219,7 +229,7 @@ Row Level Security: not applicable — no database reads/writes remain, only Edg
 ## Features
 
 - Two teams: 1st team in the 1. DFFL, 2nd team in the Bayernliga
-- Multilingual (DE/EN), SSR-aware language & theme preferences (cookies + `Accept-Language`/`Sec-CH-Prefers-Color-Scheme` headers)
+- Multilingual (DE at `/`, EN at `/en`) with per-locale canonical + hreflang; SSR-aware theme preference (`Sec-CH-Prefers-Color-Scheme`)
 - Dark / Light mode
 - FAQ page with `FAQPage` JSON-LD schema
 - `llms.txt` for AI-agent discoverability
