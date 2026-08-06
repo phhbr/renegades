@@ -59,7 +59,13 @@ h4,
 
 @media (min-width: 768px) {
   .main-content {
-    padding-top: 6.5rem;
+    padding-top: 7.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    padding-top: 6.75rem;
   }
 }
 
