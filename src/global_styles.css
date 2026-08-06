@@ -140,13 +140,19 @@ img {
 }
 
 .btn-secondary-light {
-  border: 1px solid rgba(17, 19, 24, 0.35);
-  background: rgba(255, 255, 255, 0.88);
-  color: var(--ink-0);
+  border: 1px solid rgba(17, 19, 24, 0.18);
+  background: #ffffff;
+  color: #111318;
 }
 
 .btn-secondary-light:hover {
+  background: #f6f6f1;
+}
+
+.dark .btn-secondary-light {
   background: #ffffff;
+  color: #111318;
+  border-color: rgba(17, 19, 24, 0.18);
 }
 
 .btn-size-md {
