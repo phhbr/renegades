@@ -7,7 +7,5 @@ export const footer = {
   'footer.license.mit': 'MIT License',
   'footer.license.licensed': '.',
   'footer.images.credits': 'Image Credits',
-  'footer.images.background': 'Background images: Hero image by ',
-  'footer.images.team': 'Team image by ',
   'footer.images.club': 'Team photos and club logo © {{ year }} Nürnberg Renegades e.V. All rights reserved.'
 };

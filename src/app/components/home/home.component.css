@@ -1,12 +1,15 @@
 .hero-bg {
+  /* Portrait source: pull the crop up so the players stay in frame on wide viewports. */
+  background-position: center 35%;
   background-image: image-set(
-    url('/assets/images/optimized/hero-flag-football-1920w.avif') type('image/avif'),
-    url('/assets/images/optimized/hero-flag-football-1920w.webp') type('image/webp')
+    url('/assets/images/optimized/hero-flag-football-full.avif') type('image/avif'),
+    url('/assets/images/optimized/hero-flag-football-full.webp') type('image/webp'),
+    url('/assets/images/optimized/hero-flag-football-full.jpg') type('image/jpeg')
   );
 }
 
 .hero-overlay {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(18, 20, 26, 0.82) 50%, rgba(28, 30, 35, 0.76));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.88), rgba(18, 20, 26, 0.68) 50%, rgba(28, 30, 35, 0.5));
 }
 
 .hero-highlight {
@@ -22,27 +25,39 @@
 }
 
 .about-bg {
+  background-position: center 45%;
   background-image: image-set(
-    url('/assets/images/optimized/about-team-huddle-full.avif') type('image/avif'),
-    url('/assets/images/optimized/about-team-huddle-full.webp') type('image/webp'),
-    url('/assets/images/about-team-huddle.jpg') type('image/jpeg')
+    url('/assets/images/optimized/about-team-huddle-1920w.avif') type('image/avif'),
+    url('/assets/images/optimized/about-team-huddle-1920w.webp') type('image/webp'),
+    url('/assets/images/optimized/about-team-huddle-1920w.jpg') type('image/jpeg')
   );
 }
 
 .about-overlay {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(19, 21, 26, 0.8) 52%, rgba(27, 29, 34, 0.72));
+  /* Top-weighted: the huddle photo has a bright sky exactly where the heading sits. */
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.84), rgba(17, 19, 24, 0.62) 62%, rgba(24, 26, 31, 0.52));
 }
 
 @media (max-width: 768px) {
   .hero-bg {
+    background-position: center 40%;
     background-image: image-set(
       url('/assets/images/optimized/hero-flag-football-640w.avif') type('image/avif'),
-      url('/assets/images/optimized/hero-flag-football-640w.webp') type('image/webp')
+      url('/assets/images/optimized/hero-flag-football-640w.webp') type('image/webp'),
+      url('/assets/images/optimized/hero-flag-football-640w.jpg') type('image/jpeg')
+    );
+  }
+
+  .about-bg {
+    background-image: image-set(
+      url('/assets/images/optimized/about-team-huddle-640w.avif') type('image/avif'),
+      url('/assets/images/optimized/about-team-huddle-640w.webp') type('image/webp'),
+      url('/assets/images/optimized/about-team-huddle-640w.jpg') type('image/jpeg')
     );
   }
 
   .hero-overlay {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.93), rgba(17, 18, 23, 0.9) 50%, rgba(25, 27, 32, 0.84));
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(17, 18, 23, 0.8) 50%, rgba(25, 27, 32, 0.72));
   }
 
   .hero-highlight {
@@ -50,12 +65,12 @@
   }
 
   .about-overlay {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(19, 21, 26, 0.8) 62%, rgba(27, 29, 34, 0.68));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.88), rgba(19, 21, 26, 0.7) 62%, rgba(27, 29, 34, 0.6));
   }
 }
 
 @media (min-width: 1024px) {
   .hero-overlay {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.86), rgba(18, 20, 26, 0.74) 50%, rgba(28, 30, 35, 0.66));
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.84), rgba(18, 20, 26, 0.6) 50%, rgba(28, 30, 35, 0.4));
   }
 }

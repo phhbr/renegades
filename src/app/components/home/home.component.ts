@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
       titleKey: 'meta.home.title',
       descriptionKey: 'meta.home.description',
       path: '/',
-      image: 'https://www.nuernberg-renegades.de/assets/images/hero-flag-football.avif',
+      image: 'https://www.nuernberg-renegades.de/assets/images/og-image.jpg',
       imageAlt: 'Nürnberg Renegades flag football team'
     });
   }

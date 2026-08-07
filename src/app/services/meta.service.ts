@@ -122,7 +122,7 @@ export class MetaService {
       titleKey: 'meta.home.title',
       descriptionKey: 'meta.home.description',
       path: '/',
-      image: `${SITE_ORIGIN}/assets/images/hero-flag-football.avif`,
+      image: `${SITE_ORIGIN}/assets/images/og-image.jpg`,
     });
   }
 
