@@ -5,14 +5,8 @@
 [[plugins]]
   package = "@netlify/angular-runtime"
 
-# Apex -> www for anything the SSR edge function does not handle (static assets requested
-# on the apex host). Page requests are redirected in server.ts instead, because Netlify
-# runs edge functions before redirect rules, so this rule never sees them.
-[[redirects]]
-  from = "https://nuernberg-renegades.de/*"
-  to = "https://www.nuernberg-renegades.de/:splat"
-  status = 301
-  force = true
+# Apex -> www is handled by Netlify's own primary-domain redirect (Domain management),
+# which runs ahead of both edge functions and redirect rules — a rule here never fires.
 
 # Build output is content-hashed (outputHashing: all), so a new deploy produces new
 # filenames and these can be cached indefinitely.

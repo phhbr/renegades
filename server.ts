@@ -3,16 +3,13 @@ import { getContext } from '@netlify/angular-runtime/context.mjs';
 
 let angularAppEngine: AngularAppEngine | undefined;
 
-const CANONICAL_HOST = 'www.nuernberg-renegades.de';
-const APEX_HOST = 'nuernberg-renegades.de';
-
 /**
  * Nothing this handler returns may be stored by a shared cache.
  *
- * Netlify's edge cached the implicit apex->www redirect under a key that ignored the
- * host, then replayed it on the www host — where "redirect to www" is a redirect to
- * itself, so `/` and `/team` served 301 loops until the cache was purged. SSR HTML is
- * per-request anyway (theme cookie, locale path), so it must never be shared-cached.
+ * Netlify's edge cached the apex->www redirect under a key that ignored the host, then
+ * replayed it on the www host — where "redirect to www" is a redirect to itself, so `/`
+ * and `/team` served 301 loops until the cache was purged. SSR HTML is per-request
+ * anyway (theme cookie, locale path), so it must never be shared-cached.
  */
 const NO_STORE = 'private, no-store, must-revalidate';
 
@@ -24,25 +21,9 @@ function redirect(location: string): Response {
 }
 
 /**
- * Apex -> www, handled here rather than by a netlify.toml rule: Netlify runs edge
- * functions before redirect rules, so this is the only layer that reliably sees the
- * request. Doing it ourselves also lets us mark the redirect no-store, which is what
- * stops it being cached and replayed on the wrong host.
- */
-function canonicalHostRedirect(request: Request): Response | null {
-  const url = new URL(request.url);
-  if (url.hostname !== APEX_HOST) {
-    return null;
-  }
-
-  url.hostname = CANONICAL_HOST;
-  return redirect(url.toString());
-}
-
-/**
  * Language used to be a `?lang=` query parameter on the same URL, which Google could not
- * index as two pages. Those URLs are indexed and linked, so redirect them permanently onto
- * the locale paths instead of dropping the equity: `?lang=en` -> `/en/...`, `?lang=de` -> `/...`.
+ * index as two pages. Those URLs are indexed and linked, so move them onto the locale
+ * paths instead of dropping the equity: `?lang=en` -> `/en/...`, `?lang=de` -> `/...`.
  */
 function legacyLangRedirect(request: Request): Response | null {
   const url = new URL(request.url);
@@ -51,20 +32,29 @@ function legacyLangRedirect(request: Request): Response | null {
     return null;
   }
 
-  url.searchParams.delete('lang');
-
-  const alreadyEnglish = url.pathname === '/en' || url.pathname.startsWith('/en/');
-  if (lang === 'en' && !alreadyEnglish) {
-    url.pathname = url.pathname === '/' ? '/en' : `/en${url.pathname}`;
-  } else if (lang === 'de' && alreadyEnglish) {
-    url.pathname = url.pathname.slice('/en'.length) || '/';
+  const isEnglishPath = url.pathname === '/en' || url.pathname.startsWith('/en/');
+  let pathname = url.pathname;
+  if (lang === 'en' && !isEnglishPath) {
+    pathname = url.pathname === '/' ? '/en' : `/en${url.pathname}`;
+  } else if (lang === 'de' && isEnglishPath) {
+    pathname = url.pathname.slice('/en'.length) || '/';
   }
 
+  // Netlify re-appends the incoming query string to the Location header of a redirect,
+  // so `?lang=` is handed straight back to us and a redirect that exists only to strip
+  // it loops forever. Redirect only when the path actually changes; where it does not,
+  // serve the page and let the canonical tag consolidate the leftover `?lang=` URL.
+  if (pathname === url.pathname) {
+    return null;
+  }
+
+  url.pathname = pathname;
+  url.searchParams.delete('lang');
   return redirect(url.toString());
 }
 
 export async function netlifyAppEngineHandler(request: Request): Promise<Response> {
-  const redirectResponse = canonicalHostRedirect(request) ?? legacyLangRedirect(request);
+  const redirectResponse = legacyLangRedirect(request);
   if (redirectResponse) {
     return redirectResponse;
   }
