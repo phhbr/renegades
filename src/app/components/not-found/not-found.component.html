@@ -1,0 +1,89 @@
+<main class="relative overflow-hidden bg-transparent text-[var(--ink-0)]">
+  <div class="pointer-events-none absolute -left-20 top-24 h-56 w-56 rounded-full bg-black/12 blur-3xl"></div>
+  <div class="pointer-events-none absolute -right-20 top-96 h-72 w-72 rounded-full bg-[var(--brand-amber)]/15 blur-3xl"></div>
+
+  <section class="container relative z-10 mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <span class="inline-block rounded-full border border-[var(--brand-line)]/60 bg-[var(--surface-2)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-primary/70 dark:text-white/70">
+          {{ 'notfound.badge' | translate }}
+        </span>
+
+        <h1 class="display-heading mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-primary dark:text-white sm:text-5xl md:text-6xl">
+          {{ 'notfound.title' | translate }}
+        </h1>
+
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-primary/80 dark:text-white/80">
+          {{ 'notfound.description' | translate }}
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a [routerLink]="'/training' | localePath" class="btn-base btn-primary btn-size-lg">
+            {{ 'notfound.cta.training' | translate }}
+          </a>
+          <a [routerLink]="'/' | localePath" class="btn-base btn-secondary btn-size-lg">
+            {{ 'notfound.cta.home' | translate }}
+          </a>
+        </div>
+
+        <div class="mt-12">
+          <h2 class="text-sm font-semibold uppercase tracking-[0.14em] text-primary/60 dark:text-white/60">
+            {{ 'notfound.links.title' | translate }}
+          </h2>
+          <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-3">
+            @for (link of quickLinks; track link.path) {
+              <li>
+                <a
+                  [routerLink]="link.path | localePath"
+                  class="text-base font-semibold text-primary/90 underline-offset-4 transition-colors duration-300 hover:text-accent hover:underline dark:text-white/90 dark:hover:text-[var(--brand-amber)]"
+                >
+                  {{ link.label | translate }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- The source is pre-cropped to 4:3 (980x735), so object-cover throws nothing away
+           and 980w is the full resolution the photo has. Regenerate variants with
+           `npm run optimize-images` after replacing src/assets/images/not-found.jpg. -->
+      <div class="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[var(--brand-line)]/40 bg-gradient-to-br from-[var(--surface-2)] to-[var(--surface-1)]">
+        @if (!imageFailed()) {
+          <picture>
+            <source
+              type="image/avif"
+              sizes="(max-width: 1024px) 100vw, 560px"
+              srcset="/assets/images/optimized/not-found-640w.avif 640w, /assets/images/optimized/not-found-full.avif 980w"
+            />
+            <source
+              type="image/webp"
+              sizes="(max-width: 1024px) 100vw, 560px"
+              srcset="/assets/images/optimized/not-found-640w.webp 640w, /assets/images/optimized/not-found-full.webp 980w"
+            />
+            <img
+              src="/assets/images/optimized/not-found-full.jpg"
+              srcset="/assets/images/optimized/not-found-640w.jpg 640w, /assets/images/optimized/not-found-full.jpg 980w"
+              sizes="(max-width: 1024px) 100vw, 560px"
+              [alt]="'notfound.image_alt' | translate"
+              class="h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+              (error)="imageFailed.set(true)"
+            />
+          </picture>
+        } @else {
+          <div class="flex h-full w-full items-center justify-center">
+            <img
+              src="/assets/images/logo-avatar.png"
+              alt=""
+              aria-hidden="true"
+              class="h-24 w-24 opacity-30 grayscale"
+              loading="lazy"
+            />
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+</main>

@@ -15,7 +15,18 @@ export interface PageMeta {
   image?: string;
   imageAlt?: string;
   type?: 'website' | 'article';
+  /** Keeps the page out of the index while still following its links (404, thank-you pages). */
+  noindex?: boolean;
+  /**
+   * HTTP status the page should be served with. Angular always renders 200, so this is
+   * emitted as a meta tag that server.ts reads, applies as the real status, and strips
+   * from the HTML before responding.
+   */
+  status?: number;
 }
+
+/** Internal handshake between a page component and server.ts. Never reaches the browser. */
+export const RENDER_STATUS_META = 'x-render-status';
 
 const OG_LOCALES: Record<Lang, string> = { de: 'de_DE', en: 'en_US' };
 
@@ -54,6 +65,20 @@ export class MetaService {
 
     this.title.setTitle(title);
     this.meta.updateTag({ name: 'description', content: description });
+
+    if (data.status && data.status !== 200) {
+      this.meta.updateTag({ name: RENDER_STATUS_META, content: String(data.status) });
+    } else {
+      this.meta.removeTag(`name="${RENDER_STATUS_META}"`);
+    }
+
+    // Restore the indexable default when navigating away from a noindex page.
+    this.meta.updateTag({
+      name: 'robots',
+      content: data.noindex
+        ? 'noindex, follow'
+        : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    });
 
     // Open Graph
     this.meta.updateTag({ property: 'og:title', content: title });

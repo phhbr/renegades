@@ -26,6 +26,9 @@ export const meta = {
   'meta.impressum.title': 'Impressum | Nürnberg Renegades e.V.',
   'meta.impressum.description': 'Impressum und rechtliche Angaben für Nürnberg Renegades e.V.',
 
+  'meta.notfound.title': 'Seite nicht gefunden | Nürnberg Renegades',
+  'meta.notfound.description': 'Diese Seite konnte nicht gefunden werden. Zurück zur Startseite oder direkt zu den Trainingszeiten der Nürnberg Renegades.',
+
   'meta.privacy.title': 'Datenschutz | Nürnberg Renegades e.V.',
   'meta.privacy.description': 'Datenschutzhinweise und Informationen zum Umgang mit personenbezogenen Daten bei Nürnberg Renegades e.V.'
 };

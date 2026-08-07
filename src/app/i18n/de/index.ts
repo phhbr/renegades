@@ -13,6 +13,7 @@ import { legal } from './legal';
 import { results } from './results';
 import { faq } from './faq';
 import { meta } from './meta';
+import { notfound } from './notfound';
 
 export const de = {
   ...nav,
@@ -29,5 +30,6 @@ export const de = {
   ...legal,
   ...results,
   ...faq,
-  ...meta
+  ...meta,
+  ...notfound
 };

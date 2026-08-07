@@ -26,6 +26,9 @@ export const meta = {
   'meta.impressum.title': 'Legal Notice | Nürnberg Renegades e.V.',
   'meta.impressum.description': 'Legal notice and imprint for Nürnberg Renegades e.V.',
 
+  'meta.notfound.title': 'Page not found | Nürnberg Renegades',
+  'meta.notfound.description': 'This page could not be found. Head back to the homepage or straight to the Nürnberg Renegades training times.',
+
   'meta.privacy.title': 'Privacy Policy | Nürnberg Renegades e.V.',
   'meta.privacy.description': 'Privacy policy and information on how Nürnberg Renegades e.V. handles personal data.'
 };

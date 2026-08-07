@@ -54,10 +54,21 @@ const pages: Routes = [
   {
     path: 'datenschutz',
     loadComponent: () => import('./components/legal/privacy.component').then(m => m.PrivacyComponent)
+  },
+  {
+    path: '404',
+    loadComponent: () => import('./components/not-found/not-found.component').then(m => m.NotFoundComponent)
   }
 ];
 
 export const routes: Routes = [
   { path: EN_PREFIX.slice(1), children: pages },
-  ...pages
+  ...pages,
+  {
+    // The client router has to resolve unmatched URLs too, or hydration finds no
+    // component for the server-rendered 404 markup and wipes the page. Angular renders
+    // this with a 200; server.ts rewrites the status so it never becomes a soft 404.
+    path: '**',
+    loadComponent: () => import('./components/not-found/not-found.component').then(m => m.NotFoundComponent)
+  }
 ];

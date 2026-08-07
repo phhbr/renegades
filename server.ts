@@ -13,6 +13,9 @@ let angularAppEngine: AngularAppEngine | undefined;
  */
 const NO_STORE = 'private, no-store, must-revalidate';
 
+/** Matches the marker MetaService emits for pages that need a non-200 status. */
+const RENDER_STATUS_PATTERN = /<meta name="x-render-status" content="(\d{3})">/;
+
 function redirect(location: string): Response {
   return new Response(null, {
     status: 301,
@@ -53,6 +56,30 @@ function legacyLangRedirect(request: Request): Response | null {
   return redirect(url.toString());
 }
 
+/**
+ * Renders the /404 page for an unmatched URL and serves it with a real 404 status, in the
+ * language of the URL that was asked for. Angular renders the page with a 200, so the
+ * status is applied here — a pretty page behind a 200 is a soft 404 and gets indexed.
+ */
+async function renderNotFound(request: Request, context: unknown): Promise<Response> {
+  const url = new URL(request.url);
+  const isEnglish = url.pathname === '/en' || url.pathname.startsWith('/en/');
+  const notFoundUrl = new URL(isEnglish ? '/en/404' : '/404', url.origin);
+
+  const rendered = await angularAppEngine?.handle(
+    new Request(notFoundUrl, { headers: request.headers }),
+    context as never,
+  );
+
+  if (!rendered) {
+    return new Response('Not found', { status: 404, headers: { 'cache-control': NO_STORE } });
+  }
+
+  const headers = new Headers(rendered.headers);
+  headers.set('cache-control', NO_STORE);
+  return new Response(rendered.body, { status: 404, headers });
+}
+
 export async function netlifyAppEngineHandler(request: Request): Promise<Response> {
   const redirectResponse = legacyLangRedirect(request);
   if (redirectResponse) {
@@ -68,17 +95,29 @@ export async function netlifyAppEngineHandler(request: Request): Promise<Respons
     // so the difference shows up in the Netlify function logs instead of silently
     // serving 404s for real pages.
     console.warn(`[ssr] no route matched: ${new URL(request.url).pathname}`);
-    return new Response('Not found', {
-      status: 404,
-      headers: { 'cache-control': NO_STORE },
-    });
+    return renderNotFound(request, context);
   }
 
   const headers = new Headers(result.headers);
   headers.set('cache-control', NO_STORE);
-  return new Response(result.body, {
-    status: result.status,
-    statusText: result.statusText,
+  return applyRenderStatus(result, headers);
+}
+
+/**
+ * Angular renders every page with a 200, including the catch-all 404 route, so a page
+ * that wants a different status says so with an `x-render-status` meta tag. Apply it as
+ * the real HTTP status and strip the tag — a pretty 404 served with a 200 is a soft 404
+ * and gets indexed like a real page.
+ */
+async function applyRenderStatus(result: Response, headers: Headers): Promise<Response> {
+  const html = await result.text();
+  const match = html.match(RENDER_STATUS_PATTERN);
+  if (!match) {
+    return new Response(html, { status: result.status, statusText: result.statusText, headers });
+  }
+
+  return new Response(html.replace(RENDER_STATUS_PATTERN, ''), {
+    status: Number(match[1]),
     headers,
   });
 }

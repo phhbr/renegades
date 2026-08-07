@@ -14,6 +14,7 @@ const sharp = require('sharp');
 const SOURCE_DIR = 'src/assets/images';
 const OUTPUT_DIR = 'src/assets/images/optimized';
 const SIZES = [640, 1024, 1280, 1920]; // Responsive breakpoints
+const QUALITY = { avif: 50, webp: 80, jpg: 80 };
 const FORMATS = ['avif', 'webp', 'jpeg']; // Keep original jpeg as fallback
 
 // Ensure output directory exists
@@ -33,54 +34,42 @@ async function optimizeImage(filePath) {
   }
 
   try {
-    const image = sharp(filePath);
-    const metadata = await image.metadata();
-    
+    const metadata = await sharp(filePath).metadata();
+
     console.log(`📸 Processing: ${filePath} (${metadata.width}x${metadata.height})`);
+
+    // A sharp instance is a mutable pipeline, so every output needs its own: reusing one
+    // leaks the previous .resize() into the next write, which silently capped the
+    // "full-size" versions at the last generated breakpoint.
+    // AVIF's quality scale is not JPEG's: at 80 it encodes larger files than the JPEG
+    // fallback it is meant to replace, so browsers picked the heaviest source in the
+    // <picture>. ~50 is the visual equivalent of JPEG 80 at roughly half the bytes.
+    const encode = (pipeline, format, target) =>
+      pipeline[format === 'jpg' ? 'jpeg' : format]({ quality: QUALITY[format] }).toFile(target);
 
     // Process each size
     for (const size of SIZES) {
       // Skip if original is smaller
       if (metadata.width < size) continue;
 
-      // Generate AVIF
-      await image
-        .resize(size, Math.round((size / metadata.width) * metadata.height), {
-          withoutEnlargement: true,
-          fit: 'inside'
-        })
-        .avif({ quality: 80 })
-        .toFile(path.join(outSubdir, `${basename}-${size}w.avif`));
-
-      // Generate WebP
-      await image
-        .resize(size, Math.round((size / metadata.width) * metadata.height), {
-          withoutEnlargement: true,
-          fit: 'inside'
-        })
-        .webp({ quality: 80 })
-        .toFile(path.join(outSubdir, `${basename}-${size}w.webp`));
-
-      // Generate JPEG fallback
-      await image
-        .resize(size, Math.round((size / metadata.width) * metadata.height), {
-          withoutEnlargement: true,
-          fit: 'inside'
-        })
-        .jpeg({ quality: 80 })
-        .toFile(path.join(outSubdir, `${basename}-${size}w.jpg`));
+      for (const format of ['avif', 'webp', 'jpg']) {
+        await encode(
+          sharp(filePath).resize(size, Math.round((size / metadata.width) * metadata.height), {
+            withoutEnlargement: true,
+            fit: 'inside'
+          }),
+          format,
+          path.join(outSubdir, `${basename}-${size}w.${format}`)
+        );
+      }
 
       console.log(`  ✓ Generated ${size}w formats`);
     }
 
     // Also save full-size versions
     for (const format of FORMATS) {
-      const formatMethod = format === 'jpeg' ? 'jpg' : format;
-      await image[formatMethod === 'jpg' ? 'jpeg' : formatMethod](
-        format === 'avif' ? { quality: 80 } :
-        format === 'webp' ? { quality: 80 } :
-        { quality: 80 }
-      ).toFile(path.join(outSubdir, `${basename}-full.${formatMethod}`));
+      const ext = format === 'jpeg' ? 'jpg' : format;
+      await encode(sharp(filePath), ext, path.join(outSubdir, `${basename}-full.${ext}`));
     }
     console.log(`  ✓ Generated full-size versions\n`);
 
