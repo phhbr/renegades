@@ -14,7 +14,7 @@ export const faq = {
   'faq.q6.question': 'Wann und wo trainiert ihr?',
   'faq.q6.answer': 'Unsere Trainingszeiten und -orte für Saison und Nebensaison findest du auf unserer Trainingsseite.',
   'faq.q7.question': 'In welchen Ligen spielt ihr?',
-  'faq.q7.answer': 'Unsere 1. Mannschaft spielt in der 1. DFFL, Deutschlands höchster Spielklasse. Unsere 2. Mannschaft tritt in der Bayernliga an.',
+  'faq.q7.answer': 'Unsere 1. Mannschaft spielt in der DFFL1 – der Bundesliga und höchsten deutschen Spielklasse. Unsere 2. Mannschaft tritt in der Bayernliga an.',
   'faq.q8.question': 'Wie kann ich den Verein als Sponsor unterstützen?',
   'faq.q8.answer': 'Wir freuen uns über Unternehmen, die uns unterstützen möchten. Alle Infos zu Sponsoring-Möglichkeiten findest du auf unserer Sponsoring-Seite.',
   'faq.cta.contact': 'Weitere Fragen? Kontaktiere uns',

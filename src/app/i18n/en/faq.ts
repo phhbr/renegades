@@ -14,7 +14,7 @@ export const faq = {
   'faq.q6.question': 'When and where do you train?',
   'faq.q6.answer': 'You can find our in-season and off-season training times and locations on our training page.',
   'faq.q7.question': 'Which leagues do you play in?',
-  'faq.q7.answer': 'Our 1st team competes in the 1. DFFL, Germany\'s top division. Our 2nd team plays in the Bayernliga.',
+  'faq.q7.answer': 'Our 1st team competes in the DFFL1 — the Bundesliga and top division in Germany. Our 2nd team plays in the Bayernliga.',
   'faq.q8.question': 'How can I support the club as a sponsor?',
   'faq.q8.answer': 'We welcome businesses who want to support us. You can find all sponsoring details on our sponsoring page.',
   'faq.cta.contact': 'More questions? Contact us',

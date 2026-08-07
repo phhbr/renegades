@@ -1,6 +1,6 @@
 export const results = {
   'results.title': 'Ergebnisse',
-  'results.subtitle': '1. Mannschaft: 1. DFFL — 2. Mannschaft: Bayernliga',
+  'results.subtitle': '1. Mannschaft: DFFL1 — 2. Mannschaft: Bayernliga',
   'results.team1': '1. Mannschaft',
   'results.team2': '2. Mannschaft',
   'results.tab.spielplan': 'Spielplan',

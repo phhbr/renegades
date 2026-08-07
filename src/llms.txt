@@ -1,6 +1,6 @@
 # Nürnberg Renegades e.V.
 
-> Nürnberg Renegades e.V. is a flag football club in Nürnberg (Nuremberg), Germany, founded on 6 September 2022 as the first dedicated flag football club in the Nürnberg–Fürth–Erlangen region. It fields two teams: the 1st team competes in the 1. DFFL (Germany's top division) and the 2nd team plays in the Bayernliga. No sign-up or contact is required to try it out — newcomers can just drop in to any training session.
+> Nürnberg Renegades e.V. is a flag football club in Nürnberg (Nuremberg), Germany, founded on 6 September 2022 as the first dedicated flag football club in the Nürnberg–Fürth–Erlangen region. It fields two teams: the 1st team competes in the DFFL1 (Germany's top division) and the 2nd team plays in the Bayernliga. No sign-up or contact is required to try it out — newcomers can just drop in to any training session.
 
 This file helps AI agents and language models understand the site structure and locate the club's official pages.
 
@@ -11,7 +11,7 @@ The site is published in two languages: German at the root (`/training`) and Eng
 - Legal name: Nürnberg Renegades e.V. (registered non-profit association, "eingetragener Verein")
 - Founded: 6 September 2022
 - Sport: flag football — the non-contact variant of American football, where a flag is pulled from the ball carrier's belt instead of tackling
-- Teams: 1st team in the 1. DFFL (highest German division); 2nd team in the Bayernliga (Bavarian regional league)
+- Teams: 1st team in the DFFL1 (highest German division); 2nd team in the Bayernliga (Bavarian regional league)
 - Registered address: Bartholomäusstr. 26c, 90489 Nürnberg, Germany
 - Contact: info@nuernberg-renegades.de
 - Membership fee: 18 EUR per month for an active playing membership; other membership types may differ
