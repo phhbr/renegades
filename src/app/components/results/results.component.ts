@@ -18,6 +18,7 @@ import { ActivatedRoute, Params, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { MetaService } from '../../services/meta.service';
+import { ThemeService } from '../../services/theme.service';
 import { LocalePathPipe } from '../../pipes/locale-path.pipe';
 
 type Team = '1-mannschaft' | '2-mannschaft';
@@ -27,6 +28,9 @@ const WIDGET_ORIGIN = 'https://claudiost.github.io';
 const WIDGET_BASE = 'https://claudiost.github.io/renegades-scores/widget.html';
 const MIN_HEIGHT = 400;
 const TEAM_IDS: Record<Team, number> = { '1-mannschaft': 159, '2-mannschaft': 287 };
+// Accent per theme, mirroring the `accent` / `--brand-amber` tokens of the site.
+const WIDGET_ACCENT_LIGHT = '8a5d00';
+const WIDGET_ACCENT_DARK = 'ffc03a';
 
 @Component({
   selector: 'app-results',
@@ -40,6 +44,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
   #sanitizer = inject(DomSanitizer);
   #platformId = inject(PLATFORM_ID);
   #route = inject(ActivatedRoute);
+  #theme = inject(ThemeService);
 
   readonly tabs: Tab[] = ['spielplan', 'tabelle', 'live'];
 
@@ -61,12 +66,22 @@ export class ResultsComponent implements OnInit, OnDestroy {
     const t = this.tab();
     const id = TEAM_IDS[this.team()];
     const view = t === 'tabelle' ? 'table' : t === 'live' ? 'live' : 'spielplan';
+    // Read untracked: theme changes are pushed via postMessage instead of reloading the iframe.
+    const theme = untracked(() => this.#theme.theme());
     return this.#sanitizer.bypassSecurityTrustResourceUrl(
-      `${WIDGET_BASE}?t=${id}&view=${view}&color=ffab00`,
+      `${WIDGET_BASE}?t=${id}&view=${view}&color=${WIDGET_ACCENT_LIGHT}&color_dark=${WIDGET_ACCENT_DARK}&theme=${theme}`,
     );
   });
 
   readonly iframeRef = viewChild<ElementRef<HTMLIFrameElement>>('widgetIframe');
+
+  readonly #syncWidgetTheme = effect(() => {
+    const theme = this.#theme.theme();
+    this.iframeRef()?.nativeElement.contentWindow?.postMessage(
+      { type: 'setTheme', theme },
+      WIDGET_ORIGIN,
+    );
+  });
 
   readonly #resetHeight = effect(() => {
     this.iframeUrl(); // track URL changes (team or tab switch)
