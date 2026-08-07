@@ -2,6 +2,7 @@ export const privacy = {
   'privacy.cookie_settings.title': 'Cookie-Einstellungen',
   'privacy.cookie_settings.necessary.title': 'Notwendige Cookies',
   'privacy.cookie_settings.necessary.description': 'Diese Cookies sind für das ordnungsgemäße Funktionieren der Website unerlässlich. Sie können nicht deaktiviert werden.',
+  'privacy.cookie_settings.necessary.always_on': 'Immer aktiv',
   'privacy.cookie_settings.preferences.title': 'Präferenz-Cookies',
   'privacy.cookie_settings.preferences.description': 'Diese Cookies ermöglichen es uns, Ihre Präferenzen (wie Sprache und Theme) für eine bessere Benutzererfahrung zu speichern.',
   'privacy.cookie_settings.maps.title': 'Google Maps Cookies',

@@ -8,14 +8,19 @@
         <h3 class="text-lg font-semibold text-primary dark:text-white">{{ 'privacy.cookie_settings.necessary.title' | translate }}</h3>
         <p class="text-sm text-primary/70 dark:text-white/70">{{ 'privacy.cookie_settings.necessary.description' | translate }}</p>
       </div>
-      <div class="relative">
-        <input
-          type="checkbox"
-          [checked]="consent.necessary"
-          disabled
-          class="sr-only peer"
-        >
-        <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent"></div>
+      <div class="flex shrink-0 items-center gap-3">
+        <span class="text-xs font-semibold uppercase tracking-wide text-primary/60 dark:text-white/60">
+          {{ 'privacy.cookie_settings.necessary.always_on' | translate }}
+        </span>
+        <div class="relative cursor-not-allowed opacity-60" [title]="'privacy.cookie_settings.necessary.always_on' | translate">
+          <input
+            type="checkbox"
+            [checked]="consent.necessary"
+            disabled
+            class="sr-only peer"
+          >
+          <div class="w-11 h-6 bg-gray-300 dark:bg-gray-600 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gray-400 dark:peer-checked:bg-gray-500"></div>
+        </div>
       </div>
     </div>
 
@@ -35,7 +40,7 @@
         >
         <div 
           (click)="preferencesCheckbox.click()"
-          class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent cursor-pointer"
+          class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent peer-focus-visible:ring-2 peer-focus-visible:ring-accent peer-focus-visible:ring-offset-2 cursor-pointer"
         ></div>
       </div>
     </div>
@@ -56,7 +61,7 @@
         >
         <div 
           (click)="mapsCheckbox.click()"
-          class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent cursor-pointer"
+          class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent peer-focus-visible:ring-2 peer-focus-visible:ring-accent peer-focus-visible:ring-offset-2 cursor-pointer"
         ></div>
       </div>
     </div>
@@ -77,7 +82,7 @@
         >
         <div 
           (click)="analyticsCheckbox.click()"
-          class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent cursor-pointer"
+          class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent peer-focus-visible:ring-2 peer-focus-visible:ring-accent peer-focus-visible:ring-offset-2 cursor-pointer"
         ></div>
       </div>
     </div>
