@@ -4,3 +4,33 @@
 
 [[plugins]]
   package = "@netlify/angular-runtime"
+
+# Apex -> www for anything the SSR edge function does not handle (static assets requested
+# on the apex host). Page requests are redirected in server.ts instead, because Netlify
+# runs edge functions before redirect rules, so this rule never sees them.
+[[redirects]]
+  from = "https://nuernberg-renegades.de/*"
+  to = "https://www.nuernberg-renegades.de/:splat"
+  status = 301
+  force = true
+
+# Build output is content-hashed (outputHashing: all), so a new deploy produces new
+# filenames and these can be cached indefinitely.
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Images and icons keep stable filenames, so they get a finite lifetime instead.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# HTML is deliberately absent here: SSR responses set their own no-store header in
+# server.ts, and Netlify does not document how overlapping header rules resolve.
