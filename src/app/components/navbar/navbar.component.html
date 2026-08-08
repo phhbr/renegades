@@ -13,10 +13,13 @@
 
       <!-- Mobile Menu Button -->
       <button 
+        type="button"
         (click)="toggleMenu()"
-        class="rounded-xl p-2 text-[var(--ink-0)] transition-colors duration-300 hover:bg-[var(--surface-2)] lg:hidden"
+        aria-controls="mobile-navigation"
+        [attr.aria-expanded]="isMenuOpen()"
+        class="inline-flex min-h-11 min-w-11 touch-manipulation items-center justify-center rounded-xl p-2 text-[var(--ink-0)] transition-colors duration-300 hover:bg-[var(--surface-2)] lg:hidden"
       >
-        <span class="sr-only">Open menu</span>
+        <span class="sr-only">{{ isMenuOpen() ? 'Close menu' : 'Open menu' }}</span>
         @if (isMenuOpen()) {
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -88,7 +91,7 @@
 
     <!-- Mobile Navigation Menu -->
     @if (isMenuOpen()) {
-      <div class="lg:hidden">
+      <div id="mobile-navigation" class="lg:hidden">
         <div class="space-y-1 border-t border-[var(--brand-line)]/60 px-2 pb-3 pt-2">
           <a 
             [routerLink]="'/' | localePath" 
