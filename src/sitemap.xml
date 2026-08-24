@@ -47,6 +47,33 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/contact" />
   </url>
   <url>
+    <loc>https://www.nuernberg-renegades.de/ergebnisse</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft" />
+  </url>
+  <url>
     <loc>https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/spielplan</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -56,6 +83,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/spielplan" />
   </url>
   <url>
+    <loc>https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/tabelle</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/tabelle" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft/tabelle" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/tabelle" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/live</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/live" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft/live" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/live" />
+  </url>
+  <url>
     <loc>https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/spielplan</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -63,6 +108,24 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/spielplan" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/spielplan" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/spielplan" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/tabelle</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/tabelle" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/tabelle" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/tabelle" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/live</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/live" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/live" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/live" />
   </url>
   <url>
     <loc>https://www.nuernberg-renegades.de/sponsoring</loc>
@@ -146,6 +209,33 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/contact" />
   </url>
   <url>
+    <loc>https://www.nuernberg-renegades.de/en/ergebnisse</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft" />
+  </url>
+  <url>
     <loc>https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft/spielplan</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -155,6 +245,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/spielplan" />
   </url>
   <url>
+    <loc>https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft/tabelle</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/tabelle" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft/tabelle" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/tabelle" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft/live</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/live" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/1-mannschaft/live" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/1-mannschaft/live" />
+  </url>
+  <url>
     <loc>https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/spielplan</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -162,6 +270,24 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/spielplan" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/spielplan" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/spielplan" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/tabelle</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/tabelle" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/tabelle" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/tabelle" />
+  </url>
+  <url>
+    <loc>https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/live</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/live" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nuernberg-renegades.de/en/ergebnisse/2-mannschaft/live" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nuernberg-renegades.de/ergebnisse/2-mannschaft/live" />
   </url>
   <url>
     <loc>https://www.nuernberg-renegades.de/en/sponsoring</loc>

@@ -30,9 +30,14 @@ const pages: Routes = [
   {
     path: 'ergebnisse',
     children: [
-      { path: '', redirectTo: '1-mannschaft/spielplan', pathMatch: 'full' },
-      { path: '1-mannschaft', redirectTo: '1-mannschaft/spielplan', pathMatch: 'full' },
-      { path: '2-mannschaft', redirectTo: '2-mannschaft/spielplan', pathMatch: 'full' },
+      {
+        path: '',
+        loadComponent: () => import('./components/results/results.component').then(m => m.ResultsComponent)
+      },
+      {
+        path: ':team',
+        loadComponent: () => import('./components/results/results.component').then(m => m.ResultsComponent)
+      },
       {
         path: ':team/:tab',
         loadComponent: () => import('./components/results/results.component').then(m => m.ResultsComponent)
