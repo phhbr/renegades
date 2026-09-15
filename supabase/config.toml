@@ -1,0 +1,18 @@
+# Supabase project config. Committed on purpose: it holds no secrets (function secrets
+# live in `supabase secrets set`), and without it a fresh clone has no record of which
+# functions exist or how they are served.
+
+project_id = "ekmdcqcjvodsnaqpsgun"
+
+# verify_jwt is the CLI default, but stated explicitly because the forms depend on it:
+# supabase-js attaches the anon key as a bearer token on functions.invoke(), so these
+# stay reachable from the browser while refusing requests with no key at all.
+
+[functions.send-contact-email]
+verify_jwt = true
+
+[functions.send-tryout-email]
+verify_jwt = true
+
+[functions.send-membership-application]
+verify_jwt = true

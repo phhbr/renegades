@@ -5,8 +5,17 @@ import { PDFDocument } from "https://cdn.skypack.dev/pdf-lib"; // Deno compatibl
 
 // If you need to support Unicode (non-latin, e.g., German umlauts), see notes further below for font embedding
 
+/**
+ * The blank form lives in the site's own assets (src/assets/forms), not in Supabase
+ * Storage. It used to sit in a Storage bucket, which meant the only copy of it was
+ * inside one Supabase project — when that project was paused the template became
+ * unreachable and there was nothing in git to restore it from. Served from Netlify's
+ * CDN it is versioned with the code and survives any future Supabase change.
+ *
+ * pdf-lib fills this by field name, so replacing it means keeping the field names.
+ */
 const PDF_FORM_URL =
-  "https://ftgcbmthbwwcumvqnuof.supabase.co/storage/v1/object/public/static//Mitgliedsantrag_25-08.pdf"; // publicly accessible PDF
+  "https://www.nuernberg-renegades.de/assets/forms/Mitgliedsantrag_25-08.pdf";
 
 export interface MembershipApplication {
   membership_active: boolean;
@@ -188,7 +197,9 @@ async function fillMembershipPdfForm(
     form.getTextField("membership_active").setText('X');
   } 
   if (application.membership_support) {
-    form.getTextField("membership_support").setText();
+    // setText() with no argument wrote nothing here, so a supporting membership came
+    // through with neither box marked and the type had to be guessed from the fee.
+    form.getTextField("membership_support").setText('X');
   } 
   form.getTextField("name").setText(application.name);
   form.getTextField("firstname").setText(application.firstname);

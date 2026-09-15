@@ -127,11 +127,12 @@ Browser request
 │   │   ├── data/                  # team-members.json, sponsors.json
 │   │   └── images/
 │   ├── environments/
-│   │   ├── environment.ts         # Dev (uses .env values)
-│   │   └── environment.prod.ts    # Production
+│   │   └── environment.ts         # Only environment file — ships to prod as-is
 │   ├── llms.txt                    # AI-agent discovery file
 │   └── global_styles.css
 ├── supabase/
+│   ├── config.toml                # Project ref + per-function settings (committed)
+│   ├── migrations/                # heartbeat table only — see Keepalive below
 │   └── functions/
 │       ├── send-contact-email/           # Contact form → Resend
 │       ├── send-membership-application/  # Membership form → Resend
@@ -154,13 +155,19 @@ Browser request
 npm install
 ```
 
-Create a `.env` file:
+No `.env` file is needed. The Supabase URL, Supabase anon key and reCAPTCHA site key are
+public values that end up in the browser bundle regardless, so they are committed in
+`src/environments/environment.ts` and used for both development and production.
 
-```env
-VITE_SUPABASE_URL=your-supabase-project-url
-VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
-VITE_RECAPTCHA_SITE_KEY=your-recaptcha-site-key
-```
+`angular.json` has no `fileReplacements`, so `environment.ts` is the only environment file
+and whatever it contains is what ships. There used to be an `environment.prod.ts` reading
+`import.meta.env.VITE_*`; nothing imported it and no `fileReplacements` entry ever swapped
+it in, so the Netlify variables it named had no effect. Angular does not substitute
+`import.meta.env` either, so wiring it up would have thrown at runtime rather than
+working. Do not reintroduce that pattern without adding a build-time `define`.
+
+Genuine secrets — the Resend API key, the reCAPTCHA *secret* key, notification recipients —
+are never in the frontend. They live as Supabase Edge Function secrets (see below).
 
 ### Running locally
 
@@ -192,18 +199,16 @@ Push to the connected branch. The `@netlify/angular-runtime` plugin takes care o
 3. Deploys `dist/demo/server/server.mjs` as a Netlify Edge Function — it handles every page request (full SSR, no prerendering)
 4. Static assets (JS/CSS bundles, images, `robots.txt`, `sitemap.xml`, `llms.txt`) are served from CDN
 
-Set these environment variables in the Netlify dashboard:
-
-```text
-VITE_SUPABASE_URL
-VITE_SUPABASE_ANON_KEY
-VITE_RECAPTCHA_SITE_KEY
-```
+No environment variables need to be set in the Netlify dashboard. Everything the browser
+bundle needs is committed in `src/environments/environment.ts`. Any `VITE_*` variables
+still configured there are leftovers and are not read by the build.
 
 ### Supabase
 
+Project `renegades-eu` (`ekmdcqcjvodsnaqpsgun`), region `eu-central-1` (Frankfurt).
+
 ```bash
-supabase link --project-ref your-project-ref
+supabase link --project-ref ekmdcqcjvodsnaqpsgun
 
 # Deploy Edge Functions
 supabase functions deploy send-contact-email
@@ -216,7 +221,20 @@ supabase secrets set NOTIFICATION_EMAILS=email1@example.com,email2@example.com
 supabase secrets set RECAPTCHA_SECRET_KEY=your-recaptcha-secret-key
 ```
 
-Database tables: none — the project has no managed schema or migrations. Team roster and sponsor data live in `src/assets/data/team-members.json` and `src/assets/data/sponsors.json`. Supabase is used only for Edge Functions handling transactional email: contact form, membership applications, and tryout requests.
+### Keepalive
+
+Supabase pauses a Free-plan project after roughly 7 days without *database* activity, and
+a paused project stops resolving in DNS — which is what took all three forms down in
+September 2026 with `FunctionsFetchError: Failed to send a request to the Edge Function`.
+Because the site only uses Supabase to host Edge Functions, Postgres is otherwise never
+touched and the inactivity clock never resets on its own.
+
+`.github/workflows/supabase-keepalive.yml` reads one row from `public.heartbeat` daily to
+supply that activity. It needs a `SUPABASE_ANON_KEY` repository secret, and it fails loudly
+rather than silently if the project is paused or the key is rotated.
+
+Database tables: `public.heartbeat` only, which exists solely for the keepalive above and
+is read by nothing in the application. Team roster and sponsor data live in `src/assets/data/team-members.json` and `src/assets/data/sponsors.json`. Supabase is used only for Edge Functions handling transactional email: contact form, membership applications, and tryout requests.
 
 Row Level Security: not applicable — no database reads/writes remain, only Edge Function invocations.
 

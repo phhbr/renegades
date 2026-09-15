@@ -2,13 +2,27 @@ import { Injectable, inject } from '@angular/core';
 import { SupabaseService } from './supabase.service';
 
 export interface MembershipApplication {
+  membership_active: boolean;
+  membership_support: boolean;
   name: string;
-  lastname: string;
-  birthdate: string;
+  firstname: string;
+  birthday: string;
   birthplace: string;
-  address: string;
+  profession: string;
+  nationality: string;
+  street: string;
+  plz_town: string;
+  tel: string;
+  fax: string;
+  mobile: string;
   email: string;
-  statuteAcceptance: boolean;
+  joindate_month: string;
+  joindate_year: string;
+  sepa_account_holder_name: string;
+  sepa_account_holder_firstname: string;
+  sepa_iban: string;
+  sepa_bic: string;
+  sepa_bank: string;
   recaptchaToken: string;
 }
 

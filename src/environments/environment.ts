@@ -1,8 +1,19 @@
+/**
+ * This is the only environment file: angular.json has no `fileReplacements`, so whatever
+ * is here ships to production. The Supabase URL and anon key are public by design — they
+ * are readable in the browser bundle either way — and reCAPTCHA's site key likewise, so
+ * they are committed rather than injected at build time.
+ *
+ * There used to be an environment.prod.ts reading `import.meta.env.VITE_*`. Nothing ever
+ * imported it and no fileReplacements entry ever swapped it in, so the Netlify variables
+ * it named had no effect. Angular does not substitute `import.meta.env` either, so had it
+ * been wired up it would have thrown at runtime rather than working.
+ */
 export const environment = {
   production: false,
   supabase: {
-    url: 'https://ftgcbmthbwwcumvqnuof.supabase.co',
-    key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0Z2NibXRoYnd3Y3VtdnFudW9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY5NDQ3MjcsImV4cCI6MjA1MjUyMDcyN30.sfmgAXCpMDpizmM7_kFNX3bSns_Awcl_jRJEe-kwoWk' },
+    url: 'https://ekmdcqcjvodsnaqpsgun.supabase.co',
+    key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrbWRjcWNqdm9kc25hcXBzZ3VuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk0NjQ5MTUsImV4cCI6MjEwNTA0MDkxNX0.gXkhDGSXg_00qkUW2jKTmSNLhUftqsdtariRWhY_uRU' },
   recaptcha: {
     siteKey: '6LfTgr8qAAAAAB6vUF6Y8w5DZSuINMy1uYMYa0TB'
   },
