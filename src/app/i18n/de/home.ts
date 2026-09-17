@@ -35,6 +35,7 @@ export const home = {
   'home.news.season.title': 'Saisonrückblick: Reguläre Saison beendet',
   'home.news.season.description': 'Unsere 1. Mannschaft beendete die DFFL1 auf Platz 9 von 16 Teams, unsere 2. Mannschaft sicherte sich Platz 3 von 23 Teams in der Bayernliga.',
   'home.news.season.cta': 'Ergebnisse & Tabellen ansehen',
-  'home.news.event.title': 'Nächstes Ziel: Flagapalooza III',
-  'home.news.event.description': 'Wir bereiten uns auf die Flagapalooza III vor, vom 21. bis 23. August 2026 in Cheltenham, Großbritannien.'
+  'home.news.event.title': 'Off-Season: Training, Spaß & Neues ausprobieren',
+  'home.news.event.description': 'In der Off-Season steht der Spaß im Vordergrund – wir probieren neue Positionen und Übungen aus und bauen den Teamgeist für die nächste Saison auf. Trainiert wird aktuell dienstags (19:00–21:00 Uhr) und donnerstags (19:00–21:00 Uhr) auf der Sportanlage DJK BFC in Nürnberg.',
+  'home.news.event.cta': 'Trainingszeiten & Orte ansehen'
 };

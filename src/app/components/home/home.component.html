@@ -97,6 +97,9 @@
         <article class="athletic-card rounded-3xl p-7">
           <h3 class="display-heading text-xl font-bold tracking-tight text-[var(--ink-0)]">{{ 'home.news.event.title' | translate }}</h3>
           <p class="mt-4 leading-relaxed text-[var(--ink-muted)]">{{ 'home.news.event.description' | translate }}</p>
+          <a [routerLink]="'/training' | localePath" class="btn-base btn-secondary-light btn-size-md mt-6" aria-label="See training times and locations">
+            {{ 'home.news.event.cta' | translate }}
+          </a>
         </article>
       </div>
     </div>
