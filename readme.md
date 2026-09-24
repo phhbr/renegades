@@ -132,7 +132,6 @@ Browser request
 │   └── global_styles.css
 ├── supabase/
 │   ├── config.toml                # Project ref + per-function settings (committed)
-│   ├── migrations/                # heartbeat table only — see Keepalive below
 │   └── functions/
 │       ├── send-contact-email/           # Contact form → Resend
 │       ├── send-membership-application/  # Membership form → Resend
@@ -206,20 +205,62 @@ still configured there are leftovers and are not read by the build.
 ### Supabase
 
 Project `renegades-eu` (`ekmdcqcjvodsnaqpsgun`), region `eu-central-1` (Frankfurt).
+**Shared with the performance app — read [Shared project](#shared-project) first.**
 
 ```bash
 supabase link --project-ref ekmdcqcjvodsnaqpsgun
 
-# Deploy Edge Functions
+# Deploy Edge Functions. Always by name: the project also holds seven functions
+# belonging to the performance app, and a bulk delete would take them with it.
 supabase functions deploy send-contact-email
 supabase functions deploy send-membership-application
 supabase functions deploy send-tryout-email
 
-# Set Edge Function secrets
+# Set Edge Function secrets. These are project-wide, not per-function, so a name
+# collision with the performance app's secrets would break one app or the other.
 supabase secrets set RESEND_API_KEY=your-resend-api-key
 supabase secrets set NOTIFICATION_EMAILS=email1@example.com,email2@example.com
 supabase secrets set RECAPTCHA_SECRET_KEY=your-recaptcha-secret-key
+supabase secrets set HOMEPAGE_ALLOWED_ORIGINS=https://www.nuernberg-renegades.de,https://nuernberg-renegades.de,https://*.netlify.app
 ```
+
+`HOMEPAGE_ALLOWED_ORIGINS` is the CORS allow list for this site's three functions
+(`supabase/functions/_shared/cors.ts`). Unset, it falls back to the production origins
+above plus `localhost`, which is the correct value anyway — set it only to change that
+list. It is **not** called `ALLOWED_ORIGINS`, because the performance app already owns a
+project-wide secret under that name holding *its* origins; sharing one would have each
+app's functions rejecting the other app's site.
+
+Never run `supabase db push` or `supabase db reset` from this repo. This project's schema
+belongs to the performance app (see below), and pushing from here would try to reconcile
+its migration history against a directory that no longer exists.
+
+### Shared project
+
+Since the performance app moved off Lovable Cloud in September 2026, `renegades-eu` backs
+two applications:
+
+| | This site | Performance app ([`nbg-renegades/renegades-performance`](https://github.com/nbg-renegades/renegades-performance)) |
+|---|---|---|
+| Tables | `heartbeat` | `profiles`, `user_roles`, `player_positions`, `performance_entries` |
+| Edge functions | the three `send-*` above | `create-user`, `delete-user`, `get-dashboard-stats`, `get-performance-averages`, `get-performance-benchmarks`, `get-player-neighborhood`, `reset-user-password` |
+| Secrets | `RESEND_API_KEY`, `NOTIFICATION_EMAILS`, `RECAPTCHA_SECRET_KEY`, `HOMEPAGE_ALLOWED_ORIGINS` | `ALLOWED_ORIGINS` |
+| Auth users | none; the forms are anonymous | club members, with real personal data |
+
+Three consequences:
+
+- **The performance repo owns the schema.** `supabase/migrations/` lives there, including
+  this site's `heartbeat` migration, which is kept byte for byte. This repo no longer has
+  a migrations directory. Any schema change for either app goes through a pull request
+  there.
+- **The API keys are shared.** Both apps authenticate with the project's legacy `eyJ…`
+  keys — this site's is committed in `src/environments/environment.ts`, and the keepalive
+  uses the `SUPABASE_ANON_KEY` repository secret. Rotating them, or disabling them under
+  *Settings → API Keys*, breaks the performance app as well. Moving to the new
+  `sb_publishable_`/`sb_secret_` keys has to happen in both repos in the same change.
+- **The Free tier's quotas are shared**, so both apps pause and run out together. The
+  performance app's nightly database backup gives the project a second daily touch,
+  independent of the keepalive below.
 
 ### Keepalive
 
@@ -233,10 +274,17 @@ touched and the inactivity clock never resets on its own.
 supply that activity. It needs a `SUPABASE_ANON_KEY` repository secret, and it fails loudly
 rather than silently if the project is paused or the key is rotated.
 
-Database tables: `public.heartbeat` only, which exists solely for the keepalive above and
-is read by nothing in the application. Team roster and sponsor data live in `src/assets/data/team-members.json` and `src/assets/data/sponsors.json`. Supabase is used only for Edge Functions handling transactional email: contact form, membership applications, and tryout requests.
+This site's only table is `public.heartbeat`, which exists solely for the keepalive above
+and is read by nothing in the application. Team roster and sponsor data live in
+`src/assets/data/team-members.json` and `src/assets/data/sponsors.json`; this site uses
+Supabase only to host the Edge Functions that send transactional email.
 
-Row Level Security: not applicable — no database reads/writes remain, only Edge Function invocations.
+Row Level Security still matters, even though this site performs no database reads or
+writes of its own: the project now also holds the performance app's tables, with club
+members' personal data in them, and this site's committed anon key can reach the same
+REST endpoint. `heartbeat` has a world-readable `select` policy and grants writes to
+nobody; every performance table requires `auth.uid()`, so the anon key sees nothing there.
+Keep it that way — a policy loosened in the performance repo is a policy this key inherits.
 
 ### reCAPTCHA
 
