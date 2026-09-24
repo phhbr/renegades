@@ -1,4 +1,4 @@
-import { corsHeaders } from '../_shared/cors.ts'
+import { getCorsHeaders } from '../_shared/cors.ts'
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { verifyRecaptcha } from "../_shared/recaptcha.ts";
 
@@ -15,6 +15,9 @@ interface EmailData {
 }
 
 serve(async (req) => {
+  // Per request: the allowed origin is echoed back only for known origins.
+  const corsHeaders = getCorsHeaders(req);
+
   try {
     if (req.method === 'OPTIONS') {
       return new Response(null, {

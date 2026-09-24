@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { corsHeaders } from "../_shared/cors.ts";
+import { getCorsHeaders } from "../_shared/cors.ts";
 import { verifyRecaptcha } from "../_shared/recaptcha.ts";
 import { PDFDocument } from "https://cdn.skypack.dev/pdf-lib"; // Deno compatible!
 
@@ -47,6 +47,9 @@ interface EmailData {
 }
 
 serve(async (req) => {
+  // Per request: the allowed origin is echoed back only for known origins.
+  const corsHeaders = getCorsHeaders(req);
+
   try {
     if (req.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: corsHeaders });
