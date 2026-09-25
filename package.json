@@ -2,9 +2,13 @@
   "name": "nuernberg_renegades_e.v.-homepage",
   "private": true,
   "license": "MIT",
+  "packageManager": "pnpm@12.6.0+sha512.3ef68f951cb111ac204b4a5a16f0b2ddf0da56a96e0413e81d855d9f0b55ef926714709028e1cd00c405c2c5fb7b9e8ec4dc46777c805d0373c2f2ff00fd20ec",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "npm run optimize-images && ng serve",
+    "start": "pnpm run optimize-images && ng serve",
     "build": "ng build",
     "build:prod": "ng build --configuration production",
     "optimize-images": "node scripts/optimize-images.js",
@@ -45,10 +49,5 @@
     "tailwindcss": "^3.4.1",
     "typescript": "~5.9.3",
     "vite": "^5.0.0"
-  },
-  "overrides": {
-    "@supabase/supabase-js": {
-      "@supabase/gotrue-js": "2.61.0"
-    }
   }
 }

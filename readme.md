@@ -145,14 +145,33 @@ Browser request
 
 ### Prerequisites
 
-- Node.js 20+
-- Angular CLI 20: `npm install -g @angular/cli`
+- Node.js 22+
+- pnpm — the package manager for this repo, pinned via `packageManager` in `package.json`,
+  so `corepack enable` is enough. Do not run `npm install` or `yarn`: a stray
+  `package-lock.json` or `yarn.lock` would make Netlify pick the wrong installer.
+- Angular CLI 20 is a devDependency; run it as `pnpm ng` instead of installing it globally.
 
 ### Setup
 
 ```bash
-npm install
+corepack enable
+pnpm install
 ```
+
+pnpm 12 reads its settings from `pnpm-workspace.yaml`, not from a `pnpm` key in
+`package.json`. Two entries there matter:
+
+- **`allowBuilds`** — dependency build scripts do not run unless allow-listed, and an
+  unlisted one fails the install with `ERR_PNPM_IGNORED_BUILDS` rather than passing
+  silently. The native packages this project needs are listed: `sharp` and `cwebp-bin`
+  for image optimization, `esbuild`, `lmdb`, `msgpackr-extract` and `@parcel/watcher` for
+  the Angular build. A new dependency with a postinstall step has to be added there too.
+- **`minimumReleaseAge: 7200`** — 7200 minutes is 5 days. A version published more
+  recently than that is not installed, which gives a compromised release time to be
+  caught and pulled from the registry. Because the setting is explicit, pnpm also turns
+  on `minimumReleaseAgeStrict`, so an update with no old-enough version in range fails
+  instead of quietly installing a too-new one. To take a fresh release deliberately, add
+  the specific `name@version` to `minimumReleaseAgeExclude`.
 
 No `.env` file is needed. The Supabase URL, Supabase anon key and reCAPTCHA site key are
 public values that end up in the browser bundle regardless, so they are committed in
@@ -240,7 +259,7 @@ its migration history against a directory that no longer exists.
 Since the performance app moved off Lovable Cloud in September 2026, `renegades-eu` backs
 two applications:
 
-| | This site | Performance app ([`nbg-renegades/renegades-performance`](https://github.com/nbg-renegades/renegades-performance)) |
+| | This site ([`nbg-renegades/renegades-homepage`](https://github.com/nbg-renegades/renegades-homepage)) | Performance app ([`nbg-renegades/renegades-performance`](https://github.com/nbg-renegades/renegades-performance)) |
 |---|---|---|
 | Tables | `heartbeat` | `profiles`, `user_roles`, `player_positions`, `performance_entries` |
 | Edge functions | the three `send-*` above | `create-user`, `delete-user`, `get-dashboard-stats`, `get-performance-averages`, `get-performance-benchmarks`, `get-player-neighborhood`, `reset-user-password` |

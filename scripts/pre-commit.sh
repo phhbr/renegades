@@ -20,7 +20,7 @@ if [ -n "$STAGED_IMAGES" ]; then
   echo "$STAGED_IMAGES"
   
   # Run image optimization
-  npm run optimize-images
+  pnpm run optimize-images
   
   # Add optimized images to staging
   git add src/assets/images/optimized/
@@ -32,6 +32,6 @@ fi
 
 # Check for TypeScript/linting errors
 echo "🔍 Checking for TypeScript errors..."
-npm run ng -- build --configuration development --aot 2>&1 | grep -E "(error TS|Error:)" || true
+pnpm run ng -- build --configuration development --aot 2>&1 | grep -E "(error TS|Error:)" || true
 
 exit 0

@@ -1,0 +1,9 @@
+allowBuilds:
+  '@parcel/watcher': true # Angular dev-server file watching
+  cwebp-bin: true # imagemin-webp binary used by scripts/optimize-images.js
+  esbuild: true # Angular build
+  lmdb: true # Angular CLI disk cache
+  msgpackr-extract: true # lmdb serialization
+  sharp: true # scripts/optimize-images.js
+
+minimumReleaseAge: 7200
