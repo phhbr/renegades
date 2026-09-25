@@ -13,7 +13,8 @@ Official website for the Nürnberg Renegades Flag Football Club.
 | Database & Auth | Supabase (form submissions only) |
 | Email | Resend (via Supabase Edge Functions) |
 | Hosting | Netlify (Edge Functions + CDN) |
-| Analytics | Umami |
+| Fonts | Manrope + Sora, self-hosted from `src/assets/fonts` (no Google Fonts request) |
+| Analytics | None. No tracking or analytics service is embedded. |
 | i18n | Custom `TranslatePipe` + `LanguageService`, DE at `/`, EN at `/en` (URL decides the language) |
 
 ## Architecture
@@ -105,7 +106,6 @@ Browser request
 │   │   │   ├── team/
 │   │   │   └── training/          # Training info + tryout form
 │   │   ├── services/
-│   │   │   ├── analytics.service.ts
 │   │   │   ├── contact.service.ts
 │   │   │   ├── cookie-consent.service.ts
 │   │   │   ├── language.service.ts   # Language comes from the URL (/ = de, /en = en)
@@ -309,7 +309,46 @@ Keep it that way — a policy loosened in the performance repo is a policy this 
 
 1. Create a reCAPTCHA v3 site at [Google reCAPTCHA Admin](https://www.google.com/recaptcha/admin)
 2. Add your domain(s) to the allowed list
-3. Set `VITE_RECAPTCHA_SITE_KEY` (frontend) and `RECAPTCHA_SECRET_KEY` (Supabase Edge Function secret)
+3. Put the site key in `src/environments/environment.ts` (it is public and ships in the
+   bundle) and set `RECAPTCHA_SECRET_KEY` as a Supabase Edge Function secret. There is no
+   `VITE_RECAPTCHA_SITE_KEY` — that variable was never wired up, see the note in
+   `environment.ts`.
+
+## Third parties and privacy
+
+The privacy policy makes concrete promises about what this site does and does not load.
+They are easy to break by accident, so they are written down here.
+
+**No third-party request happens on page load.** Opening any page contacts nothing but our
+own origin. Verify with the browser network panel after a change: every request should be
+same-origin. The three things that can talk to a third party are all deliberate:
+
+| What | When it loads | Gate |
+| --- | --- | --- |
+| Google reCAPTCHA | Only on the three pages with a form, and only once the visitor focuses the form (`(focusin)` → `RecaptchaService.preload()`) | Art. 6(1)(f), no consent prompt |
+| Google Maps | Only on `/training` | Consent category `maps` |
+| Supabase + Resend | Only on form submit | — |
+
+Do not move the reCAPTCHA load back into `RecaptchaService`'s constructor: the service is
+`providedIn: 'root'`, so that contacted Google for every visitor who merely opened a page
+containing a form.
+
+**Fonts are self-hosted.** Manrope and Sora live in `src/assets/fonts` as variable woff2
+files (one per family per subset, latin and latin-ext only) and are declared in
+`src/fonts.css`. Do not reintroduce a `fonts.googleapis.com` link — that transmits every
+visitor's IP to Google before any consent. To add a weight or subset, fetch the Google
+Fonts CSS with a modern browser User-Agent, download the woff2 files it references and
+extend `src/fonts.css`; the weight range in the existing `@font-face` rules covers 400–800
+(Manrope) and 600–800 (Sora) from a single file each.
+
+**No analytics.** There is deliberately no analytics or tracking service. Umami was
+removed; if one is ever added it needs a consent category, a privacy-policy section and a
+new row in the recipients table.
+
+**Where the policy lives.** The text is structured content in
+`src/app/i18n/{de,en}/privacy-content.ts`, rendered generically by
+`privacy.component.html`. Both languages must be updated together. Change the `updated`
+field when the substance changes.
 
 ## Features
 
