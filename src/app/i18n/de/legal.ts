@@ -12,5 +12,5 @@ export const legal = {
   'legal.impressum.responsible_privacy': 'Verantwortlich für den Datenschutz',
   'legal.impressum.responsible_webpage': 'Technische Umsetzung & Webentwicklung',
   'legal.impressum.technical_contact': 'Philipp Bruchner',
-  'legal.impressum.technical_email': 'it@nuernberg-renegades.de'
+  'legal.impressum.technical_email': 'hello@bruchner.dev'
 };
