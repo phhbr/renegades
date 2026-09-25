@@ -5,7 +5,6 @@ export interface CookieConsent {
   necessary: boolean; // Always true, required cookies
   preferences: boolean; // For language, theme, etc.
   maps: boolean; // For Google Maps integration
-  analytics: boolean; // For Umami analytics
 }
 
 @Injectable({
@@ -44,8 +43,7 @@ export class CookieConsentService {
     this.updateConsent({
       necessary: true,
       preferences: true,
-      maps: true,
-      analytics: true
+      maps: true
     });
   }
 
@@ -53,8 +51,7 @@ export class CookieConsentService {
     this.updateConsent({
       necessary: true,
       preferences: false,
-      maps: false,
-      analytics: false
+      maps: false
     });
   }
 }

@@ -28,7 +28,7 @@ export class MembershipFormComponent {
   constructor(
     private fb: FormBuilder, 
     private membershipService: MembershipService,
-    private recaptchaService: RecaptchaService
+    protected recaptchaService: RecaptchaService
   ) {
     this.membershipForm = this.fb.group({
       membership_active: [false],

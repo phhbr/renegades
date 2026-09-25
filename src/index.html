@@ -15,11 +15,7 @@
   <meta name="language" content="de">
   <link rel="canonical" href="https://www.nuernberg-renegades.de/">
 
-  <!-- Performance Hints -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <!-- Performance Hints: fonts are self-hosted, so no third-party preconnect is needed. -->
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -43,12 +39,10 @@
     content="Join Nürnberg's flag football club fielding two teams: 1st team in the DFFL1, 2nd team in the Bayernliga. No sign-up needed — just drop in to a training session.">
   <meta name="twitter:image" content="https://www.nuernberg-renegades.de/assets/images/og-image.jpg">
 
-  <!-- Font Optimization: display=optional avoids layout shift from font swap -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=optional">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=optional" rel="stylesheet">
-  </noscript>
+  <!-- Fonts are self-hosted (src/assets/fonts) so no visitor IP reaches Google.
+       Only the latin subsets are preloaded; latin-ext loads on demand. -->
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sora-latin.woff2" crossorigin>
 
   <!-- Favicon with size hints for preloading -->
   <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
@@ -72,9 +66,6 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
-
-  <!-- Umami Analytics -->
-  <script async defer id="umami-script" data-website-id="your-website-id-here"></script>
 
   <!-- Structured Data -->
   <script type="application/ld+json">

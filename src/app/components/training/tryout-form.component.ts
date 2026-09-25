@@ -25,7 +25,7 @@ export class TryoutFormComponent {
   constructor(
     private fb: FormBuilder, 
     private tryoutService: TryoutService,
-    private recaptchaService: RecaptchaService
+    protected recaptchaService: RecaptchaService
   ) {
     this.tryoutForm = this.fb.group({
       name: ["", Validators.required],

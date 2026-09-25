@@ -14,8 +14,7 @@ export class CookieSettingsComponent implements OnInit {
   consent: CookieConsent = {
     necessary: true,
     preferences: false,
-    maps: false,
-    analytics: false
+    maps: false
   };
 
   constructor(private cookieConsentService: CookieConsentService) {}

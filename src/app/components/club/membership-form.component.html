@@ -1,4 +1,4 @@
-<form [formGroup]="membershipForm" (ngSubmit)="onSubmit()" class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-8">
+<form [formGroup]="membershipForm" (ngSubmit)="onSubmit()" (focusin)="recaptchaService.preload()" class="bg-secondary-dark dark:bg-dark-surface rounded-lg p-8">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div>
       <label class="block mb-2 font-medium text-primary dark:text-white">{{ 'club.join.form.membership_active' | translate }} *</label>

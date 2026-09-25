@@ -20,9 +20,14 @@ export class RecaptchaService {
   private loadPromise: Promise<void> | null = null;
   #platformId = inject(PLATFORM_ID);
 
-  constructor() {
+  /**
+   * Called on first interaction with a form so the script is warm by submit time.
+   * Deliberately not called from the constructor: that contacted Google for every
+   * visitor who merely opened a page containing a form.
+   */
+  preload(): void {
     if (isPlatformBrowser(this.#platformId)) {
-      this.loadScript();
+      void this.loadScript();
     }
   }
 

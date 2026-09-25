@@ -1,4 +1,4 @@
-/* Note: Font import moved to index.html for better control and preloading */
+@import './fonts.css';
 
 @tailwind base;
 @tailwind components;

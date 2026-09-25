@@ -17,7 +17,7 @@
       <!-- Contact Form -->
       <div>
         <h2 class="text-2xl font-bold mb-6 text-primary dark:text-white">{{ 'contact.form.title' | translate }}</h2>
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="bg-secondary-dark dark:bg-dark-surface rounded-xl border border-gray-100 dark:border-white/8 p-6 md:p-8">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" (focusin)="recaptchaService.preload()" class="bg-secondary-dark dark:bg-dark-surface rounded-xl border border-gray-100 dark:border-white/8 p-6 md:p-8">
           <div class="space-y-4">
             <div>
               <label class="block mb-2 text-primary dark:text-white">{{ 'contact.form.name' | translate }}</label>

@@ -31,7 +31,7 @@ export class ContactComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private contactService: ContactService,
-    private recaptchaService: RecaptchaService
+    protected recaptchaService: RecaptchaService
   ) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],

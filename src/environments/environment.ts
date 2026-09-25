@@ -16,9 +16,5 @@ export const environment = {
     key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrbWRjcWNqdm9kc25hcXBzZ3VuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk0NjQ5MTUsImV4cCI6MjEwNTA0MDkxNX0.gXkhDGSXg_00qkUW2jKTmSNLhUftqsdtariRWhY_uRU' },
   recaptcha: {
     siteKey: '6LfTgr8qAAAAAB6vUF6Y8w5DZSuINMy1uYMYa0TB'
-  },
-  analytics: {
-    umamiUrl: 'https://cloud.umami.is/script.js',
-    websiteId: 'de2a7426-55c6-457d-b663-7e12bce985e9'
   }
 };
